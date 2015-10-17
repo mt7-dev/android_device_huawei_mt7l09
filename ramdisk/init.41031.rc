@@ -1,0 +1,56 @@
+on early-init
+
+on init
+
+on early-fs
+
+on fs
+
+on post-fs
+
+on post-fs-data
+
+on early-boot
+	chown radio radio /dev/ttyAMA0
+	chmod 0660 /dev/ttyAMA0
+
+on boot
+	mkdir /data/nfc
+	chown nfc nfc /data/nfc
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_fwupdate
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_fwupdate
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nxp_config_name
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nxp_config_name
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_brcm_conf_name
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_brcm_conf_name
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_sim_switch
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_sim_switch
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_sim_status
+	chmod 0444 /sys/bus/i2c/devices/0-0028/nfc_sim_status
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/rd_nfc_sim_status
+	chmod 0444 /sys/bus/i2c/devices/0-0028/rd_nfc_sim_status
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_enable_status
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_enable_status
+    chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_single_channel
+    chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_single_channel
+
+	chown system system /dev/fpc1020
+	chmod 0660 /dev/fpc1020
+	chown system system /sys/devices/platform/fingerprint/diag/result
+	chown system system /sys/devices/platform/fingerprint/diag/navigation_enable
+	chown system system /sys/devices/platform/fingerprint/diag/wakeup_enable
+	chown system system /sys/devices/platform/fingerprint/diag/chip_id
+	chown system system /sys/devices/platform/fingerprint/diag/selftest
+	chown system system /sys/devices/platform/fingerprint/diag/fingerdetect
+	chown system system /sys/devices/platform/fingerprint/setup/adc_gain
+	chown system system /sys/devices/platform/fingerprint/setup/adc_shift
+	chown system system /sys/devices/platform/fingerprint/setup/capture_mode
+	chown system system /sys/devices/platform/fingerprint/setup/capture_count
+	chown system system /sys/devices/platform/fingerprint/setup/capture_col_groups
+	chown system system /sys/devices/platform/fingerprint/setup/capture_col_start
+	chown system system /sys/devices/platform/fingerprint/setup/capture_row_count
+	chown system system /sys/devices/platform/fingerprint/setup/capture_row_start
+	chown system system /sys/devices/platform/fingerprint/setup/capture_settings_mux
+	chown system system /sys/devices/platform/fingerprint/setup/pxl_ctrl
+	chown system system /sys/devices/platform/fingerprint/fingerprint_chip_info
+
