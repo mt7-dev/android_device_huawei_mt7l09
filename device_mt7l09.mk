@@ -33,6 +33,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/recovery/init.recovery.hi3630.rc:root/init.recovery.hi3630.rc
 
 # Ramdisk
+# To clean
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/default.prop:recovery/root/default.prop \
 	$(LOCAL_PATH)/ramdisk/file_contexts:recovery/root/file_contexts \
@@ -64,4 +65,3 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/ueventd.71422.rc:recovery/root/ueventd.71422.rc \
 	$(LOCAL_PATH)/ramdisk/ueventd.hi3630.rc:recovery/root/ueventd.hi3630.rc \
 	$(LOCAL_PATH)/ramdisk/ueventd.rc:recovery/root/ueventd.rc 
-
