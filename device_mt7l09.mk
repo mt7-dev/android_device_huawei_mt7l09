@@ -26,6 +26,7 @@ PRODUCT_DEVICE := mt7l09
 # ---------------------------------------------------------------------------
 
 LOCAL_PATH := device/huawei/mt7l09
+
 # Recovery
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/recovery/init.recovery.hi3630.rc:recovery/root/init.recovery.hi3630.rc \
@@ -57,8 +58,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/init.zygote32.rc:recovery/root/init.zygote32.rc \
 	$(LOCAL_PATH)/ramdisk/property_contexts:recovery/root/property_contexts \
 	$(LOCAL_PATH)/ramdisk/seapp_contexts:recovery/root/seapp_contexts \
-	$(LOCAL_PATH)/ramdisk/selinux_version:recovery/root/selinux_version \
-	$(LOCAL_PATH)/ramdisk/sepolicy:recovery/root/sepolicy \
 	$(LOCAL_PATH)/ramdisk/service_contexts:recovery/root/service_contexts \
 	$(LOCAL_PATH)/ramdisk/ueventd.41031.rc:recovery/root/ueventd.41031.rc \
 	$(LOCAL_PATH)/ramdisk/ueventd.4843.rc:recovery/root/ueventd.4843.rc \
