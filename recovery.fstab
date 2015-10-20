@@ -1,15 +1,30 @@
-# mount point					fstype			device    	[device2]
+# mount point   fstype    device        [device2]
+/system		ext4   /dev/block/platform/hi_mci.0/by-name/system
+/cache		ext4   /dev/block/platform/hi_mci.0/by-name/cache
+/data		ext4   /dev/block/platform/hi_mci.0/by-name/userdata
+/misc		emmc   /dev/block/platform/hi_mci.0/by-name/misc
+/boot		emmc   /dev/block/platform/hi_mci.0/by-name/boot
+/recovery	emmc   /dev/block/platform/hi_mci.0/by-name/recovery
+/cust		ext4   /dev/block/platform/hi_mci.0/by-name/cust
+/splash2	ext4   /dev/block/platform/hi_mci.0/by-name/splash2
+/3rdmodem	ext4   /dev/block/platform/hi_mci.0/by-name/3rdmodem 
+/newsys		ext4   /dev/block/platform/hi_mci.0/by-name/system 
+/usb		vfat   /dev/block/sda1
+/sdcard		vfat   /dev/block/mmcblk1p1 
 
-/dev/block/platform/hi_mci.0/by-name/boot       emmc			boot
-/dev/block/platform/hi_mci.0/by-name/cache      ext4			cache
-/dev/block/platform/hi_mci.0/by-name/userdata	ext4			userdata
-/dev/block/platform/hi_mci.0/by-name/misc	emmc    		misc
-/dev/block/platform/hi_mci.0/by-name/recovery   emmc    		recovery
-/dev/block/platform/hi_mci.0/by-name/system	ext4			system
-/devices/hi_mci.1/mmc_host/mmc1			auto    		vfat		defaults	voldmanaged=sdcard1:auto,noemulatedsd
-/devices/hisi-usb-otg/usb1			/storage/usbotg   	vfat		defaults				voldmanaged=usbotg:auto
-/dev/block/platform/hi_mci.0/by-name/userdata 	/data			ext4		rw,nosuid,nodev,noatime,user_xattr,acl,barrier=1,data=ordered,noauto_da_alloc,mblk_io_submit,discard wait,encryptable=footer
-/dev/block/zram0				swap			defaults	zramsize=268435456
+
+
+# mount point					fstype			device    	[device2]
+#/dev/block/platform/hi_mci.0/by-name/boot       emmc			boot
+#/dev/block/platform/hi_mci.0/by-name/cache      ext4			cache
+#/dev/block/platform/hi_mci.0/by-name/userdata	ext4			userdata
+#/dev/block/platform/hi_mci.0/by-name/misc	emmc    		misc
+#/dev/block/platform/hi_mci.0/by-name/recovery   emmc    		recovery
+#/dev/block/platform/hi_mci.0/by-name/system	ext4			system
+#/devices/hi_mci.1/mmc_host/mmc1			auto    		vfat		defaults	voldmanaged=sdcard1:auto,noemulatedsd
+#/devices/hisi-usb-otg/usb1			/storage/usbotg   	vfat		defaults				voldmanaged=usbotg:auto
+#/dev/block/platform/hi_mci.0/by-name/userdata 	/data			ext4		rw,nosuid,nodev,noatime,user_xattr,acl,barrier=1,data=ordered,noauto_da_alloc,mblk_io_submit,discard wait,encryptable=footer
+#/dev/block/zram0				swap			defaults	zramsize=268435456
 
 
 # FROM ORIGINAL recovery.fstab
