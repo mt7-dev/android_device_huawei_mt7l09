@@ -10,7 +10,7 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/huawei/mt7l09/BoardConfigVendor.mk
+-include vendor/huawei/hwmt7_l09/BoardConfigVendor.mk
 
 # vendor flags
 BOARD_VENDOR := huawei
@@ -39,11 +39,11 @@ TARGET_EXTRA_CFLAGS := -mtune=cortex-a15 -mcpu=cortex-a15
 
 # Kernel
 ## Config file has been grabbed from the stock kernel image "stock-kernel-from511-v3-10-74"
-TARGET_KERNEL_CONFIG := hisi_3630_defconfig
-TARGET_KERNEL_SOURCE := kernel/huawei/mt7l09
+#TARGET_KERNEL_CONFIG := hisi_3630_defconfig
+#TARGET_KERNEL_SOURCE := kernel/huawei/mt7l09
 # BOARD_USES_UBOOT := true ## Anyone knows?
 ## Let's keep this as a fallback
-TARGET_PREBUILT_KERNEL := device/huawei/mt7l09/stock-kernel-from511-v3-10-74
+TARGET_PREBUILT_KERNEL := device/huawei/mt7l09/kernel
 BOARD_KERNEL_CMDLINE := vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=enforcing enter_recovery=1 enter_erecovery=0
 BOARD_KERNEL_BASE := 0x00600000
 BOARD_KERNEL_PAGESIZE := 2048
