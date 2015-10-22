@@ -440,7 +440,7 @@ service charger /sbin/healthd -h
 service console /system/bin/sh
     class core
     console
-    disabled
+    enabled
     user shell
     group shell log
     seclabel u:r:shell:s0
