@@ -8,6 +8,7 @@
 #  Search for h60-dev on github
 
 USE_CAMERA_STUB := true
+TARGET_OTA_ASSERT_DEVICE := hwmt7_l09,mt7l09,mt7_l09
 
 # inherit from the proprietary version
 -include vendor/huawei/hwmt7_l09/BoardConfigVendor.mk
