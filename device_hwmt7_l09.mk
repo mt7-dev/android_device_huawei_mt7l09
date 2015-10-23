@@ -35,7 +35,15 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, build/target/product/full.mk)
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
+# Added testing option
+PRODUCT_BUILD_PROP_OVERRIDES += \
+	BUILD_UTC_DATE=0 \
+	ro.adb.secure=0 \
+	ro.secure=0 \
+	ro.allow.mock.location=1 \
+	ro.debuggable=1 \
+	persist.sys.usb.config=mtp,adb
+
 PRODUCT_NAME := full_hwmt7_l09
 PRODUCT_DEVICE := hwmt7_l09
 
@@ -94,8 +102,5 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/property_contexts:root/property_contexts \
 	$(LOCAL_PATH)/ramdisk/seapp_contexts:root/seapp_contexts \
 	$(LOCAL_PATH)/ramdisk/service_contexts:root/service_contexts \
-	$(LOCAL_PATH)/ramdisk/ueventd.41031.rc:root/ueventd.41031.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.4843.rc:root/ueventd.4843.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.71422.rc:root/ueventd.71422.rc \
 	$(LOCAL_PATH)/ramdisk/ueventd.hi3630.rc:root/ueventd.hi3630.rc \
 	$(LOCAL_PATH)/ramdisk/ueventd.rc:recovery/root/ueventd.rc 
