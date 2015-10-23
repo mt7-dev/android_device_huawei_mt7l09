@@ -21,7 +21,7 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 $(call inherit-product-if-exists, vendor/huawei/hwmt7_l09/hwmt7_l09-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/huawei/hwmt7_l09/overlay
+# DEVICE_PACKAGE_OVERLAYS += device/huawei/hwmt7_l09/overlay
 
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -35,14 +35,28 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, build/target/product/full.mk)
 
-# Added testing option
+# =====================================================
+
+# .prop overrides
+
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	BUILD_UTC_DATE=0 \
-	ro.adb.secure=0 \
-	ro.secure=0 \
-	ro.allow.mock.location=1 \
-	ro.debuggable=1 \
-	persist.sys.usb.config=mtp,adb
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.sys.isUsbOtgEnabled=true \
+	ro.sf.lcd_density=370 \
+	ro.hardware.alter=Kirin925
+	
+## From stock system.prop
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	ro.zygote=zygote32 \
+	dalvik.vm.dex2oat-Xms=64m \
+	dalvik.vm.dex2oat-Xmx=512m \
+	dalvik.vm.image-dex2oat-Xms=64m \
+	dalvik.vm.image-dex2oat-Xmx=64m \
+	ro.dalvik.vm.native.bridge=0 
+
+# =====================================================
 
 PRODUCT_NAME := full_hwmt7_l09
 PRODUCT_DEVICE := hwmt7_l09
@@ -103,4 +117,4 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/seapp_contexts:root/seapp_contexts \
 	$(LOCAL_PATH)/ramdisk/service_contexts:root/service_contexts \
 	$(LOCAL_PATH)/ramdisk/ueventd.hi3630.rc:root/ueventd.hi3630.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.rc:recovery/root/ueventd.rc 
+	$(LOCAL_PATH)/ramdisk/ueventd.rc:root/ueventd.rc 

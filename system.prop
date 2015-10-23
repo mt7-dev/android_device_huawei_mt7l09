@@ -1,4 +1,3 @@
-#
 # system.prop for mt7l09
 #
 ro.config.mmu_en=1
