@@ -11,5 +11,5 @@ $(call inherit-product, device/huawei/hwmt7_l09/device_hwmt7_l09.mk)
 PRODUCT_DEVICE := hwmt7_l09
 PRODUCT_NAME := cm_hwmt7_l09
 PRODUCT_BRAND := huawei
-PRODUCT_MODEL := hwmt7_l09
+PRODUCT_MODEL := Huawei Ascend Mate 7
 PRODUCT_MANUFACTURER := huawei

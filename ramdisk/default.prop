@@ -1,10 +1,18 @@
 #
 # ADDITIONAL_DEFAULT_PROPERTIES
+####
+
 #
-ro.secure=1
-ro.allow.mock.location=0
-ro.debuggable=0
-ro.adb.secure=1
+# DEBUG SETTINGS - only for testing
+###
+ro.secure=0
+ro.adb.secure=0
+ro.debuggable=1
+ro.allow.mock.location=1
+####
+#
+#
+
 ro.zygote=zygote32
 dalvik.vm.dex2oat-Xms=64m
 dalvik.vm.dex2oat-Xmx=512m

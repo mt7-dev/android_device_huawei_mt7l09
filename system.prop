@@ -53,7 +53,7 @@ dalvik.vm.dexopt-flags=m=y
 net.bt.name=Android
 dalvik.vm.stack-trace-file=/data/anr/traces.txt
 
-ro.adb.secure=1
+ro.config.cpu_info_display=Hisilicon Kirin 925
 ro.config.hw_floatvideo=false
 ro.config.hw_dts=true
 ro.config.hw_dolby=false

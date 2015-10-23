@@ -40,8 +40,8 @@ TARGET_EXTRA_CFLAGS := -mtune=cortex-a15 -mcpu=cortex-a15
 
 # Kernel
 ## Config file has been grabbed from the stock kernel image "stock-kernel-from511-v3-10-74"
-#TARGET_KERNEL_CONFIG := hisi_3630_defconfig
 #TARGET_KERNEL_SOURCE := kernel/huawei/hwmt7_l09
+#TARGET_KERNEL_CONFIG := stock-511_defconfig
 # BOARD_USES_UBOOT := true ## Anyone knows?
 ## Let's keep this as a fallback
 TARGET_PREBUILT_KERNEL := device/huawei/hwmt7_l09/kernel
