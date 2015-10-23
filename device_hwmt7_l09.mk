@@ -56,7 +56,6 @@ LOCAL_PATH := device/huawei/hwmt7_l09
 
 # Recovery
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/recovery/init.recovery.hi3630.rc:recovery/root/init.recovery.hi3630.rc \
 	$(LOCAL_PATH)/recovery/init.recovery.hi3630.rc:root/init.recovery.hi3630.rc \
 	$(LOCAL_PATH)/recovery/res/images/charger/battery_0.png:root/res/images/charger/battery_0.png \
 	$(LOCAL_PATH)/recovery/res/images/charger/battery_1.png:root/res/images/charger/battery_1.png \
