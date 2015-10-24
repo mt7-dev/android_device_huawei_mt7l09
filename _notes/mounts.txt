@@ -1,0 +1,201 @@
+## FSTAB
+# Android fstab file.
+#<src>                                                  <mnt_point>         	<type>		<mnt_flags and options>			<fs_mgr_flags>
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+/devices/hi_mci.1/mmc_host/mmc1				auto    		vfat	defaults				voldmanaged=sdcard1:auto,noemulatedsd
+/devices/hisi-usb-otg/usb1				/storage/usbotg   	vfat	defaults				voldmanaged=usbotg:auto
+/dev/block/platform/hi_mci.0/by-name/userdata 		/data			ext4	rw,nosuid,nodev,noatime,user_xattr,acl,barrier=1,data=ordered,noauto_da_alloc,mblk_io_submit,discard wait,encryptable=footer
+/dev/block/zram0					none			swap	defaults 				zramsize=268435456
+
+
+# Android fstab file.
+#<src>                                                  <mnt_point>         <type>    <mnt_flags and options>                              <fs_mgr_flags>
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+/dev/block/mtdblock0                                    /system             ext4      ro,barrier=1                                         wait
+/dev/block/mtdblock1                                    /data               ext4      noatime,nosuid,nodev,barrier=1,nomblk_io_submit      wait,check
+/dev/block/mtdblock2                                    /cache              ext4      noatime,nosuid,nodev  wait,check
+/devices/platform/goldfish_mmc.0                        auto                vfat      defaults                                             voldmanaged=sdcard:auto
+
+
+
+## MOUNTS
+
+rootfs 								/ 			rootfs 		ro,seclabel 0 0
+/dev/block/mmcblk0p24 						/mnvm2:0		ext4		rw,seclabel,relatime,noauto_da_alloc,data=ordered 0 0
+/dev/block/mmcblk0p28						/modem_log 		ext4 		rw,seclabel,relatime,noauto_da_alloc,data=ordered 0 0
+tmpfs 								/dev 			tmpfs 		rw,seclabel,nosuid,relatime,mode=755 0 0
+devpts 								/dev/pts 		devpts 		rw,seclabel,relatime,mode=600 0 0
+proc 								/proc 			proc 		rw,relatime 0 0
+sysfs 								/sys 			sysfs 		rw,seclabel,relatime 0 0
+selinuxfs 							/sys/fs/selinux 	selinuxfs 	rw,relatime 0 0
+none								/acct 			cgroup 		rw,relatime,cpuacct 0 0
+none 								/sys/fs/cgroup 		tmpfs 		rw,seclabel,relatime,mode=750,gid=1000 0 0
+tmpfs 								/mnt/asec		tmpfs		rw,seclabel,relatime,mode=755,gid=1000 0 0
+tmpfs								/mnt/obb 		tmpfs 		rw,seclabel,relatime,mode=755,gid=1000 0 0
+none 								/dev/cpuctl 		cgroup 		rw,relatime,cpu,cpuset,clone_children 0 0
+tmpfs								/e2fslog		tmpfs		rw,seclabel,relatime,mode=755 0 0
+none 								/dev/frz		cgroup		rw,relatime,freezer 0 0
+/dev/block/platform/hi_mci.0/by-name/system 			/system			ext4		ro,seclabel,relatime,data=ordered 0 0
+/dev/block/platform/hi_mci.0/by-name/cache 			/cache			ext4		rw,seclabel,relatime,data=ordered 0 0
+/dev/block/platform/hi_mci.0/by-name/userdata			/data 			ext4 		rw,seclabel,nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered 0 0
+/dev/block/platform/hi_mci.0/by-name/cust 			/cust 			ext4 		ro,seclabel,nosuid,nodev,relatime,data=ordered 0 0
+/dev/block/platform/hi_mci.0/by-name/splash2 			/splash2 		ext4 		rw,context=u:object_r:splash2_data_file:s0,nosuid,nodev,relatime,data=ordered 0 0
+/dev/block/platform/hi_mci.0/by-name/3rdmodem 			/3rdmodem 		ext4 		rw,seclabel,nosuid,nodev,noatime,data=ordered 0 0
+/dev/block/platform/hi_mci.0/by-name/3rdmodemnvm 		/3rdmodemnvm 		ext4 		rw,context=u:object_r:radio_data_file:s0,nosuid,nodev,noatime,data=ordered 0 0
+/data/share 							/mnt/shell/emulated 	sdcardfs 	rw,nosuid,nodev,relatime,uid=1023,gid=1023 0 0
+/dev/block/platform/hi_mci.0/by-name/secure_storage 		/data/sec_storage 	ext4 		rw,context=u:object_r:teecd_data_file:s0,nosuid,nodev,noatime,discard,nodelalloc,data=journal 0 0
+/sys/kernel/debug 						/sys/kernel/debug 	debugfs 	rw,seclabel,relatime,gid=1000,mode=755 0 0
+/dev/block/vold/179:169 					/mnt/media_rw/sdcard1 	exfat 		rw,dirsync,nosuid,nodev,noexec,relatime,uid=1023,gid=1023,fmask=0007,dmask=0007,allow_utime=0020,iocharset=utf8,namecase=0,errors=remount-ro 0 0
+/dev/block/vold/179:169 					/mnt/secure/asec 	exfat 		rw,dirsync,nosuid,nodev,noexec,relatime,uid=1023,gid=1023,fmask=0007,dmask=0007,allow_utime=0020,iocharset=utf8,namecase=0,errors=remount-ro 0 0
+/dev/fuse 							/storage/sdcard1 	fuse 		rw,nosuid,nodev,noexec,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
+
+
+## PARTITIONS
+major 	  minor  #blocks name
+
+ 179        0   15388672 mmcblk0
+ 179        1        128 mmcblk0p1
+ 179        2        128 mmcblk0p2
+ 179        3       1664 mmcblk0p3
+ 179        4       1792 mmcblk0p4
+ 179        5        256 mmcblk0p5
+ 179        6       4096 mmcblk0p6
+ 179        7       4096 mmcblk0p7
+ 179        8       2048 mmcblk0p8
+ 179        9       4096 mmcblk0p9
+ 179       10       2048 mmcblk0p10
+ 179       11       4096 mmcblk0p11
+ 179       12       2048 mmcblk0p12
+ 179       13      14336 mmcblk0p13
+ 179       14      15360 mmcblk0p14
+ 179       15       1024 mmcblk0p15
+ 179       16      32768 mmcblk0p16
+ 179       17      32768 mmcblk0p17
+ 179       18       8192 mmcblk0p18
+ 179       19       8192 mmcblk0p19
+ 179       20      32768 mmcblk0p20
+ 179       21      20480 mmcblk0p21 
+ 179       22       8192 mmcblk0p22
+ 179       23       4096 mmcblk0p23
+ 179       24       8192 mmcblk0p24
+ 179       25       4096 mmcblk0p25
+ 179       26      61440 mmcblk0p26 
+ 179       27       4096 mmcblk0p27
+ 179       28      12288 mmcblk0p28
+ 179       29      24576 mmcblk0p29 
+ 179       30      65536 mmcblk0p30
+ 179       31      65536 mmcblk0p31
+ 179       32      32768 mmcblk0p32
+ 179       33      16384 mmcblk0p33
+ 179       34      65536 mmcblk0p34
+ 179       35       2048 mmcblk0p35
+ 179       36       2048 mmcblk0p36
+ 179       37     524288 mmcblk0p37
+ 179       38    1572864 mmcblk0p38
+ 179       39     262144 mmcblk0p39
+ 179       40   12460032 mmcblk0p40
+ 179      126       4096 mmcblk0rpmb
+ 179       84       4096 mmcblk0boot1
+ 179       42       4096 mmcblk0boot0
+  31        0        128 mtdblock0
+  31        1        128 mtdblock1
+  31        2       4096 mtdblock2
+  31        3       4096 mtdblock3
+  31        4       4096 mtdblock4
+  31        5      61440 mtdblock5
+  31        6       4096 mtdblock6
+  31        7      24576 mtdblock7
+ 179      168   62521344 mmcblk1
+ 179      169   62504960 mmcblk1p1
+  31        8       4096 mtdblock8
+
+
+## MTD 
+dev:    size   erasesize  name
+mtd0: 00020000 00001000 "block2mtd: /dev/block/mmcblk0p1"
+mtd1: 00020000 00001000 "block2mtd: /dev/block/mmcblk0p2"
+mtd2: 00400000 00001000 "block2mtd: /dev/block/mmcblk0p7"
+mtd3: 00400000 00001000 "block2mtd: /dev/block/mmcblk0p23"
+mtd4: 00400000 00001000 "block2mtd: /dev/block/mmcblk0p25"
+mtd5: 03c00000 00001000 "block2mtd: /dev/block/mmcblk0p26"
+mtd6: 00400000 00001000 "block2mtd: /dev/block/mmcblk0p27"
+mtd7: 01800000 00001000 "block2mtd: /dev/block/mmcblk0p29"
+mtd8: 00400000 00001000 "block2mtd: /dev/block/mmcblk0p6"
+
+
+## df
+Filesystem               Size     Used     Free   Blksize
+/mnvm2:0                 6.5M     1.0M     5.5M   1024
+/modem_log              10.2M   885.0K     9.4M   1024
+/dev                   848.6M    92.0K   848.5M   4096
+/sys/fs/cgroup         848.6M    12.0K   848.5M   4096
+/mnt/asec              848.6M     0.0K   848.6M   4096
+/mnt/obb               848.6M     0.0K   848.6M   4096
+/e2fslog               848.6M     0.0K   848.6M   4096
+/system                  1.5G     1.4G    91.3M   4096
+/cache                 248.0M   340.0K   247.6M   4096
+/data                   11.6G     3.2G     8.4G   4096
+/data/sec_storage       17.7M   205.0K    17.5M   1024
+/cust                  495.9M   374.7M   121.3M   4096
+/splash2                59.0M    11.9M    47.1M   1024
+/3rdmodem               59.0M     4.8M    54.2M   1024
+/3rdmodemnvm            29.0M   387.0K    28.6M   1024
+/mnt/shell/emulated     11.6G     3.2G     8.4G   4096
+/storage/emulated      848.6M     0.0K   848.6M   4096
+/mnt/media_rw/sdcard1    59.6G    48.7G    10.9G   131072
+/mnt/secure/asec        59.6G    48.7G    10.9G   131072
+/storage/sdcard1        59.6G    48.7G    10.9G   131072
+/storage/emulated/0     11.6G     3.2G     8.4G   4096
+/storage/emulated/0/Android/obb    11.6G     3.2G     8.4G   4096
+/storage/emulated/legacy    11.6G     3.2G     8.4G   4096
+/storage/emulated/legacy/Android/obb    11.6G     3.2G     8.4G   4096
+
+
+
+## dev/block/platform/*
+
+lrwxrwxrwx root     root              2015-10-15 08:49 3rdmodem -> /dev/block/mmcblk0p31
+lrwxrwxrwx root     root              2015-10-15 08:49 3rdmodemnvm -> /dev/block/mmcblk0p32
+lrwxrwxrwx root     root              2015-10-15 08:49 3rdmodemnvmbkp -> /dev/block/mmcblk0p33
+lrwxrwxrwx root     root              2015-10-15 08:49 boot -> /dev/block/mmcblk0p13
+lrwxrwxrwx root     root              2015-10-15 08:49 cache -> /dev/block/mmcblk0p39
+lrwxrwxrwx root     root              2015-10-15 08:49 cust -> /dev/block/mmcblk0p37
+lrwxrwxrwx root     root              2015-10-15 08:49 dfx -> /dev/block/mmcblk0p22
+lrwxrwxrwx root     root              2015-10-15 08:49 dts -> /dev/block/mmcblk0p20
+lrwxrwxrwx root     root              2015-10-15 08:49 fastboot -> /dev/block/mmcblk0p4
+lrwxrwxrwx root     root              2015-10-15 08:49 fw_hifi -> /dev/block/mmcblk0p9
+lrwxrwxrwx root     root              2015-10-15 08:49 fw_lpm3 -> /dev/block/mmcblk0p5
+lrwxrwxrwx root     root              2015-10-15 08:49 hibench -> /dev/block/mmcblk0p8
+lrwxrwxrwx root     root              2015-10-15 08:49 hisitest0 -> /dev/block/mmcblk0p35
+lrwxrwxrwx root     root              2015-10-15 08:49 hisitest1 -> /dev/block/mmcblk0p36
+lrwxrwxrwx root     root              2015-10-15 08:49 misc -> /dev/block/mmcblk0p11
+lrwxrwxrwx root     root              2015-10-15 08:49 modem -> /dev/block/mmcblk0p26
+lrwxrwxrwx root     root              2015-10-15 08:49 modem_dsp -> /dev/block/mmcblk0p27
+lrwxrwxrwx root     root              2015-10-15 08:49 modem_om -> /dev/block/mmcblk0p28
+lrwxrwxrwx root     root              2015-10-15 08:49 modemnvm_backup -> /dev/block/mmcblk0p23
+lrwxrwxrwx root     root              2015-10-15 08:49 modemnvm_factory -> /dev/block/mmcblk0p7
+lrwxrwxrwx root     root              2015-10-15 08:49 modemnvm_img -> /dev/block/mmcblk0p24
+lrwxrwxrwx root     root              2015-10-15 08:49 modemnvm_system -> /dev/block/mmcblk0p25
+lrwxrwxrwx root     root              2015-10-15 08:49 modemnvm_update -> /dev/block/mmcblk0p29
+lrwxrwxrwx root     root              2015-10-15 08:49 nvme -> /dev/block/mmcblk0p6
+lrwxrwxrwx root     root              2015-10-15 08:49 oeminfo -> /dev/block/mmcblk0p16
+lrwxrwxrwx root     root              2015-10-15 08:49 recovery -> /dev/block/mmcblk0p14
+lrwxrwxrwx root     root              2015-10-15 08:49 recovery2 -> /dev/block/mmcblk0p30
+lrwxrwxrwx root     root              2015-10-15 08:49 recovery3 -> /dev/block/mmcblk0p15
+lrwxrwxrwx root     root              2015-10-15 08:49 reserved1 -> /dev/block/mmcblk0p3
+lrwxrwxrwx root     root              2015-10-15 08:49 reserved2 -> /dev/block/mmcblk0p12
+lrwxrwxrwx root     root              2015-10-15 08:49 secure_storage -> /dev/block/mmcblk0p21
+lrwxrwxrwx root     root              2015-10-15 08:49 sensorhub -> /dev/block/mmcblk0p17
+lrwxrwxrwx root     root              2015-10-15 08:49 splash -> /dev/block/mmcblk0p18
+lrwxrwxrwx root     root              2015-10-15 08:49 splash2 -> /dev/block/mmcblk0p34
+lrwxrwxrwx root     root              2015-10-15 08:49 splash3 -> /dev/block/mmcblk0p19
+lrwxrwxrwx root     root              2015-10-15 08:49 system -> /dev/block/mmcblk0p38
+lrwxrwxrwx root     root              2015-10-15 08:49 teeos -> /dev/block/mmcblk0p10
+lrwxrwxrwx root     root              2015-10-15 08:49 userdata -> /dev/block/mmcblk0p40
+lrwxrwxrwx root     root              2015-10-15 08:49 vrl -> /dev/block/mmcblk0p1
+lrwxrwxrwx root     root              2015-10-15 08:49 vrl_backup -> /dev/block/mmcblk0p2
+
+
