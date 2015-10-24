@@ -21,7 +21,7 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 $(call inherit-product-if-exists, vendor/huawei/hwmt7_l09/hwmt7_l09-vendor.mk)
 
-# DEVICE_PACKAGE_OVERLAYS += device/huawei/hwmt7_l09/overlay
+DEVICE_PACKAGE_OVERLAYS += device/huawei/hwmt7_l09/overlay
 
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
