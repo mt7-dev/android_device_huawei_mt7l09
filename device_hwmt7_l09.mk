@@ -35,7 +35,7 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, build/target/product/full.mk)
 
-# =====================================================
+# ========================================== .PROP OVVERRIDES ==========================================
 
 # .prop overrides
 
@@ -56,7 +56,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	dalvik.vm.image-dex2oat-Xmx=64m \
 	ro.dalvik.vm.native.bridge=0 
 
-# =====================================================
+# ========================================== ======= = ======= ==========================================
 
 PRODUCT_NAME := full_hwmt7_l09
 PRODUCT_DEVICE := hwmt7_l09
@@ -76,7 +76,7 @@ DEVICE_RESOLUTION := 1080x1920
 
 LOCAL_PATH := device/huawei/hwmt7_l09
 
-# Recovery
+# ========================================== RECOVERY ==========================================
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/recovery/init.recovery.hi3630.rc:root/init.recovery.hi3630.rc \
 	$(LOCAL_PATH)/recovery/res/images/charger/battery_0.png:root/res/images/charger/battery_0.png \
@@ -88,7 +88,8 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/recovery/res/images/charger/battery_charge.png:root/res/images/charger/battery_charge.png \
 	$(LOCAL_PATH)/recovery/res/images/charger/battery_fail.png:root/res/images/charger/battery_fail.png
 
-# Ramdisk
+	
+# ========================================== RAMDISK ==========================================
 # To clean
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/default.prop:root/default.prop \
@@ -118,3 +119,47 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/service_contexts:root/service_contexts \
 	$(LOCAL_PATH)/ramdisk/ueventd.hi3630.rc:root/ueventd.hi3630.rc \
 	$(LOCAL_PATH)/ramdisk/ueventd.rc:root/ueventd.rc 
+	
+# ========================================== KEYLAYOUTS ==========================================
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/AVRCP.kl:dd \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/fingerprint.kl:system/usr/keylayout/fingerprint.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/hi3630_keypad.kl:system/usr/keylayout/hi3630_keypad.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_0079_Product_0011.kl:system/usr/keylayout/Vendor_0079_Product_0011.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_046d_Product_b501.kl:system/usr/keylayout/Vendor_046d_Product_b501.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_046d_Product_c219.kl:system/usr/keylayout/Vendor_046d_Product_c219.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_046d_Product_c21d.kl:system/usr/keylayout/Vendor_046d_Product_c21d.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_046d_Product_c21f.kl:system/usr/keylayout/Vendor_046d_Product_c21f.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_0583_Product_2060.kl:system/usr/keylayout/Vendor_0583_Product_2060.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_0b05_Product_4500.kl:system/usr/keylayout/Vendor_0b05_Product_4500.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_1038_Product_1412.kl:system/usr/keylayout/Vendor_1038_Product_1412.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_12bd_Product_d015.kl:system/usr/keylayout/Vendor_12bd_Product_d015.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_1532_Product_0900.kl:system/usr/keylayout/Vendor_1532_Product_0900.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_1689_Product_fd00.kl:system/usr/keylayout/Vendor_1689_Product_fd00.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_1689_Product_fd01.kl:system/usr/keylayout/Vendor_1689_Product_fd01.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_1689_Product_fe00.kl:system/usr/keylayout/Vendor_1689_Product_fe00.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_18d1_Product_2c40.kl:system/usr/keylayout/Vendor_18d1_Product_2c40.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_1949_Product_0401.kl:system/usr/keylayout/Vendor_1949_Product_0401.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_1bad_Product_f016.kl:system/usr/keylayout/Vendor_1bad_Product_f016.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_1bad_Product_f023.kl:system/usr/keylayout/Vendor_1bad_Product_f023.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_1bad_Product_f027.kl:system/usr/keylayout/Vendor_1bad_Product_f027.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_1bad_Product_f036.kl:system/usr/keylayout/Vendor_1bad_Product_f036.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_1d79_Product_0009.kl:system/usr/keylayout/Vendor_1d79_Product_0009.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_2378_Product_1008.kl:system/usr/keylayout/Vendor_2378_Product_1008.kl \
+	$(LOCAL_PATH)/rootdir/system/usr/keylayout/Vendor_2378_Product_100a.kl:system/usr/keylayout/Vendor_2378_Product_100a.kl 
+
+	
+# ========================================== MISC ==========================================
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/etc/thermald.xml:system/etc/thermald.xml \
+    $(LOCAL_PATH)/rootdir/system/etc/thermald_performance.xml:system/etc/thermald_performance.xml

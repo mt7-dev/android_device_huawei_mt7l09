@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MMITest_II
+         mmi.device.screenorientation = 'port'
+        mmi.device.screentype = 'wvga'
+        mmi.device.recovery = 'true'
+        mmi.camera.camerarotation = '0'
+        mmi.device.flashlight = 'true'
+        mmi.device.cameranumber = '2'
+        mmi.device.wirecontrolkeynum = '1'
+        mmi.device.keytonexttest = 'key_volume_down'
+        mmi.touch.periphery = 'true'
+        mmi.keyboard.handlesearch = 'true'
+        mmi.touch.columns = '11'
+        mmi.touch.rows = '17'
+        mmi.device.dualmic = 'true'
+        mmi.mic.num = '2'
+        mmi.device.innersdcard = 'true'
+        mmi.camera.keytofocus = 'key_volume_up'
+        mmi.camera.displayorientation = '0'
+        mmi.camera.displayorientationslave = '90'
+        mmi.keyboard.handlevolumehome = 'true'
+        mmi.keyboard.nomenu = 'true'
+        mmi.camera.previewsize = 'true'
+        mmi.touch.needHideNavigationBar = 'true'
+        mmi.camera.sleep = 'true'
+        mmi.camera.maincameraneedfocus = 'true'
+        mmi.camera.slavecameraneedfocus = 'false'
+        mmi.device.flashlightnum = '2'
+        mmi.simcard.needchangemode = 'false'
+        mmi.device.hallsensornum = '1'
+        mmi.device.hallsensorport = '2'
+        mmi.device.needsavetpvalue = 'true'
+        mmi.device.sdandsiminone = 'true'
+        >
+
+        <Test testLevel='1' testName='com.huawei.mmitest.action.BATTERY_TEST2'>
+        </Test>
+
+        <Test testLevel='2' testName='com.huawei.mmitest.action.SD_CARD_TEST2'>
+        </Test>
+
+        <Test testLevel='5' testName='com.huawei.mmitest.action.KEY_TEST2_U9200'>
+        </Test>
+
+        <Test testLevel='4' testName='com.huawei.mmitest.action.TPCOLOR_AUTO_TEST'>
+        </Test>
+
+        <Test testLevel='6' testName='com.huawei.mmitest.action.LCD_TEST2'>
+        </Test>
+
+        <Test testLevel='7' testName='com.huawei.mmitest.action.LCD_LIGHT_TEST2'>
+        </Test>
+
+        <Test testLevel='12' testName='com.huawei.mmitest.action.TOUCH_OPTIMIZED_TEST2'>
+        </Test>
+
+        <Test testLevel='7' testName='com.huawei.mmitest.action.INDICATORLIGHT_TEST'>
+        </Test>
+
+        <Test testLevel='9' testName='com.huawei.mmitest.action.CAMERA_TEST2'>
+        </Test>
+
+        <Test testLevel='10' testName='com.huawei.mmitest.action.SLAVE_CAMERA_TEST2'>
+        </Test>
+
+        <Test testLevel='11' testName='com.huawei.mmitest.action.FLASH_LIGHT_TEST'>
+        </Test>
+
+        <Test testLevel='13' testName='com.huawei.mmitest.action.APPROACH_SENSOR_TEST'>
+        </Test>
+
+        <Test testLevel='14' testName='com.huawei.mmitest.action.ENVIRONMENT_SENSOR_TEST'>
+        </Test>
+
+        <Test testLevel='15' testName='com.huawei.mmitest.action.VIBRATOR_TEST2'>
+        </Test>
+
+        <Test testLevel='16' testName='com.huawei.mmitest.action.SPEAKER_TEST2'>
+        </Test>
+
+        <Test testLevel='13' testName='com.huawei.mmitest.action.SMARTPA_TEST'>
+        </Test>
+
+        <Test testLevel='17' testName='com.huawei.mmitest.action.RECEIVE_TEST2'>
+        </Test>
+
+        <Test testLevel='15' testName='com.huawei.mmitest.action.MODEM_LOOP_TEST'>
+        </Test>
+
+        <Test testLevel='18' testName='com.huawei.mmitest.action.MIC_LOOP_TEST'>
+        </Test>
+
+        <Test testLevel='19' testName='com.huawei.mmitest.action.MIC_SECONDERECEIVER_TEST2'>
+        </Test>
+
+        <Test testLevel='21' testName='com.huawei.mmitest.action.HEADSET_LOOP_TEST'>
+        </Test>
+
+        <Test testLevel='22' testName='com.huawei.mmitest.action.FMTEST_TEST2'>
+        </Test>
+
+        <Test testLevel='23' testName='com.huawei.mmitest.action.WIRE_CONTROL_TEST2'>
+        </Test>
+
+        <Test testLevel='23' testName='com.huawei.mmitest.action.NCHEADSET_TEST'>
+        </Test>
+
+        <Test testLevel='23' testName='com.huawei.mmitest.action.OTG_TEST'>
+        </Test>
+
+        <Test testLevel='25' testName='com.huawei.mmitest.action.BLUETOOTH_TEST2'>
+        </Test>
+
+        <Test testLevel='25' testName='com.huawei.mmitest.action.CAMERA_FOCUS_TEST'>
+        </Test>
+
+        <Test testLevel='26' testName='com.huawei.mmitest.action.SENSORCALIBRATE_TEST2'>
+        </Test>
+
+        <Test testLevel='26' testName='com.huawei.mmitest.action.GRAVITY_SENSOR_TEST2'>
+        </Test>
+
+        <Test testLevel='28' testName='com.huawei.mmitest.action.TP_AUTO_TEST'>
+        </Test>
+
+        <Test testLevel='30' testName='com.huawei.mmitest.action.NFC_TEST'>
+        </Test>
+
+        <Test testLevel='25' testName='com.huawei.mmitest.action.HALLTEST'>
+        </Test>
+
+        <Test testLevel='27' testName='com.huawei.mmitest.action.GYROSCOPE_TEST2'>
+        </Test>
+
+        <Test testLevel='28' testName='com.huawei.mmitest.action.COMPASS_AUTO_TEST2'>
+        </Test>
+
+        <Test testLevel='29' testName='com.huawei.mmitest.action.WIFI_TEST2'>
+        </Test>
+
+        <Test testLevel='3' testName='com.huawei.mmitest.action.SIM_CARD_TEST2'>
+        </Test>
+
+        <Test testLevel='31' testName='com.huawei.mmitest.action.TEST_RESULT2'>
+        </Test>
+
+        <NormalVersionBlackList
+            testName='com.huawei.mmitest.action.SENSORCALIBRATE_TEST2'
+            />
+
+        <FactoryVersionBlackList
+            />
+</MMITest_II>

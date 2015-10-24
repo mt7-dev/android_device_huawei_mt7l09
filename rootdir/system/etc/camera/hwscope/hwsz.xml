@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Config>
+	<BlockSize>4</BlockSize>
+	<CKR>
+	
+		<WinSize>3</WinSize>
+		<SF>1.0</SF>
+	</CKR>
+	<SKR>
+		<GradientWS>5</GradientWS>
+		<Lambda1>1.0</Lambda1>
+		<EdgeEnhancementSep>0.5</EdgeEnhancementSep>
+	</SKR>
+    <ISO1>
+		<isovalue>100</isovalue>
+
+		<DeGhostThresh1>5</DeGhostThresh1>
+		<DeGhostThresh2>15</DeGhostThresh2>
+		<EdgeEnhancement>2.5</EdgeEnhancement>
+		<isSharpnessOn>1</isSharpnessOn>
+		<peak>4</peak>
+		<order>1</order>
+		<cutoffCoef>1.0</cutoffCoef>
+		<cutoff2>2560</cutoff2>
+		<order3>1</order3>
+		<cutoff3Coef>300</cutoff3Coef>
+		<drFactor>1.5</drFactor>
+	   
+    </ISO1>
+	<ISO2>
+		<isovalue>200</isovalue>
+
+		<DeGhostThresh1>5</DeGhostThresh1>
+		<DeGhostThresh2>15</DeGhostThresh2>
+		<EdgeEnhancement>2.5</EdgeEnhancement>
+		<isSharpnessOn>1</isSharpnessOn>
+		<peak>4</peak>
+		<order>1</order>
+		<cutoffCoef>1.0</cutoffCoef>
+		<cutoff2>2560</cutoff2>
+		<order3>1</order3>
+		<cutoff3Coef>300</cutoff3Coef>
+		<drFactor>1.5</drFactor>
+	   
+    </ISO2>
+	<ISO3>
+		<isovalue>400</isovalue>
+
+		<DeGhostThresh1>5</DeGhostThresh1>
+		<DeGhostThresh2>15</DeGhostThresh2>
+		<EdgeEnhancement>2.5</EdgeEnhancement>
+		<isSharpnessOn>1</isSharpnessOn>
+		<peak>3</peak>
+		<order>2</order>
+		<cutoffCoef>3.0</cutoffCoef>
+		<cutoff2>2560</cutoff2>
+		<order3>1</order3>
+		<cutoff3Coef>300</cutoff3Coef>
+		<drFactor>1.5</drFactor>
+	   
+    </ISO3>
+	<ISO4>
+		<isovalue>800</isovalue>
+
+		<DeGhostThresh1>5</DeGhostThresh1>
+		<DeGhostThresh2>15</DeGhostThresh2>
+		<EdgeEnhancement>2.5</EdgeEnhancement>
+		<isSharpnessOn>1</isSharpnessOn>
+		<peak>3</peak>
+		<order>2</order>
+		<cutoffCoef>3.0</cutoffCoef>
+		<cutoff2>2560</cutoff2>
+		<order3>1</order3>
+		<cutoff3Coef>300</cutoff3Coef>
+		<drFactor>1.5</drFactor>
+	   
+    </ISO4>
+	<ISO5>
+		<isovalue>1600</isovalue>
+
+		<DeGhostThresh1>15</DeGhostThresh1>
+		<DeGhostThresh2>25</DeGhostThresh2>
+		<EdgeEnhancement>2.5</EdgeEnhancement>
+		<isSharpnessOn>0</isSharpnessOn>
+		<peak>1</peak>
+		<order>2</order>
+		<cutoffCoef>3.0</cutoffCoef>
+		<cutoff2>2560</cutoff2>
+		<order3>1</order3>
+		<cutoff3Coef>300</cutoff3Coef>
+		<drFactor>1.5</drFactor>
+	   
+    </ISO5>
+	<ISO6>
+		<isovalue>3200</isovalue>
+
+		<DeGhostThresh1>5</DeGhostThresh1>
+		<DeGhostThresh2>15</DeGhostThresh2>
+		<EdgeEnhancement>2.5</EdgeEnhancement>
+		<isSharpnessOn>0</isSharpnessOn>
+		<peak>1</peak>
+		<order>2</order>
+		<cutoffCoef>3.0</cutoffCoef>
+		<cutoff2>2560</cutoff2>
+		<order3>1</order3>
+		<cutoff3Coef>300</cutoff3Coef>
+		<drFactor>1.5</drFactor>
+	   
+    </ISO6>
+	<ISO7>
+		<isovalue>4800</isovalue>
+
+		<DeGhostThresh1>5</DeGhostThresh1>
+		<DeGhostThresh2>15</DeGhostThresh2>
+		<EdgeEnhancement>2.5</EdgeEnhancement>
+		<isSharpnessOn>0</isSharpnessOn>
+		<peak>1</peak>
+		<order>2</order>
+		<cutoffCoef>3.0</cutoffCoef>
+		<cutoff2>2560</cutoff2>
+		<order3>1</order3>
+		<cutoff3Coef>300</cutoff3Coef>
+		<drFactor>1.5</drFactor>
+	   
+    </ISO7>
+	<ISO8>
+		<isovalue>6400</isovalue>
+
+		<DeGhostThresh1>5</DeGhostThresh1>
+		<DeGhostThresh2>15</DeGhostThresh2>
+		<EdgeEnhancement>2.5</EdgeEnhancement>
+		<isSharpnessOn>0</isSharpnessOn>
+		<peak>1</peak>
+		<order>2</order>
+		<cutoffCoef>3.0</cutoffCoef>
+		<cutoff2>2560</cutoff2>
+		<order3>1</order3>
+		<cutoff3Coef>300</cutoff3Coef>
+		<drFactor>1.5</drFactor>
+	   
+    </ISO8>
+</Config>

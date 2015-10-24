@@ -1,0 +1,80 @@
+{
+"nRptInterval":86400,
+"nStatRealtime":0,
+"LimitFreqFilter":[{"Flag":0}],
+"BigData":
+[
+{"nActionID":0,"strComment":"SCREEN_WAKEUP_BYUSER",
+    "Marks":[{"Mark":0},{"Mark":600},{"Mark":800},{"Mark":1000},{"Mark":1500},{"Mark":2000},{"Mark":3000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":1,"strComment":"SCREEN_DEEPSLEEPWAKEUP_BYUSER",
+    "Marks":[{"Mark":0},{"Mark":600},{"Mark":800},{"Mark":1000},{"Mark":1500},{"Mark":2000},{"Mark":3000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":2,"strComment":"SCREEN_SLEEP_BYUSER",
+    "Marks":[{"Mark":0},{"Mark":400},{"Mark":600},{"Mark":800},{"Mark":1000},{"Mark":1500},{"Mark":2000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":3,"strComment":"SCREEN_WAKEUP_BYCALL",
+    "Marks":[{"Mark":0},{"Mark":600},{"Mark":800},{"Mark":1000},{"Mark":1500},{"Mark":2000},{"Mark":3000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":4,"strComment":"SCREEN_DEEPSLEEPWAKEUP_BYCALL",
+    "Marks":[{"Mark":0},{"Mark":600},{"Mark":800},{"Mark":1000},{"Mark":1500},{"Mark":2000},{"Mark":3000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":5,"strComment":"SCREEN_WAKEUP_BYUSB",
+    "Marks":[{"Mark":0},{"Mark":600},{"Mark":800},{"Mark":1000},{"Mark":1500},{"Mark":2000},{"Mark":3000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":6,"strComment":"SCREEN_DEEPSLEEPWAKEUP_BYUSB",
+    "Marks":[{"Mark":0},{"Mark":600},{"Mark":800},{"Mark":1000},{"Mark":1500},{"Mark":2000},{"Mark":3000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":7,"strComment":"SCREEN_WAKEUP_CHARGINGEND",
+    "Marks":[{"Mark":0},{"Mark":600},{"Mark":800},{"Mark":1000},{"Mark":1500},{"Mark":2000},{"Mark":3000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":8,"strComment":"DEVICE_POWERON",
+    "Marks":[{"Mark":0},{"Mark":10000},{"Mark":15000},{"Mark":18000},{"Mark":20000},{"Mark":22000},{"Mark":25000},{"Mark":30000},{"Mark":35000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":13,"strComment":"START_APP",
+    "Marks":[{"Mark":0},{"Mark":500},{"Mark":1000},{"Mark":1500},{"Mark":2000},{"Mark":2500},{"Mark":3000},{"Mark":4000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":14,"strComment":"SCREEN_SLEEP_BYPROXIMITY",
+    "Marks":[{"Mark":0},{"Mark":400},{"Mark":600},{"Mark":800},{"Mark":1000},{"Mark":1500},{"Mark":2000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":15,"strComment":"SCREEN_WAKEUP_BYPROXIMITY",
+    "Marks":[{"Mark":0},{"Mark":600},{"Mark":800},{"Mark":1000},{"Mark":1500},{"Mark":2000},{"Mark":3000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":17,"strComment":"SCREEN_ROTATION",
+    "Marks":[{"Mark":0},{"Mark":500},{"Mark":1000},{"Mark":1500},{"Mark":2000},{"Mark":3000},{"Mark":3500}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":18,"strComment":"JANK_FRAME",
+    "Marks":[{"Mark":100},{"Mark":240},{"Mark":320},{"Mark":600},{"Mark":800},{"Mark":1000},{"Mark":2000},{"Mark":3000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":22,"strComment":"SCREEN_WAKEUP_BYSMS",
+    "Marks":[{"Mark":0},{"Mark":600},{"Mark":800},{"Mark":1000},{"Mark":1500},{"Mark":2000},{"Mark":3000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":24,"strComment":"SCREEN_WAKEUP_BYDBCLICK",
+    "Marks":[{"Mark":0},{"Mark":600},{"Mark":800},{"Mark":1000},{"Mark":1500},{"Mark":2000},{"Mark":3000}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":35,"strComment":"ART_GC_TOTALTIME",
+    "Marks":[{"Mark":100},{"Mark":200},{"Mark":300},{"Mark":400},{"Mark":500}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+},
+{"nActionID":36,"strComment":"ART_GC_PAUSETIME",
+    "Marks":[{"Mark":16},{"Mark":50},{"Mark":100},{"Mark":150},{"Mark":200},{"Mark":250},{"Mark":320}],
+    "TotalCount":[{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0},{"Count":0}]
+}
+]
+}

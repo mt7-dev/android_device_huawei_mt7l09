@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2014 Huawei Inc.
+ * PowerGenie thermal Config
+ *
+ -->
+<thermal version="2.3">
+ <!--
+cpu_sensor
+thresholds       65                     70         75
+thresholds_clr   60                     65         70
+actions          cpu+gpu                cpu        shutdown
+action_info      1200000+240000         1000000    6000
+ -->
+ <sensor_temp name="cpu" type="0" enable="true">
+    <item>
+        <thresholds>42</thresholds>
+        <thresholds_clr>40</thresholds_clr>
+        <action>
+            <ucurrent>0</ucurrent>
+            <bcurrent>0</bcurrent>
+            <cpu>0</cpu>
+            <cpu_a15>0</cpu_a15>
+            <gpu>0</gpu>
+            <lcd>0</lcd>
+            <threshold_up>0</threshold_up>
+            <threshold_down>0</threshold_down>
+        </action>
+    </item>
+    <item>
+        <thresholds>47</thresholds>
+        <thresholds_clr>45</thresholds_clr>
+        <action>
+            <ucurrent>900</ucurrent>
+            <bcurrent>0</bcurrent>
+            <cpu>0</cpu>
+            <cpu_a15>1497600</cpu_a15>
+            <gpu>0</gpu>
+            <lcd>0</lcd>
+            <threshold_up>0</threshold_up>
+            <threshold_down>0</threshold_down>
+        </action>
+    </item>
+    <item>
+        <thresholds>52</thresholds>
+        <thresholds_clr>50</thresholds_clr>
+        <action>
+            <ucurrent>900</ucurrent>
+            <bcurrent>500</bcurrent>
+            <cpu>0</cpu>
+            <cpu_a15>1209600</cpu_a15>
+            <gpu>480000000</gpu>
+            <lcd>0</lcd>
+            <threshold_up>978</threshold_up>
+            <threshold_down>512</threshold_down>
+        </action>
+    </item>
+    <item>
+        <thresholds>57</thresholds>
+        <thresholds_clr>55</thresholds_clr>
+        <action>
+            <ucurrent>900</ucurrent>
+            <bcurrent>500</bcurrent>
+            <cpu>0</cpu>
+            <cpu_a15>806400</cpu_a15>
+            <gpu>360000000</gpu>
+            <lcd>0</lcd>
+            <threshold_up>1010</threshold_up>
+            <threshold_down>900</threshold_down>
+        </action>
+    </item>
+    <item>
+        <thresholds>69</thresholds>
+        <thresholds_clr>65</thresholds_clr>
+        <action>
+            <ucurrent>900</ucurrent>
+            <bcurrent>500</bcurrent>
+            <cpu>1017600</cpu>
+            <cpu_a15>806400</cpu_a15>
+            <gpu>288000000</gpu>
+            <lcd>2</lcd>
+            <threshold_up>1024</threshold_up>
+            <threshold_down>900</threshold_down>
+        </action>
+    </item>
+    <item>
+        <thresholds>78</thresholds>
+        <thresholds_clr>74</thresholds_clr>
+        <action>
+            <shutdown>10000</shutdown>
+        </action>
+    </item>
+ </sensor_temp>
+
+ <sensor_temp name="pa" type="1" enable="true">
+    <item>
+        <thresholds>47</thresholds>
+        <thresholds_clr>45</thresholds_clr>
+        <action>
+            <lcd>0</lcd>
+            <ucurrent>900</ucurrent>
+            <bcurrent>500</bcurrent>
+        </action>
+    </item>
+    <item>
+        <thresholds>69</thresholds>
+        <thresholds_clr>65</thresholds_clr>
+        <action>
+            <lcd>2</lcd>
+            <ucurrent>900</ucurrent>
+            <bcurrent>500</bcurrent>
+        </action>
+    </item>
+    <item>
+        <thresholds>78</thresholds>
+        <thresholds_clr>74</thresholds_clr>
+        <action>
+            <shutdown>10000</shutdown>
+        </action>
+    </item>
+ </sensor_temp>
+
+ <sensor_temp name="ucurrent" type="2" enable="true">
+    <item>
+        <thresholds>47</thresholds>
+        <thresholds_clr>45</thresholds_clr>
+        <action>
+            <ucurrent>900</ucurrent>
+            <bcurrent>0</bcurrent>
+        </action>
+    </item>
+    <item>
+        <thresholds>51</thresholds>
+        <thresholds_clr>48</thresholds_clr>
+        <action>
+            <ucurrent>900</ucurrent>
+            <bcurrent>500</bcurrent>
+        </action>
+    </item>
+    <item>
+        <thresholds>78</thresholds>
+        <thresholds_clr>74</thresholds_clr>
+        <action>
+            <shutdown>10000</shutdown>
+        </action>
+    </item>
+ </sensor_temp>
+
+ <sensor_temp name="flash" type="3" enable="true">
+    <item>
+        <thresholds>40</thresholds>
+        <thresholds_clr>38</thresholds_clr>
+        <action>
+            <flash>0</flash>
+        </action>
+    </item>
+    <item>
+        <thresholds>85</thresholds>
+        <thresholds_clr>83</thresholds_clr>
+        <action>
+            <flash>1</flash>
+        </action>
+    </item>
+ </sensor_temp>
+
+</thermal>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- DTS2014061607625 yangchen/00280819 20140616 created -->
+
+<permissions>
+    <library name="com.android.contacts.separated"
+        file="/system/framework/com.android.contacts.separated.jar" />
+</permissions>
