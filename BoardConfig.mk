@@ -146,11 +146,11 @@ BOARD_SEPOLICY_DIRS += \
     device/huawei/hwmt7_l09/selinux
 
 BOARD_SEPOLICY_UNION += \
-	device/huawei/hwmt7_l09/selinux\file_contexts \
-	device/huawei/hwmt7_l09/selinux\installd.te \
-	device/huawei/hwmt7_l09/selinux\property_contexts \
-	device/huawei/hwmt7_l09/selinux\seapp_contexts \
-	device/huawei/hwmt7_l09/selinux\service_contexts	
+	file_contexts \
+	installd.te \
+	property_contexts \
+	seapp_contexts \
+	service_contexts	
 
 
 # Recovery

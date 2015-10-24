@@ -93,7 +93,6 @@ PRODUCT_COPY_FILES += \
 # To clean
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/default.prop:root/default.prop \
-	$(LOCAL_PATH)/ramdisk/file_contexts:root/file_contexts \
 	$(LOCAL_PATH)/ramdisk/fstab.hi3630:root/fstab.hi3630 \
 	$(LOCAL_PATH)/ramdisk/init.41031.rc:root/init.41031.rc \
 	$(LOCAL_PATH)/ramdisk/init.4843.rc:root/init.4843.rc \
@@ -114,9 +113,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/init.trace.rc:root/init.trace.rc \
 	$(LOCAL_PATH)/ramdisk/init.usb.rc:root/init.usb.rc \
 	$(LOCAL_PATH)/ramdisk/init.zygote32.rc:root/init.zygote32.rc \
-	$(LOCAL_PATH)/ramdisk/property_contexts:root/property_contexts \
-	$(LOCAL_PATH)/ramdisk/seapp_contexts:root/seapp_contexts \
-	$(LOCAL_PATH)/ramdisk/service_contexts:root/service_contexts \
 	$(LOCAL_PATH)/ramdisk/ueventd.hi3630.rc:root/ueventd.hi3630.rc \
 	$(LOCAL_PATH)/ramdisk/ueventd.rc:root/ueventd.rc 
 	
