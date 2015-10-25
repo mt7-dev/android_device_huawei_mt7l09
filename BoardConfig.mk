@@ -82,7 +82,7 @@ TARGET_PROVIDES_INIT_TARGET_RC := true
 ## Let's keep this as a fallback
 BOARD_KERNEL_IMAGE_NAME := kernel
 TARGET_PREBUILT_KERNEL := device/huawei/hwmt7_l09/kernel
-BOARD_KERNEL_CMDLINE := 'ro.boot.hardware=hi3630 vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable androidboot.selinux=permissive mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp)'
+BOARD_KERNEL_CMDLINE := 'ro.boot.hardware=hi3630 vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=enforcing enter_recovery=1 enter_erecovery=0'
 
 # These values are the original extracted by kernel image
 ## BOARD_KERNEL_BASE := 0x00600000
@@ -143,10 +143,10 @@ TARGET_BOOTANIMATION_PRELOAD := true
 ENABLE_WEBGL := true
 
 # Selinux
-BOARD_SEPOLICY_DIRS += \
+# BOARD_SEPOLICY_DIRS += \
     device/huawei/hwmt7_l09/selinux
 
-BOARD_SEPOLICY_UNION += \
+# BOARD_SEPOLICY_UNION += \
 	file_contexts \
 	installd.te \
 	property_contexts \
