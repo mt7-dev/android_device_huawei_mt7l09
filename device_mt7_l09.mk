@@ -19,13 +19,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/huawei/hwmt7_l09/hwmt7_l09-vendor.mk)
+$(call inherit-product-if-exists, vendor/huawei/mt7_l09/mt7_l09-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/huawei/hwmt7_l09/overlay
+DEVICE_PACKAGE_OVERLAYS += device/huawei/mt7_l09/overlay
 
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/huawei/hwmt7_l09/kernel
+	LOCAL_KERNEL := device/huawei/mt7_l09/kernel
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -58,8 +58,8 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # ========================================== ======= = ======= ==========================================
 
-PRODUCT_NAME := full_hwmt7_l09
-PRODUCT_DEVICE := hwmt7_l09
+PRODUCT_NAME := full_mt7_l09
+PRODUCT_DEVICE := mt7_l09
 
 # ---------------------------------------------------------------------------
 
@@ -74,7 +74,7 @@ TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 DEVICE_RESOLUTION := 1080x1920
 
-LOCAL_PATH := device/huawei/hwmt7_l09
+LOCAL_PATH := device/huawei/mt7_l09
 
 # ========================================== RECOVERY ==========================================
 PRODUCT_COPY_FILES += \

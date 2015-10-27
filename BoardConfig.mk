@@ -26,10 +26,10 @@
 #  Search for h60-dev on github - Thank you @codeworks
 
 USE_CAMERA_STUB := true
-TARGET_OTA_ASSERT_DEVICE := hwmt7_l09,mt7l09,mt7_l09
+TARGET_OTA_ASSERT_DEVICE := hwmt7_l09,mt7l09,mt7_l09,MT7-L09,MT7L09
 
 # inherit from the proprietary version
--include vendor/huawei/hwmt7_l09/BoardConfigVendor.mk
+-include vendor/huawei/mt7_l09/BoardConfigVendor.mk
 
 # Architecture
 TARGET_ARCH := arm
@@ -76,12 +76,12 @@ TARGET_PROVIDES_INIT_TARGET_RC := true
 # ========================================== KERNEL ==========================================
 
 ## Config file has been grabbed from the stock kernel image "stock-kernel-from511-v3-10-74"
-#TARGET_KERNEL_SOURCE := kernel/huawei/hwmt7_l09
+#TARGET_KERNEL_SOURCE := kernel/huawei/mt7_l09
 #TARGET_KERNEL_CONFIG := stock-511_defconfig
 # BOARD_USES_UBOOT := true ## Anyone knows?
 ## Let's keep this as a fallback
 BOARD_KERNEL_IMAGE_NAME := kernel
-TARGET_PREBUILT_KERNEL := device/huawei/hwmt7_l09/kernel
+TARGET_PREBUILT_KERNEL := device/huawei/mt7_l09/kernel
 BOARD_KERNEL_CMDLINE := 'ro.boot.hardware=hi3630 vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=enforcing enter_recovery=1 enter_erecovery=0'
 
 # These values are the original extracted by kernel image
@@ -134,7 +134,7 @@ BOARD_CAMERA_HAVE_ISO := true
 COMMON_GLOBAL_CFLAGS += -DHAVE_ISO
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/huawei/hwmt7_l09/ril/
+BOARD_RIL_CLASS := ../../../device/huawei/mt7_l09/ril/
 
 # Preload bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
@@ -144,7 +144,7 @@ ENABLE_WEBGL := true
 
 # Selinux
 # BOARD_SEPOLICY_DIRS += \
-    device/huawei/hwmt7_l09/selinux
+    device/huawei/mt7_l09/selinux
 
 # BOARD_SEPOLICY_UNION += \
 	file_contexts \
@@ -157,7 +157,7 @@ ENABLE_WEBGL := true
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
 RECOVERY_FSTAB_VERSION := 2
-TARGET_RECOVERY_FSTAB := device/huawei/hwmt7_l09/ramdisk/fstab.hi3630
+TARGET_RECOVERY_FSTAB := device/huawei/mt7_l09/ramdisk/fstab.hi3630
 TARGET_RECOVERY_PIXEL_FORMAT := ABGR_8888
 BOARD_RECOVERY_NEEDS_FBIOPAN_DISPLAY := true
 #BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
