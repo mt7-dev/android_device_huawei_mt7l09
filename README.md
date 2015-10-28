@@ -8,4 +8,7 @@ Cyanogenmod porting for Mate 7
 [![version alpha](https://img.shields.io/badge/status-alpha-lightgrey.svg?style=flat)]()
 <!-- [![build failed](https://img.shields.io/badge/build-failed-red.svg?style=flat)]() -->
 
-I just started to work on porting cyanogenmod (12.1) for Huawei Ascend Mate 7.
+Updates
+-------
+
+2015/10/28 - This project is stuck because a **Board Support Package** for *Hisilicon Kirin 925* and *MaliT628* **IS MISSING**. Android's surfaceflinger needs patches to work with huawei gralloc and mali userspace binaries. I hope Huawei will soon release the sources needed.
