@@ -1,0 +1,28 @@
+gabry3795@darkseat-works:~/Desktop/MATE7$ unmkbootimg boot_copied.img 
+unmkbootimg version 1.2 - Mikael Q Kuisma <kuisma@ping.se>
+Kernel size 7521280
+Kernel address 0x608000
+Ramdisk size 3306832
+Ramdisk address 0x4000000
+Secondary size 0
+Secondary address 0xf00000
+Kernel tags address 0x200000
+Flash page size 2048
+Board name is ""
+Command line "vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=enforcing enter_recovery=1 enter_erecovery=0"
+
+*** WARNING ****
+This image is built using NON-standard mkbootimg!
+OFF_KERNEL_ADDR is 0x00408100
+OFF_RAMDISK_ADDR is 0x03E00100
+OFF_SECOND_ADDR is 0x00D00100
+Please modify mkbootimg.c using the above values to build your image.
+****************
+
+Extracting kernel to file zImage ...
+Extracting root filesystem to file initramfs.cpio.gz ...
+All done.
+---------------
+To recompile this image, use:
+  mkbootimg --kernel zImage --ramdisk initramfs.cpio.gz --base 0x1fff00 --cmdline 'vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=enforcing enter_recovery=1 enter_erecovery=0' -o new_boot.img
+---------------

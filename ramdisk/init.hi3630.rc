@@ -1,28 +1,13 @@
 
-on early-init
-    export SECONDARY_STORAGE /storage/sdcard1
-    mkdir /mnt/shell 0700 shell shell
-    mkdir /storage 0555 shell shell
-    mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage/emulated 0555 shell shell
+on early-boot
+    symlink /sdcard /mnt/sdcard
+    symlink /storage/self/primary /storage/sdcard0
 
-    export EXTERNAL_STORAGE /storage/emulated/legacy
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
+    mkdir /mnt/media_rw 0750 media_rw media_rw
 
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /storage/emulated/legacy /storage/emulated/0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-
-    mkdir /mnt/media_rw 0700 media_rw media_rw
-    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-    mkdir /storage/sdcard1 0700 root root
-    mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
-    mkdir /storage/usbotg 0755 root root
-    symlink /storage/sdcard1 /mnt/ext_sdcard
-    symlink /storage/sdcard1 /mnt/sdcard2
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/run 1
 
 on init
     mkdir /e2fslog 0755 root root
@@ -39,23 +24,29 @@ on fs
     wait /dev/block/platform/hi_mci.0/by-name/userdata
     mount_all /fstab.hi3630
 
+
     wait /dev/block/mmcblk0p11
     chown system system /dev/block/mmcblk0p11
     chmod 0660 /dev/block/mmcblk0p11
+
 on post-fs
-    modemnvchk
+    modem_fs_chk
 
 on post-fs-data
     mkdir /data/share 0770 media_rw media_rw
     chown media_rw media_rw /data/share
     symlink /data/share /data/media
     mount sdcardfs /data/share /mnt/shell/emulated nosuid nodev derive=legacy,reserved_mb=20
+    
+    restorecon_recursive /splash2
+    restorecon_recursive /modem_log 
+    restorecon_recursive /mnvm2:0
 
-on post-fs-data
-    mkdir /data/sec_storage
-    mount ext4 /dev/block/platform/hi_mci.0/by-name/secure_storage /data/sec_storage nosuid nodev noatime wait crypt discard,auto_da_alloc,mblk_io_submit,data=journal,context=u:object_r:teecd_data_file:s0
-    chown root root /data/sec_storage
-    chmod 600 /data/sec_storage
+on init
+    mkdir /sec_storage
+    mount ext4 /dev/block/platform/hi_mci.0/by-name/secure_storage /sec_storage nosuid nodev noatime wait crypt discard,auto_da_alloc,mblk_io_submit,data=journal,context=u:object_r:teecd_data_file:s0
+    chown root root /sec_storage
+    chmod 600 /sec_storage
 
 
 on init
@@ -71,6 +62,9 @@ on early-boot
 	group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm system dsm
 
 on boot
+
+
+
     mount debugfs /sys/kernel/debug /sys/kernel/debug mode=0755
 
     chown system camera /dev/imgsysbrg_vdec0
@@ -96,17 +90,7 @@ service sdcard /system/bin/sdcard /data/share /mnt/shell/emulated/ 1015 1015
     class main
     disabled
 
-service fuse_sdcard1rw /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
-   class late_start
-   disabled
 
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
-   class late_start
-   disabled
-
-service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1015 -d /mnt/media_rw/usbotg /storage/usbotg
-   class late_start
-   disabled
 
 on boot
     mkdir /system/isp
@@ -145,7 +129,8 @@ service thermal-daemon /system/bin/thermal-daemon
      group root
 
 service teecd /sbin/teecd
-    class late_start
+    socket tee-multi-user stream 660 root system
+    class core
     user root
     group root
     seclabel u:r:tee:s0
@@ -172,69 +157,47 @@ on property:persist.sys.fingersense=0
 
 on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq ${persist.sys.hispeed_freq}
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor ondemand
+    setprop persist.sys.smart_power ${persist.sys.smart_power}
+
+on property:persist.sys.smart_power=2 && property:sys.boot_completed=1
+    write /sys/kernel/set_hmp_thresholds/enable 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 1209600
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 160000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_min_interval 100
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_upthreshold ${persist.sys.hmp_boost_up}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_downthreshold ${persist.sys.hmp_boost_down}
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_upthreshold 871
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_downthreshold 448
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp 1
-
-
-    chown system  system /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
-
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor ondemand
-
-    write /sys/kernel/set_hmp_thresholds/enable 0
-    write /sys/kernel/hmp/up_threshold ${persist.sys.hmp_default_up}
-    write /sys/kernel/hmp/down_threshold ${persist.sys.hmp_default_down}
+    write /sys/kernel/hmp/up_threshold 871
+    write /sys/kernel/hmp/down_threshold 448
+    write /sys/kernel/hmp/up_prio 140
+    write /sys/kernel/hmp/task_fork_on_bigcluster 1
     write /sys/kernel/set_hmp_thresholds/enable 1
 
-on property::persist.sys.smart_power=2
-    setprop persist.sys.hispeed_freq 1209600
-    setprop persist.sys.hmp_boost_up 871
-    setprop persist.sys.hmp_boost_down 448
-    setprop persist.sys.hmp_default_up 978
-    setprop persist.sys.hmp_default_down 512
-    setprop persist.sys.hmp_default_prio 140
+on property:persist.sys.smart_power=3 && property:sys.boot_completed=1
     write /sys/kernel/set_hmp_thresholds/enable 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 1305600
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 160000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_min_interval 100
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_upthreshold 400
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_downthreshold 150
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq ${persist.sys.hispeed_freq}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_upthreshold ${persist.sys.hmp_boost_up}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_downthreshold ${persist.sys.hmp_boost_down}
-    write /sys/kernel/hmp/up_threshold ${persist.sys.hmp_default_up}
-    write /sys/kernel/hmp/down_threshold ${persist.sys.hmp_default_down}
-    write /sys/kernel/hmp/up_prio ${persist.sys.hmp_default_prio}
+    write /sys/kernel/hmp/up_threshold 500
+    write /sys/kernel/hmp/down_threshold 200
+    write /sys/kernel/hmp/up_prio 140
+    write /sys/kernel/hmp/task_fork_on_bigcluster 1
     write /sys/kernel/set_hmp_thresholds/enable 1
 
-on property::persist.sys.smart_power=3
-    setprop persist.sys.hispeed_freq 1305600
-    setprop persist.sys.hmp_boost_up 400
-    setprop persist.sys.hmp_boost_down 150
-    setprop persist.sys.hmp_default_up 500
-    setprop persist.sys.hmp_default_down 200
-    setprop persist.sys.hmp_default_prio 140
+on property:persist.sys.smart_power=4 && property:sys.boot_completed=1
     write /sys/kernel/set_hmp_thresholds/enable 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq ${persist.sys.hispeed_freq}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_upthreshold ${persist.sys.hmp_boost_up}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_downthreshold ${persist.sys.hmp_boost_down}
-    write /sys/kernel/hmp/up_threshold ${persist.sys.hmp_default_up}
-    write /sys/kernel/hmp/down_threshold ${persist.sys.hmp_default_down}
-    write /sys/kernel/hmp/up_prio ${persist.sys.hmp_default_prio}
-    write /sys/kernel/set_hmp_thresholds/enable 1
-
-on property::persist.sys.smart_power=4
-    setprop persist.sys.hispeed_freq 1209600
-    setprop persist.sys.hmp_default_up 1008
-    setprop persist.sys.hmp_default_down 768
-    setprop persist.sys.hmp_default_prio 140
-    write /sys/kernel/set_hmp_thresholds/enable 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 1209600
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq ${persist.sys.hispeed_freq}
-    write /sys/kernel/hmp/up_threshold ${persist.sys.hmp_default_up}
-    write /sys/kernel/hmp/down_threshold ${persist.sys.hmp_default_down}
-    write /sys/kernel/hmp/up_prio ${persist.sys.hmp_default_prio}
+    write /sys/kernel/hmp/up_threshold 1008
+    write /sys/kernel/hmp/down_threshold 768
+    write /sys/kernel/hmp/up_prio 140
+    write /sys/kernel/hmp/task_fork_on_bigcluster 0
     write /sys/kernel/set_hmp_thresholds/enable 1
 
 on init
@@ -242,14 +205,10 @@ on init
     chmod 664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
     chmod 664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
-    chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
     chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
     chmod 664 /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
     chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
     chmod 664 /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
-    chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_available_frequencies
-    chmod 444 /sys/devices/system/cpu/cpu4/cpufreq/scaling_available_frequencies
 
     chown system system /sys/class/devfreq/gpufreq/max_freq
     chmod 664 /sys/class/devfreq/gpufreq/max_freq
@@ -264,17 +223,23 @@ on init
     chown system system /sys/class/devfreq/gpufreq/mali_ondemand/animation_boost_freq
     chmod 664 /sys/class/devfreq/gpufreq/mali_ondemand/animation_boost_freq
 
-    chown system system /sys/class/devfreq/ddrfreq/max_freq
-    chmod 664 /sys/class/devfreq/ddrfreq/max_freq
-    chown system system /sys/class/devfreq/ddrfreq/min_freq
-    chmod 664 /sys/class/devfreq/ddrfreq/min_freq
-    chown system system /sys/class/devfreq/ddrfreq/available_frequencies
-    chmod 444 /sys/class/devfreq/ddrfreq/available_frequencies
-    chown system system /sys/class/graphics/fb0/lcd_cabc_mode
-    chmod 664 /sys/class/graphics/fb0/lcd_cabc_mode
+    chown system system /sys/class/devfreq/fff20000.ddr_devfreq/max_freq
+    chmod 664 /sys/class/devfreq/fff20000.ddr_devfreq/max_freq
+    chown system system /sys/class/devfreq/fff20000.ddr_devfreq/min_freq
+    chmod 664 /sys/class/devfreq/fff20000.ddr_devfreq/min_freq
 
     chown system system /sys/kernel/set_hmp_thresholds/policy
     chmod 0664 /sys/kernel/set_hmp_thresholds/policy
+    write /sys/kernel/hmp/task_fork_on_bigcluster 1
+
+    chown system system /sys/class/devfreq/ddrfreq/min_freq
+    chmod 0664 /sys/class/devfreq/ddrfreq/min_freq
+
+    chown system system /sys/kernel/hmp/task_fork_on_bigcluster
+    chmod 0664 /sys/kernel/hmp/task_fork_on_bigcluster
+
+    chown system system /sys/kernel/perfhub/cpuaffinity
+    chmod 0660 /sys/kernel/perfhub/cpuaffinity
 
 on charger
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
@@ -293,14 +258,6 @@ on charger
     write /sys/class/devfreq/ddrfreq/max_freq 0
 
 
-on init
-    chown media media /dev/hi6421_spk
-    chmod 660 /dev/hi6421_spk
-    chown media media /dev/tfa9887
-    chmod 0660 /dev/tfa9887
-    
-    chown media audio /dev/boardconfig_fs
-    chmod 660 /dev/boardconfig_fs
 
 on init
     chmod 660 /dev/appvcom
@@ -428,6 +385,42 @@ on boot
 	chown system system /sys/devices/platform/huawei_sensor/rvs_setdelay
 	chown system system /sys/devices/platform/huawei_sensor/i2c_rw
 
+	chown system system /sys/class/sensors/sensorhub_dbg
+	chown system system /sys/class/sensors/acc_sensor/enable
+	chown system system /sys/class/sensors/acc_sensor/set_delay
+	chown system system /sys/class/sensors/acc_sensor/info
+	chown system system /sys/class/sensors/acc_sensor/get_data
+	chown system system /sys/class/sensors/acc_sensor/self_test
+	chown system system /sys/class/sensors/acc_sensor/self_test_timeout
+	chown system system /sys/class/sensors/acc_sensor/calibrate
+	chown system system /sys/class/sensors/acc_sensor/calibrate_timeout
+	chown system system /sys/class/sensors/gyro_sensor/enable
+	chown system system /sys/class/sensors/gyro_sensor/set_delay
+	chown system system /sys/class/sensors/gyro_sensor/info
+	chown system system /sys/class/sensors/gyro_sensor/get_data
+	chown system system /sys/class/sensors/gyro_sensor/self_test
+	chown system system /sys/class/sensors/gyro_sensor/self_test_timeout
+	chown system system /sys/class/sensors/mag_sensor/enable
+	chown system system /sys/class/sensors/mag_sensor/set_delay
+	chown system system /sys/class/sensors/mag_sensor/info
+	chown system system /sys/class/sensors/mag_sensor/get_data
+	chown system system /sys/class/sensors/mag_sensor/self_test
+	chown system system /sys/class/sensors/mag_sensor/self_test_timeout
+	chown system system /sys/class/sensors/als_sensor/enable
+	chown system system /sys/class/sensors/als_sensor/set_delay
+	chown system system /sys/class/sensors/als_sensor/info
+	chown system system /sys/class/sensors/als_sensor/get_data
+	chown system system /sys/class/sensors/ps_sensor/enable
+	chown system system /sys/class/sensors/ps_sensor/set_delay
+	chown system system /sys/class/sensors/ps_sensor/info
+	chown system system /sys/class/sensors/ps_sensor/get_data
+	chown system system /sys/class/sensors/ps_sensor/calibrate
+	chown system system /sys/class/sensors/ps_sensor/calibrate_timeout
+	chown system system /sys/class/sensors/hall_sensor/enable
+	chown system system /sys/class/sensors/hall_sensor/set_delay
+	chown system system /sys/class/sensors/hall_sensor/info
+	chown system system /sys/class/sensors/hall_sensor/get_data
+	
     chown system system /sys/devices/platform/huawei_sensor/set_fingersense_enable
     chmod 0660 /sys/devices/platform/huawei_sensor/set_fingersense_enable
     chown system system /sys/devices/platform/huawei_sensor/fingersense_req_data
@@ -436,7 +429,6 @@ on boot
     chmod 0440 /sys/devices/platform/huawei_sensor/fingersense_data_ready
     chown system system /sys/devices/platform/huawei_sensor/fingersense_latch_data
     chmod 0440 /sys/devices/platform/huawei_sensor/fingersense_latch_data
-
 
 	chown system system /sys/class/hall/hall/state
 	chown system system /sys/class/hall/hall/report
@@ -454,20 +446,21 @@ service bugreport /system/bin/dumpstate -d -p -z -B \
     disabled
     oneshot
 
-on property:init.svc.kmsglogcat=running
-    exec /system/etc/renice-loggers.sh /sbin/kmsgcat
+service kmsgcat_cp /sbin/kmsgcat -r 4096 -n 25 -i /dev/cshell_log -f /data/hwzd_logs/cp_log/modemlog/modemkmsg-log
+    class late_start
+    user root
+    group system
+    disabled
+    seclabel u:r:hisilogcat:s0
 
-on property:init.svc.sleeplogcat=running
-    exec /system/etc/renice-loggers.sh /system/bin/sleeplogcat
+service defragd /system/bin/defragd
+    class late_start
 
-on property:init.svc.applogcat=running
-    exec /system/etc/renice-loggers.sh /system/bin/logcat
+on property:sys.boot_completed=1 && property:ro.config.hw_perfhub=true
+    start perfhub
 
-on property:init.svc.chargelogcat=running
-    exec /system/etc/renice-loggers.sh /system/bin/chargelogcat
-
-on property:init.svc.rillogcat=running
-    exec /system/etc/renice-loggers.sh /system/bin/logcat
-
-on property:init.svc.logserver=running
-    exec /system/etc/renice-loggers.sh /system/bin/logserver modemlogcat_balong modemlogcat_lte modemlogcat_via
+service perfhub /system/bin/perfhub
+    class late_start
+    user system
+    group system
+    disabled

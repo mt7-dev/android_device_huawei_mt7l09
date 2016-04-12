@@ -14,18 +14,18 @@
 # limitations under the License.
 #
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+# Variables
+LOCAL_PATH := device/huawei/mt7_l09
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
-
 $(call inherit-product-if-exists, vendor/huawei/mt7_l09/mt7_l09-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/huawei/mt7_l09/overlay
 
-
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/huawei/mt7_l09/kernel
+	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -55,12 +55,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	dalvik.vm.image-dex2oat-Xms=64m \
 	dalvik.vm.image-dex2oat-Xmx=64m \
 	ro.dalvik.vm.native.bridge=0 
-
-# ========================================== ======= = ======= ==========================================
-
-PRODUCT_NAME := full_mt7_l09
-PRODUCT_DEVICE := mt7_l09
-
 # ---------------------------------------------------------------------------
 
 # This device is xxhdpi.  However the platform doesn't
@@ -74,11 +68,10 @@ TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 DEVICE_RESOLUTION := 1080x1920
 
-LOCAL_PATH := device/huawei/mt7_l09
-
 # ========================================== RECOVERY ==========================================
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/recovery/init.recovery.hi3630.rc:root/init.recovery.hi3630.rc \
+	$(LOCAL_PATH)/recovery/init.recovery.hi3630.rc:recovery/root/init.recovery.hi3630.rc \
+	$(LOCAL_PATH)/recovery/init.recovery.huawei.rc:recovery/root/init.recovery.huawei.rc \
 	$(LOCAL_PATH)/recovery/res/images/charger/battery_0.png:root/res/images/charger/battery_0.png \
 	$(LOCAL_PATH)/recovery/res/images/charger/battery_1.png:root/res/images/charger/battery_1.png \
 	$(LOCAL_PATH)/recovery/res/images/charger/battery_2.png:root/res/images/charger/battery_2.png \
@@ -86,7 +79,8 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/recovery/res/images/charger/battery_4.png:root/res/images/charger/battery_4.png \
 	$(LOCAL_PATH)/recovery/res/images/charger/battery_5.png:root/res/images/charger/battery_5.png \
 	$(LOCAL_PATH)/recovery/res/images/charger/battery_charge.png:root/res/images/charger/battery_charge.png \
-	$(LOCAL_PATH)/recovery/res/images/charger/battery_fail.png:root/res/images/charger/battery_fail.png
+	$(LOCAL_PATH)/recovery/res/images/charger/battery_fail.png:root/res/images/charger/battery_fail.png \
+	$(LOCAL_PATH)/recovery/etc/mke2fs.conf:recovery/root/etc/mke2fs.conf
 
 	
 # ========================================== RAMDISK ==========================================
@@ -114,7 +108,9 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/init.usb.rc:root/init.usb.rc \
 	$(LOCAL_PATH)/ramdisk/init.zygote32.rc:root/init.zygote32.rc \
 	$(LOCAL_PATH)/ramdisk/ueventd.hi3630.rc:root/ueventd.hi3630.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.rc:root/ueventd.rc 
+	$(LOCAL_PATH)/ramdisk/ueventd.rc:root/ueventd.rc \
+	$(LOCAL_PATH)/ramdisk/resetFactory.cfg:root/resetFactory.cfg \
+
 	
 # ========================================== KEYLAYOUTS ==========================================
 PRODUCT_COPY_FILES += \

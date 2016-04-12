@@ -1,4 +1,4 @@
-on early-boot
+on boot
 
     chmod 0222 /sys/kernel/debug/tracing/trace_marker
 

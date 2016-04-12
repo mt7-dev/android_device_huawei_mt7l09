@@ -30,26 +30,26 @@ on boot
     socket gps seqpacket 660 root root
     class main
     user root
-    group system
+    group system inet sdcard_rw
     disabled
 
     service gpsdcl_47531  /system/bin/glgps47531cl -c /data/gps/gpsconfig.xml
     socket gps seqpacket 660 root root
     class main
     user root
-    group system
+    group system inet sdcard_rw
     disabled
 
     service gpsd_4752  /system/bin/glgps4752 -c /data/gps/gpsconfig.xml
     socket gps seqpacket 660 root root
     class main
     user root
-    group system
+    group system inet sdcard_rw
     disabled
 
     service gpsdcl_4752  /system/bin/glgps4752cl -c /data/gps/gpsconfig.xml
     socket gps seqpacket 660 root root
     class main
     user root
-    group system
+    group system inet sdcard_rw
     disabled
