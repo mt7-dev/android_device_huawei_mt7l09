@@ -113,9 +113,6 @@ fff35000-fff35fff : fff35000.regulator_hi3630
 
 
 
-
-
-========================= WRONG ADDRESSES =======================================
 gabry3795@darkseat-works:~/Desktop/MATE7$ unmkbootimg boot_copied.img 
 unmkbootimg version 1.2 - Mikael Q Kuisma <kuisma@ping.se>
 Kernel size 7521280

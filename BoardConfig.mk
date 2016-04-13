@@ -81,7 +81,7 @@ TARGET_KERNEL_ARCH := arm
 # BOARD_USES_UBOOT := true
 ## Let's keep this as a fallback
 TARGET_PREBUILT_KERNEL 	:= device/huawei/mt7_l09/kernel
-BOARD_KERNEL_CMDLINE 	:= 'vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=enforcing enter_recovery=0'
+BOARD_KERNEL_CMDLINE 	:= 'vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=enforcing enter_recovery=1 enter_erecovery=0'
 
 # These values are the original extracted by kernel image
 ## BOARD_KERNEL_BASE := 0x00600000
@@ -138,14 +138,13 @@ BOARD_TAGS_OFFSET     := 0x00200000
 
 ###
 
-BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
-
-BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
-BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
-#BOARD_MKBOOTIMG_ARGS += --ramdisk $(BOARD_RAMDISK_BASE)
-BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_SECOND_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_TAGS_OFFSET)
+#BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
+BOARD_MKBOOTIMG_ARGS += --base 0x1fff00
+BOARD_MKBOOTIMG_ARGS += --kernel_offset 0x00408100
+BOARD_MKBOOTIMG_ARGS += --ramdisk_offset 0x03E00100
+BOARD_MKBOOTIMG_ARGS += --second_offset 0x00D00100
+#BOARD_MKBOOTIMG_ARGS += --ramdisk 0x03E00100
+#BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_TAGS_OFFSET)
 
 # fix this up by examining /proc/mtd on a running device
 BOARD_NAND_PAGE_SIZE := 4096

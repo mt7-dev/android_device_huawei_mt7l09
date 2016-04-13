@@ -1,5 +1,0 @@
-Use the following command to set up your build environment:
-  lunch cm_mt7-l09-eng
-And use the follwowing command to build a recovery:
-  . build/tools/device/makerecoveries.sh cm_mt7-l09-eng
-
