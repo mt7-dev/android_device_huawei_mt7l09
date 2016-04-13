@@ -44,7 +44,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.isUsbOtgEnabled=true \
-	ro.sf.lcd_density=370 \
+	ro.sf.lcd_density=400 \
 	ro.hardware.alter=Kirin925
 	
 ## From stock system.prop

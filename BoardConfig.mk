@@ -46,9 +46,9 @@ ARCH_ARM_HAVE_NEON := true
 # TARGET_2ND_ARCH_VARIANT = cortex-a7
 # TARGET_2ND_CPU_VARIANT = cortex-a7
 TARGET_USE_GATOR := true
-#TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mtune=cortex-a15 -mfloat-abi=softfp
-#TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mtune=cortex-a15 -mfloat-abi=softfp
-#TARGET_EXTRA_CFLAGS := -mtune=cortex-a15 -mcpu=cortex-a15
+TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mtune=cortex-a15 -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mtune=cortex-a15 -mfloat-abi=softfp
+TARGET_EXTRA_CFLAGS := -mtune=cortex-a15 -mcpu=cortex-a15
 
 # Compiler Optimizations
 ARCH_ARM_HIGH_OPTIMIZATION := true
@@ -81,7 +81,7 @@ TARGET_KERNEL_ARCH := arm
 # BOARD_USES_UBOOT := true
 ## Let's keep this as a fallback
 TARGET_PREBUILT_KERNEL 	:= device/huawei/mt7_l09/kernel
-BOARD_KERNEL_CMDLINE 	:= 'ro.boot.hardware=hi3630 vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=enforcing enter_recovery=1 enter_erecovery=0'
+BOARD_KERNEL_CMDLINE 	:= 'vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=enforcing enter_recovery=0'
 
 # These values are the original extracted by kernel image
 ## BOARD_KERNEL_BASE := 0x00600000
@@ -106,25 +106,53 @@ BOARD_KERNEL_CMDLINE 	:= 'ro.boot.hardware=hi3630 vmalloc=384M coherent_pool=512
 # OFF_SECOND_ADDR is 0x00D00100
 # Please modify mkbootimg.c using the above values to build your image.
 
-BOARD_KERNEL_PAGESIZE	:= 2048
-BOARD_KERNEL_BASE	:= 0x00608000
-BOARD_KERNEL_OFFSET	:= 0x00408100
-BOARD_RAMDISK_BASE	:= 0x04000000
-BOARD_RAMDISK_OFFSET	:= 0x03E00100
-BOARD_SECOND_OFFSET	:= 0x00D00100
-BOARD_TAGS_OFFSET	:= 0x00200000
 
-BOARD_MKBOOTIMG_ARGS += --kernel_offset "$(BOARD_KERNEL_OFFSET)"
-BOARD_MKBOOTIMG_ARGS += --ramdisk_offset "$(BOARD_RAMDISK_OFFSET)"
-BOARD_MKBOOTIMG_ARGS += --second_offset "$(BOARD_SECOND_OFFSET)"
-BOARD_MKBOOTIMG_ARGS += --tags_offset "$(BOARD_TAGS_OFFSET)"
+# gabry3795@darkseat-works:~/cyanogen/bin/mkbootimg$ ./unpackbootimg -i ~/Desktop/MATE7/_originalimg/boot.img 
+# BOARD_KERNEL_CMDLINE vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=enforcing enter_recovery=1 enter_erecovery=0
+# BOARD_KERNEL_BASE 00600000
+# BOARD_NAME 
+# BOARD_PAGE_SIZE 2048
+# BOARD_KERNEL_OFFSET 00008000
+# BOARD_RAMDISK_OFFSET 03a00000
+# BOARD_TAGS_OFFSET ffc00000
+
+
+# root@hwmt7:/proc # cat iomem                                                   
+# 00200000-27ffffff : System RAM
+#   00608000-0131cefb : Kernel code
+#   01380000-01b3866b : Kernel data
+
+BOARD_KERNEL_PAGESIZE	:= 2048
+
+#BOARD_KERNEL_BASE	:= 0x00200000
+#BOARD_KERNEL_OFFSET	:= 0x00608000
+#BOARD_RAMDISK_BASE	:= 0x04000000
+#BOARD_RAMDISK_OFFSET	:= 0x03A00000
+#BOARD_SECOND_OFFSET	:= 0x00D00100
+#BOARD_TAGS_OFFSET	:= 0xFFC00000
+BOARD_KERNEL_BASE     := 0x00000000
+BOARD_KERNEL_OFFSET   := 0x00608000
+BOARD_RAMDISK_OFFSET  := 0x04000000
+BOARD_SECOND_OFFSET   := 0x00f00000
+BOARD_TAGS_OFFSET     := 0x00200000
+
+###
+
+BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
+
+BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
+BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
+#BOARD_MKBOOTIMG_ARGS += --ramdisk $(BOARD_RAMDISK_BASE)
+BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_SECOND_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_TAGS_OFFSET)
 
 # fix this up by examining /proc/mtd on a running device
 BOARD_NAND_PAGE_SIZE := 4096
 BOARD_NAND_SPARE_SIZE := 128
 BOARD_BOOTIMAGE_PARTITION_SIZE := 14680064
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 15728640
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1610612736	
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1610612736
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12759072768
 BOARD_FLASH_BLOCK_SIZE := 4096
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -171,7 +199,7 @@ ENABLE_WEBGL := true
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
 RECOVERY_FSTAB_VERSION := 2
-TARGET_RECOVERY_FSTAB := device/huawei/mt7_l09/recovery/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/huawei/mt7_l09/ramdisk/fstab.hi3630
 TARGET_RECOVERY_PIXEL_FORMAT := ABGR_8888
 BOARD_RECOVERY_NEEDS_FBIOPAN_DISPLAY := true
 #BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"

@@ -10,6 +10,6 @@ Cyanogenmod porting for Mate 7
 
 Updates
 -------
-- 2016/04/12 - A few weeks ago the kernel *3.10.86* sources shipped with betas B5** has been released. I managed to compile the kernel with the CM13 but the phone doesn't boot the system and `logcat` is impossible. I'm investigating why this happens.
+- 2016/04/12 - A few weeks ago the kernel *3.10.86* sources shipped with betas B5** have been released. I managed to compile the kernel with the CM13 but the phone doesn't boot the system and `logcat` is impossible. I'm investigating why this happens.
 
 - 2015/10/28 - This project is stuck because a **Board Support Package** for *Hisilicon Kirin 925* and *MaliT628* **IS MISSING**. Android's surfaceflinger needs patches to work with huawei gralloc and mali userspace binaries. I hope Huawei will soon release the sources needed.

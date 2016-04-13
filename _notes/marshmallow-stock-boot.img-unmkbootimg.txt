@@ -1,3 +1,121 @@
+# gabry3795@darkseat-works:~/cyanogen/bin/mkbootimg$ ./unpackbootimg -i ~/Desktop/MATE7/_originalimg/boot.img 
+# BOARD_KERNEL_CMDLINE vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=enforcing enter_recovery=1 enter_erecovery=0
+# BOARD_KERNEL_BASE 00600000
+# BOARD_NAME 
+# BOARD_PAGE_SIZE 2048
+# BOARD_KERNEL_OFFSET 00008000
+# BOARD_RAMDISK_OFFSET 03a00000
+# BOARD_TAGS_OFFSET ffc00000
+
+
+root@hwmt7:/proc # cat iomem                                                   
+00200000-27ffffff : System RAM
+  00608000-0131cefb : Kernel code
+  01380000-01b3866b : Kernel data
+3aa00000-3f5fffff : System RAM
+40000000-7fdfffff : System RAM
+e804b000-e804bfff : 
+e804e000-e8057fff : e804e000.asp_irq
+e82b9000-e82b97ff : e82b9000.hi6401_irq
+e8600000-e8603fff : subsystem
+e8612000-e86121f7 : pinctrl-single
+e8612800-e8612ac3 : pinctrl-single
+e8a00000-e8a00fff : /amba/timer@e8a00000
+e8a06000-e8a06fff : /amba/watchdog@0xe8a06000
+  e8a06000-e8a06fff : sp805_wdt
+e8a0b000-e8a0bfff : /amba/gpio@e8a0b000
+  e8a0b000-e8a0bfff : pl061
+e8a0c000-e8a0cfff : /amba/gpio@e8a0c000
+  e8a0c000-e8a0cfff : pl061
+e8a0d000-e8a0dfff : /amba/gpio@e8a0d000
+  e8a0d000-e8a0dfff : pl061
+e8a0e000-e8a0efff : /amba/gpio@e8a0e000
+  e8a0e000-e8a0efff : pl061
+e8a0f000-e8a0ffff : /amba/gpio@e8a0f000
+  e8a0f000-e8a0ffff : pl061
+e8a10000-e8a10fff : /amba/gpio@e8a10000
+  e8a10000-e8a10fff : pl061
+e8a11000-e8a11fff : /amba/gpio@e8a11000
+  e8a11000-e8a11fff : pl061
+e8a12000-e8a12fff : /amba/gpio@e8a12000
+  e8a12000-e8a12fff : pl061
+e8a13000-e8a13fff : /amba/gpio@e8a13000
+  e8a13000-e8a13fff : pl061
+e8a14000-e8a14fff : /amba/gpio@e8a14000
+  e8a14000-e8a14fff : pl061
+e8a15000-e8a15fff : /amba/gpio@e8a15000
+  e8a15000-e8a15fff : pl061
+e8a16000-e8a16fff : /amba/gpio@e8a16000
+  e8a16000-e8a16fff : pl061
+e8a17000-e8a17fff : /amba/gpio@e8a17000
+  e8a17000-e8a17fff : pl061
+e8a18000-e8a18fff : /amba/gpio@e8a18000
+  e8a18000-e8a18fff : pl061
+e8a19000-e8a19fff : /amba/gpio@e8a19000
+  e8a19000-e8a19fff : pl061
+e8a1a000-e8a1afff : /amba/gpio@e8a1a000
+  e8a1a000-e8a1afff : pl061
+e8a1b000-e8a1bfff : /amba/gpio@e8a1b000
+  e8a1b000-e8a1bfff : pl061
+e8a1c000-e8a1cfff : /amba/gpio@e8a1c000
+  e8a1c000-e8a1cfff : pl061
+e8a1d000-e8a1dfff : /amba/gpio@e8a1d000
+  e8a1d000-e8a1dfff : pl061
+e8a1e000-e8a1efff : /amba/gpio@e8a1e000
+  e8a1e000-e8a1efff : pl061
+e8a1f000-e8a1ffff : /amba/gpio@e8a1f000
+  e8a1f000-e8a1ffff : pl061
+e8a20000-e8a20fff : /amba/gpio@e8a20000
+  e8a20000-e8a20fff : pl061
+fdf00000-fdf00fff : /amba/uart@fdf00000
+  fdf00000-fdf00fff : uart-pl011
+fdf01000-fdf01fff : /amba/uart@fdf01000
+  fdf01000-fdf01fff : uart-pl011
+fdf02000-fdf02fff : /amba/uart@fdf02000
+  fdf02000-fdf02fff : uart-pl011
+fdf03000-fdf03fff : /amba/uart@fdf03000
+  fdf03000-fdf03fff : uart-pl011
+fdf04000-fdf04fff : /amba/uart@fdf04000
+  fdf04000-fdf04fff : uart-pl011
+fdf05000-fdf05fff : /amba/uart@fdf05000
+  fdf05000-fdf05fff : uart-pl011
+fdf07000-fdf07fff : /amba/spi@fdf07000
+  fdf07000-fdf07fff : ssp-pl022
+fdf08000-fdf08fff : /amba/spi@fdf08000
+  fdf08000-fdf08fff : ssp-pl022
+fdf0a000-fdf0afff : /amba/i2c@FDF0A000
+fdf0b000-fdf0bfff : /amba/i2c@FDF0B000
+fdf0c000-fdf0cfff : /amba/i2c@FDF0C000
+fdf0d000-fdf0dfff : /amba/i2c@FDF0D000
+fdf30000-fdf30fff : /amba/dma@fdf30000
+ff080000-ff0bffff : hisi-usb-otg
+ff17e000-ff17efff : /dwmmc2@FF17E000
+ff17f000-ff17ffff : /dwmmc1@FF17F000
+ff1fe000-ff1fefff : /dwmmc0@FF1FE000
+fff04000-fff04fff : /amba/rtc@FFF04000
+  fff04000-fff04fff : rtc-pl031
+fff0b000-fff0bfff : /amba/gpio@fff0b000
+  fff0b000-fff0bfff : pl061
+fff0c000-fff0cfff : /amba/gpio@fff0c000
+  fff0c000-fff0cfff : pl061
+fff0d000-fff0dfff : /amba/gpio@fff0d000
+  fff0d000-fff0dfff : pl061
+fff0e000-fff0efff : /amba/gpio@fff0e000
+  fff0e000-fff0efff : pl061
+fff0f000-fff0ffff : /amba/gpio@fff0f000
+  fff0f000-fff0ffff : pl061
+fff11000-fff11083 : pinctrl-single
+fff11800-fff11897 : pinctrl-single
+fff32000-fff32fff : /amba/uart@fff32000
+  fff32000-fff32fff : uart-pl011
+fff34000-fff34fff : fff34000.pmic
+fff35000-fff35fff : fff35000.regulator_hi3630
+
+
+
+
+
+========================= WRONG ADDRESSES =======================================
 gabry3795@darkseat-works:~/Desktop/MATE7$ unmkbootimg boot_copied.img 
 unmkbootimg version 1.2 - Mikael Q Kuisma <kuisma@ping.se>
 Kernel size 7521280
