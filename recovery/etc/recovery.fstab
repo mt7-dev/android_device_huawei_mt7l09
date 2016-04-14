@@ -1,48 +1,14 @@
-# mount point   fstype    device        [device2]
-/system ext4 /dev/block/platform/hi_mci.0/by-name/system defaults defaults
-/cache ext4 /dev/block/platform/hi_mci.0/by-name/cache defaults defaults
-/data ext4 /dev/block/platform/hi_mci.0/by-name/userdata defaults defaults
-/misc emmc /dev/block/platform/hi_mci.0/by-name/misc defaults defaults
-/boot emmc /dev/block/platform/hi_mci.0/by-name/boot defaults defaults
-/recovery emmc /dev/block/platform/hi_mci.0/by-name/recovery defaults defaults
-/cust ext4 /dev/block/platform/hi_mci.0/by-name/cust defaults defaults
-/splash2 ext4 /dev/block/platform/hi_mci.0/by-name/splash2 defaults defaults
-/3rdmodem ext4 /dev/block/platform/hi_mci.0/by-name/3rdmodem  defaults defaults
-/newsys ext4 /dev/block/platform/hi_mci.0/by-name/system  defaults defaults
-/usb vfat /dev/block/sda1 defaults defaults
-/sdcard vfat /dev/block/mmcblk1p1 defaults defaults
-
-# mount point     fstype   device  [device2]
-#/dev/block/platform/hi_mci.0/by-name/boot emmc boot
-#/dev/block/platform/hi_mci.0/by-name/cache ext4 cache
-#/dev/block/platform/hi_mci.0/by-name/userdata ext4 userdata
-#/dev/block/platform/hi_mci.0/by-name/misc emmc misc
-#/dev/block/platform/hi_mci.0/by-name/recovery emmc recovery
-#/dev/block/platform/hi_mci.0/by-name/system ext4 system
-#/dev/block/platform/hi_mci.0/by-name/userdata data ext4 rw,nosuid,nodev,noatime,user_xattr,acl,barrier=1,data=ordered,noauto_da_alloc,mblk_io_submit,discard wait,encryptable=footer
-#/dev/block/platform/hi_mci.0/by-name/cust cust  ext4   
-#/dev/block/platform/hi_mci.0/by-name/splash2 splash2 ext4   
-#/dev/block/platform/hi_mci.0/by-name/3rdmodem  3rdmodem ext4   
-#/dev/block/platform/hi_mci.0/by-name/system  newsys  ext4   
-#/dev/block/sda1 vfat /usb     
-#/dev/block/mmcblk1p1 vfat /sdcard  
-#/dev/block/zram0 swap defaults zramsize=268435456
-#/devices/hi_mci.1/mmc_host/mmc1 auto vfat defaults voldmanaged=sdcard1:auto,noemulatedsd
-#/devices/hisi-usb-otg/usb1 /storage/usbotg vfat defaults voldmanaged=usbotg:auto
-
-
-# FROM ORIGINAL recovery.fstab
-# blk_device     mount_point    fs_type
-#/dev/block/mmcblk1p1    /sdcard  vfat   defaults    defaults
-#defaults      /storage ramdisk   defaults        defaults
-#/dev/block/platform/hi_mci.0/by-name/system /system  ext4      defaults        defaults
-#/dev/block/platform/hi_mci.0/by-name/cache /cache  ext4      defaults        defaults
-#/dev/block/platform/hi_mci.0/by-name/userdata /data  ext4      default         length=-16384
-#/dev/block/platform/hi_mci.0/by-name/misc /misc  emmc      defaults        defaults
-#/dev/block/platform/hi_mci.0/by-name/boot /boot  emmc      defaults        defaults
-#/dev/block/platform/hi_mci.0/by-name/recovery /recovery emmc      defaults        defaults
-#/dev/block/platform/hi_mci.0/by-name/cust /cust  ext4      defaults        defaults
-#/dev/block/platform/hi_mci.0/by-name/splash2 /splash2 ext4      defaults        defaults
-#/dev/block/platform/hi_mci.0/by-name/3rdmodem /3rdmodem ext4      defaults        defaults
-#/dev/block/platform/hi_mci.0/by-name/system /newsys  ext4      defaults        defaults
-#/dev/block/sda1    /usb  vfat      defaults        defaults
+# blk_device	                                   mount_point		fs_type
+/dev/block/mmcblk1p1	/sdcard	vfat      defaults        defaults
+defaults       /storage       ramdisk     defaults        defaults
+/dev/block/platform/hi_mci.0/by-name/system	/system	ext4      defaults        defaults
+/dev/block/platform/hi_mci.0/by-name/cache	/cache	ext4      defaults        defaults
+/dev/block/platform/hi_mci.0/by-name/userdata	/data	ext4      defaults         length=-16384
+/dev/block/platform/hi_mci.0/by-name/misc	/misc	emmc      defaults        defaults
+/dev/block/platform/hi_mci.0/by-name/boot	/boot	emmc      defaults        defaults
+/dev/block/platform/hi_mci.0/by-name/recovery	/recovery	emmc      defaults        defaults
+/dev/block/platform/hi_mci.0/by-name/cust	/cust	ext4      defaults        defaults
+/dev/block/platform/hi_mci.0/by-name/splash2	/splash2	ext4      defaults        defaults
+/dev/block/platform/hi_mci.0/by-name/3rdmodem	/3rdmodem	ext4      defaults        defaults
+/dev/block/platform/hi_mci.0/by-name/system	/newsys	ext4      defaults        defaults
+/dev/block/sda1	/usb	vfat      defaults        defaults

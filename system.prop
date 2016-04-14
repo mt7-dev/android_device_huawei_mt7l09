@@ -1,5 +1,6 @@
 # system.prop for mt7l09
 #
+ro.hardware=hi3630 
 ro.config.mmu_en=1
 debug.hwc_dump_en=1
 ro.config.hw_sensorhub=true

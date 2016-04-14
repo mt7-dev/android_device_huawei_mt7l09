@@ -10,6 +10,18 @@ ro.dalvik.vm.native.bridge=0
 ro.magic.api.version=0.1
 debug.atrace.tags.enableflags=0
 persist.sys.usb.config=manufacture,adb
+ro.carrier=unknown
+ro.setupwizard.mode=OPTIONAL
+dalvik.vm.heapstartsize=8m
+dalvik.vm.heapgrowthlimit=192m
+dalvik.vm.heapsize=512m
+dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heapminfree=512k
+dalvik.vm.heapmaxfree=8m
+persist.sys.dalvik.vm.lib.2=libart
+dalvik.vm.isa.arm.variant=cortex-a15
+dalvik.vm.isa.arm.features=default
+net.bt.name=Android
 
 
 #

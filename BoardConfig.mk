@@ -70,8 +70,9 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
 # Init
-TARGET_PROVIDES_INIT := true
+# TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
+# TARGET_PROVIDES_INIT_RC := true
 
 # ========================================== KERNEL ==========================================
 
@@ -81,7 +82,7 @@ TARGET_KERNEL_ARCH := arm
 # BOARD_USES_UBOOT := true
 ## Let's keep this as a fallback
 TARGET_PREBUILT_KERNEL 	:= device/huawei/mt7_l09/kernel
-BOARD_KERNEL_CMDLINE 	:= 'vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=enforcing enter_recovery=1 enter_erecovery=0'
+BOARD_KERNEL_CMDLINE 	:= 'vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=enforcing'
 
 # These values are the original extracted by kernel image
 ## BOARD_KERNEL_BASE := 0x00600000
@@ -139,22 +140,22 @@ BOARD_TAGS_OFFSET     := 0x00200000
 ###
 
 #BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
-BOARD_MKBOOTIMG_ARGS += --base 0x1fff00
-BOARD_MKBOOTIMG_ARGS += --kernel_offset 0x00408100
-BOARD_MKBOOTIMG_ARGS += --ramdisk_offset 0x03E00100
-BOARD_MKBOOTIMG_ARGS += --second_offset 0x00D00100
-#BOARD_MKBOOTIMG_ARGS += --ramdisk 0x03E00100
-#BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_TAGS_OFFSET)
+BOARD_MKBOOTIMG_ARGS 	+= --base 0x1fff00
+BOARD_MKBOOTIMG_ARGS 	+= --kernel_offset 0x00408100
+BOARD_MKBOOTIMG_ARGS 	+= --ramdisk_offset 0x03E00100
+BOARD_MKBOOTIMG_ARGS 	+= --second_offset 0x00D00100
+#BOARD_MKBOOTIMG_ARGS	+= --ramdisk 0x03E00100
+#BOARD_MKBOOTIMG_ARGS 	+= --tags_offset $(BOARD_TAGS_OFFSET)
 
 # fix this up by examining /proc/mtd on a running device
-BOARD_NAND_PAGE_SIZE := 4096
-BOARD_NAND_SPARE_SIZE := 128
-BOARD_BOOTIMAGE_PARTITION_SIZE := 14680064
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 15728640
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1610612736
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 12759072768
-BOARD_FLASH_BLOCK_SIZE := 4096
-TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_NAND_PAGE_SIZE 			:= 4096
+BOARD_NAND_SPARE_SIZE 			:= 128
+BOARD_BOOTIMAGE_PARTITION_SIZE 		:= 14680064
+BOARD_RECOVERYIMAGE_PARTITION_SIZE 	:= 15728640
+BOARD_SYSTEMIMAGE_PARTITION_SIZE 	:= 1610612736
+BOARD_USERDATAIMAGE_PARTITION_SIZE 	:= 12759072768
+BOARD_FLASH_BLOCK_SIZE 			:= 4096
+TARGET_USERIMAGES_USE_EXT4 		:= true
 
 # Libc extensions
 BOARD_PROVIDES_ADDITIONAL_BIONIC_STATIC_LIBS += libc_huawei_symbols

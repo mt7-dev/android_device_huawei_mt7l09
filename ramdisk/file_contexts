@@ -792,6 +792,3 @@
 /sys/devices/platform/fingerprint(/.*)?        u:object_r:sysfs_fingerprint:s0
 
 /dev/fingerprint       u:object_r:dev_fingerprint:s0
-
-# SuperSU
-/su(/.*)? u:object_r:system_file:s0

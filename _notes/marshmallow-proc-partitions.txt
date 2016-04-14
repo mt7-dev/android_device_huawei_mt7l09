@@ -110,3 +110,15 @@ lrwxrwxrwx    1 0        0               20 Apr 12 14:34 vrl_backup -> /dev/bloc
 # blockdev --getsize64 /dev/block/platform/hi_mci.0/by-name/recovery 	== > 15728640
 # blockdev --getsize64 /dev/block/platform/hi_mci.0/by-name/userdata 	== > 12759072768
 
+root@hwmt7:/proc # cat mtd                                                     
+dev:    size   erasesize  name
+mtd0: 00020000 00001000 "block2mtd: /dev/block/mmcblk0p1"
+mtd1: 00020000 00001000 "block2mtd: /dev/block/mmcblk0p2"
+mtd2: 00400000 00001000 "block2mtd: /dev/block/mmcblk0p7"
+mtd3: 00400000 00001000 "block2mtd: /dev/block/mmcblk0p23"
+mtd4: 00400000 00001000 "block2mtd: /dev/block/mmcblk0p25"
+mtd5: 03c00000 00001000 "block2mtd: /dev/block/mmcblk0p26"
+mtd6: 00400000 00001000 "block2mtd: /dev/block/mmcblk0p27"
+mtd7: 01800000 00001000 "block2mtd: /dev/block/mmcblk0p29"
+mtd8: 00400000 00001000 "block2mtd: /dev/block/mmcblk0p6"
+
