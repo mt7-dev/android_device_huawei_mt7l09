@@ -1,0 +1,53 @@
+on early-init
+
+on init
+
+on early-fs
+
+on fs
+
+on post-fs
+
+on post-fs-data
+
+on early-boot
+	service HwCamCfgSvr /system/bin/HwCamCfgSvr   hi3630 PINE
+	class main
+	user media
+	group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm system dsm
+
+on boot
+	mkdir /data/nfc
+	chown nfc nfc /data/nfc
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_fwupdate
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_fwupdate
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nxp_config_name
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nxp_config_name
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_brcm_conf_name
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_brcm_conf_name
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_sim_switch
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_sim_switch
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_sim_status
+	chmod 0444 /sys/bus/i2c/devices/0-0028/nfc_sim_status
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/rd_nfc_sim_status
+	chmod 0444 /sys/bus/i2c/devices/0-0028/rd_nfc_sim_status
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_enable_status
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_card_num
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_card_num
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_chip_type
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_chip_type
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_fw_version
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_fw_version
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_enable_status
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfcservice_lock
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfcservice_lock
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_svdd_sw
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_svdd_sw
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_close_type
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_close_type
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_single_channel
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_single_channel
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/conf_for_factory
+	chmod 0444 /sys/bus/i2c/devices/0-0028/conf_for_factory
+
+

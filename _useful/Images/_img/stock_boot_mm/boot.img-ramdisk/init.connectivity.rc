@@ -1,0 +1,2 @@
+import /init.connectivity.gps.rc
+import /init.connectivity.${ro.connectivity.sub_chiptype}.rc
