@@ -69,6 +69,11 @@ TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 DEVICE_RESOLUTION := 1080x1920
 
+# ======================================= CUSTOM PACKAGES ======================================
+PRODUCT_PACKAGES += \
+	mkbootimg-mt7 \
+	unpackbootimg-mt7
+
 # ========================================== RECOVERY ==========================================
 #PRODUCT_COPY_FILES += \
 # 	$(LOCAL_PATH)/recovery/init.recovery.hi3630.rc:recovery/root/init.recovery.hi3630.rc \
