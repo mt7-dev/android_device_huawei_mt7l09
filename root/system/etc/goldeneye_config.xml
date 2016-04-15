@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <watchpoint name="fd_limit_test">
+        <action name="enable"/>
+        <pid value="all"/>
+        <threshold value="600"/>
+    </watchpoint>
+    <watchpoint name="thread_limit_test">
+        <action name="enable"/>
+        <pid value="all"/>
+        <threshold value="500"/>
+    </watchpoint>
+    <watchpoint name="iowait_limit_test">
+        <action name="enable"/>
+        <threshold value="30"/>
+    </watchpoint>
+    <watchpoint name="low_mem_inject_test">
+        <action name="disable"/>
+        <userspace_mem_left value="500"/>
+        <kernelspace_mem_left value="500"/>
+    </watchpoint>
+    <watchpoint name="app_oom_test">
+        <action name="enable"/>
+    </watchpoint>
+    <watchpoint name="app_mem_limit_test">
+        <action name="enable"/>
+        <appmemlimit_warning_limit value="150"/>
+        <appmemlimit_monitor_interval value="5"/>
+    </watchpoint>
+</config>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResourceManager>
+<!--
+resource_id:  Resource type id
+    NOTIFICATION_SEND_APP_THIRDPARTY = 0;
+    NOTIFICATION_SEND_APP_HW = 1;
+    NOTIFICATION_SEND_SYS = 2;
+    NOTIFICATION_SEND_TOTAL = 3;
+    BROADCAST_SEND_APP_THIRDPARTY = 4;
+    BROADCAST_SEND_APP_HW = 5;
+    BROADCAST_SEND_SYS = 6;
+    BROADCAST_SEND_TOTAL = 7;
+    BROADCAST_RECEIVER_APP_THIRDPARTY = 8;
+    BROADCAST_RECEIVER_APP_HW = 9;
+    BROADCAST_RECEIVER_SYS = 10;
+    BROADCAST_RECEIVER_TOTAL = 11;
+    ALARM_SEND_APP_THIRDPARTY = 12;
+    ALARM_SEND_APP_HW = 13;
+    ALARM_SEND_SYS = 14;
+    ALARM_SEND_TOTAL = 15;
+    APPOPS_APP = 16;
+    PROVIDER_APP = 17;
+    PIDS_APP = 18;
+resource_threshold:   the threshold of resource
+    NOTIFICATION_SEND_APP_THIRDPARTY_MAXNUM = 20;
+    NOTIFICATION_SEND_APP_HW_MAXNUM = 100;
+    NOTIFICATION_SEND_SYS_MAXNUM = 200;
+    NOTIFICATION_SEND_TOTAL_MAXNUM = 300;
+    BROADCAST_SEND_APP_THIRDPARTY_MAXNUM = 50;
+    BROADCAST_SEND_APP_HW_MAXNUM = 100;
+    BROADCAST_SEND_SYS_MAXNUM = 200;
+    BROADCAST_SEND_TOTAL_MAXNUM = 300;
+    BROADCAST_RECEIVE_APP_THIRDPARTY_MAXNUM = 50;
+    BROADCAST_RECEIVE_APP_HW_MAXNUM = 100;
+    BROADCAST_RECEIVE_SYS_MAXNUM = 200;
+    BROADCAST_RECEIVE_TOTAL_MAXNUM = 300;
+    ALARM_SEND_APP_THIRDPARTY_MAXNUM = 20;
+    ALARM_SEND_APP_HW_MAXNUM = 100;
+    ALARM_SEND_SYS_MAXNUM = 200;
+    ALARM_SEND_TOTAL_MAXNUM = 300;
+    APPOPS_APP_MAXNUM = 20;
+    PROVIDER_APP = 100;
+    PIDS_APP = 300,500;
+resource_strategy: the strategy of resource protection.
+    ALOW = 1;
+    DROP = 2;
+    DELAY = 3;
+resource_max_peroid: the maximum peroids of overloading
+    default = 5;
+loop_interval: the interval of count resource
+    default : 1000 ms
+-->
+    <Resource resource_id='0'
+        resource_threshold='20'
+        resource_strategy='2'
+        resource_max_peroid='0'
+        loop_interval='1000'>
+    </Resource>
+
+    <Resource resource_id='1'
+        resource_threshold='50'
+        resource_strategy='2'
+        resource_max_peroid='3'
+        loop_interval='1000'>
+    </Resource>
+
+    <Resource resource_id='2'
+        resource_threshold='200'
+        resource_strategy='2'
+        resource_max_peroid='1'
+        loop_interval='1000'>
+    </Resource>
+
+    <Resource resource_id='3'
+        resource_threshold='300'
+        resource_strategy='2'
+        resource_max_peroid='2'
+        loop_interval='1000'>
+    </Resource>
+
+    <Resource resource_id='4'
+        resource_threshold='50'
+        resource_strategy='2'
+        resource_max_peroid='1'
+        loop_interval='1000'>
+    </Resource>
+
+    <Resource resource_id='5'
+        resource_threshold='100'
+        resource_strategy='2'
+        resource_max_peroid='5'
+        loop_interval='1000'>
+    </Resource>
+
+    <Resource resource_id='6'
+        resource_threshold='200'
+        resource_strategy='2'
+        resource_max_peroid='5'
+        loop_interval='1000'>
+    </Resource>
+
+    <Resource resource_id='7'
+        resource_threshold='300'
+        resource_strategy='2'
+        resource_max_peroid='5'
+        loop_interval='1000'>
+    </Resource>
+
+    <Resource resource_id='8'
+        resource_threshold='500'
+        resource_strategy='2'
+        resource_max_peroid='0'
+        loop_interval='1000'>
+    </Resource>
+
+    <Resource resource_id='9'
+        resource_threshold='500'
+        resource_strategy='2'
+        resource_max_peroid='0'
+        loop_interval='0'>
+    </Resource>
+
+    <Resource resource_id='10'
+        resource_threshold='1000'
+        resource_strategy='1'
+        resource_max_peroid='0'
+        loop_interval='0'>
+    </Resource>
+
+    <Resource resource_id='11'
+        resource_threshold='3000'
+        resource_strategy='2'
+        resource_max_peroid='0'
+        loop_interval='0'>
+    </Resource>
+
+    <Resource resource_id='12'
+        resource_threshold='50'
+        resource_strategy='2'
+        resource_max_peroid='0'
+        loop_interval='5000'>
+    </Resource>
+
+    <Resource resource_id='13'
+        resource_threshold='100'
+        resource_strategy='2'
+        resource_max_peroid='0'
+        loop_interval='5000'>
+    </Resource>
+
+    <Resource resource_id='14'
+        resource_threshold='200'
+        resource_strategy='1'
+        resource_max_peroid='0'
+        loop_interval='5000'>
+    </Resource>
+
+    <Resource resource_id='15'
+        resource_threshold='800'
+        resource_strategy='1'
+        resource_max_peroid='0'
+        loop_interval='5000'>
+    </Resource>
+
+    <Resource resource_id='16'
+        resource_threshold='200'
+        resource_strategy='2'
+        resource_max_peroid='0'
+        loop_interval='0'>
+    </Resource>
+
+    <Resource resource_id='17'
+        resource_threshold='100'
+        resource_strategy='2'
+        resource_max_peroid='0'
+        loop_interval='0'>
+    </Resource>
+    <Resource resource_id='18'
+        resource_threshold='300'
+        resource_strategy='500'
+        resource_max_peroid='0'
+        loop_interval='0'>
+    </Resource>
+</ResourceManager>
