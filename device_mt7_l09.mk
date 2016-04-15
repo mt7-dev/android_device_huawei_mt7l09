@@ -178,5 +178,5 @@ PRODUCT_PACKAGES += \
 	
 # ========================================== MISC ==========================================
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/thermald.xml:system/etc/thermald.xml \
-    $(LOCAL_PATH)/rootdir/system/etc/thermald_performance.xml:system/etc/thermald_performance.xml
+    $(LOCAL_PATH)/root/system/etc/thermald.xml:system/etc/thermald.xml \
+    $(LOCAL_PATH)/root/system/etc/thermald_performance.xml:system/etc/thermald_performance.xml
