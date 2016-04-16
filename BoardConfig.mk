@@ -71,7 +71,7 @@ TARGET_NO_RADIOIMAGE := true
 
 # Init
 # TARGET_PROVIDES_INIT := true
-TARGET_PROVIDES_INIT_TARGET_RC := true
+# TARGET_PROVIDES_INIT_TARGET_RC := true
 # TARGET_PROVIDES_INIT_RC := true
 
 # ========================================== KERNEL ==========================================
@@ -106,6 +106,8 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE 	:= 1610612736
 BOARD_USERDATAIMAGE_PARTITION_SIZE 	:= 12759072768
 BOARD_FLASH_BLOCK_SIZE 			:= 4096
 TARGET_USERIMAGES_USE_EXT4 		:= true
+
+#BOARD_CUSTOM_BOOTIMG_MK := device/huawei/mt7_l09/custombootimg.mk
 
 # Libc extensions
 BOARD_PROVIDES_ADDITIONAL_BIONIC_STATIC_LIBS += libc_huawei_symbols
@@ -153,5 +155,6 @@ TARGET_RECOVERY_FSTAB := device/huawei/mt7_l09/recovery/etc/recovery.fstab
 TARGET_RECOVERY_INITRC := device/huawei/mt7_l09/recovery/root/init.hi3630.rc
 TARGET_RECOVERY_PIXEL_FORMAT := ABGR_8888
 BOARD_RECOVERY_NEEDS_FBIOPAN_DISPLAY := true
+TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd_backlight0\"
 #BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 TARGET_USERIMAGES_USE_EXT4 := true

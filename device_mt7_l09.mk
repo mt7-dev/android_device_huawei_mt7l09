@@ -58,6 +58,14 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.dalvik.vm.native.bridge=0 
 # ---------------------------------------------------------------------------
 
+PRODUCT_COPY_FILES_OVERRIDES += \
+    root/fstab.goldfish \
+    root/init.goldfish.rc \
+    recovery/root/fstab.goldfish \
+    recovery/root/fstab.ranchu \
+    recovery/root/ueventd.goldfish.rc \
+    recovery/root/ueventd.ranchu.rc
+
 # This device is xxhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xxhdpi density so
 # we do this little trick to fall back to the hdpi version
@@ -91,7 +99,6 @@ PRODUCT_PACKAGES += \
  PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/recovery/etc/recovery.fstab:recovery/root/etc/recovery.fstab \
 	$(LOCAL_PATH)/recovery/etc/mke2fs.conf:recovery/root/etc/mke2fs.conf \
-	$(LOCAL_PATH)/recovery/etc/recovery.fstab.old:recovery/root/etc/recovery.fstab.old \
 	$(LOCAL_PATH)/recovery/sbin/hdbd:recovery/root/sbin/hdbd \
 	$(LOCAL_PATH)/recovery/sbin/teecd:recovery/root/sbin/teecd \
 	$(LOCAL_PATH)/recovery/sbin/oeminfo_nvm_server:recovery/root/sbin/oeminfo_nvm_server \

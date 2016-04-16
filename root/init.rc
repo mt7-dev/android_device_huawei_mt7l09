@@ -674,17 +674,3 @@ service fingerprintd /system/bin/fingerprintd
     class late_start
     user system
     group input
-
-# mount /data/su.img to /su
-on property:sukernel.mount=1
-    mount ext4 loop@/data/su.img /su noatime
-
-# launch SuperSU daemon
-service daemonsu /sbin/launch_daemonsu.sh
-    class late_start
-    user root
-    seclabel u:r:init:s0
-    oneshot
-
-# SuperSU:PATCH:264
-# SuperSU:STOCK:92cca5c02653b5211899a2f968dbe1f5afd7045c

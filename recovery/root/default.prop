@@ -1,19 +1,18 @@
 #
 # ADDITIONAL_DEFAULT_PROPERTIES
 #
-ro.secure=0
-ro.allow.mock.location=0
-ro.debuggable=1
 ro.adb.secure=0
+ro.secure=0
+ro.allow.mock.location=1
+persist.sys.usb.config=mtp,adb
+ro.debuggable=1
+ro.opengles.version=196609
 ro.zygote=zygote32
-dalvik.vm.image-dex2oat-Xms=64m
-dalvik.vm.image-dex2oat-Xmx=64m
 dalvik.vm.dex2oat-Xms=64m
 dalvik.vm.dex2oat-Xmx=512m
+dalvik.vm.image-dex2oat-Xms=64m
+dalvik.vm.image-dex2oat-Xmx=64m
 ro.dalvik.vm.native.bridge=0
-ro.magic.api.version=0.1
-debug.atrace.tags.enableflags=0
-persist.sys.usb.config=manufacture,adb
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
@@ -121,9 +120,12 @@ dalvik.vm.heapsize=512m
 dalvik.vm.heaptargetutilization=0.75
 dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=8m
-persist.sys.dalvik.vm.lib.2=libart
+ro.ril.hsxpa=2
+ro.carrier=unknown
+ro.ril.gprsclass=10
+ro.adb.qemud=1
+persist.sys.dalvik.vm.lib.2=libart.so
 dalvik.vm.isa.arm.variant=cortex-a15
 dalvik.vm.isa.arm.features=default
 net.bt.name=Android
 dalvik.vm.stack-trace-file=/data/anr/traces.txt
-ro.confg.hw_recoveryversion=MT7-6_0-2015_1229_1500_RECOVERY
