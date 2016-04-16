@@ -71,8 +71,8 @@ TARGET_NO_RADIOIMAGE := true
 
 # Init
 # TARGET_PROVIDES_INIT := true
-# TARGET_PROVIDES_INIT_TARGET_RC := true
-# TARGET_PROVIDES_INIT_RC := true
+TARGET_PROVIDES_INIT_TARGET_RC := true
+TARGET_PROVIDES_INIT_RC := true
 
 # ========================================== KERNEL ==========================================
 
@@ -82,7 +82,7 @@ TARGET_KERNEL_ARCH := arm
 # BOARD_USES_UBOOT := false
 ## Let's keep this as a fallback
 TARGET_PREBUILT_KERNEL 	:= device/huawei/mt7_l09/kernel
-BOARD_KERNEL_CMDLINE 	:= 'vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=permissive'
+BOARD_KERNEL_CMDLINE 	:= ro.boot.hardware=hi3630 vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE	:= 2048
 
 BOARD_KERNEL_BASE	:= 0x00600000
