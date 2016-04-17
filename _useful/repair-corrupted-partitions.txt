@@ -1,0 +1,2 @@
+From TWRP command:
+  mke2fs -T ext4 /dev/block/mmcblk0p8

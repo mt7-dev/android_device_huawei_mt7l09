@@ -36,9 +36,6 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, build/target/product/full.mk)
 
 # ========================================== .PROP OVVERRIDES ==========================================
-
-# .prop overrides
-
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	BUILD_UTC_DATE=0 \
 
@@ -56,6 +53,14 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	dalvik.vm.image-dex2oat-Xms=64m \
 	dalvik.vm.image-dex2oat-Xmx=64m \
 	ro.dalvik.vm.native.bridge=0 
+
+# Debug options
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.adb.secure=0 \
+	ro.secure=0 \
+	ro.allow.mock.location=1 \
+	ro.debuggable=1 \
+	persist.sys.usb.config=mtp,adb
 # ---------------------------------------------------------------------------
 
 PRODUCT_COPY_FILES_OVERRIDES += \
