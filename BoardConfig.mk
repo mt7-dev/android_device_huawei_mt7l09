@@ -70,8 +70,8 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
 # Init
-# TARGET_PROVIDES_INIT := true
-TARGET_PROVIDES_INIT_TARGET_RC := true
+TARGET_PROVIDES_INIT := true
+#TARGET_PROVIDES_INIT_TARGET_RC := true
 TARGET_PROVIDES_INIT_RC := true
 
 # ========================================== KERNEL ==========================================
@@ -152,7 +152,7 @@ ENABLE_WEBGL := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_FSTAB := device/huawei/mt7_l09/recovery/etc/recovery.fstab
-TARGET_RECOVERY_INITRC := device/huawei/mt7_l09/recovery/root/init.hi3630.rc
+#TARGET_RECOVERY_INITRC := device/huawei/mt7_l09/recovery/root/init.hi3630.rc
 TARGET_RECOVERY_PIXEL_FORMAT := ABGR_8888
 BOARD_RECOVERY_NEEDS_FBIOPAN_DISPLAY := true
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd_backlight0\"
