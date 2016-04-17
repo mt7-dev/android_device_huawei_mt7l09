@@ -65,7 +65,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_COPY_FILES_OVERRIDES += \
     root/fstab.goldfish \
+    root/fstab.ranchu \
     root/init.goldfish.rc \
+    root/ueventd.goldfish.rc \
+    root/ueventd.ranchu.rc \
     recovery/root/fstab.goldfish \
     recovery/root/fstab.ranchu \
     recovery/root/ueventd.goldfish.rc \
@@ -122,31 +125,41 @@ PRODUCT_PACKAGES += \
 	
 # ========================================== RAMDISK ==========================================
 # To clean
-# PRODUCT_COPY_FILES += \
-# 	$(LOCAL_PATH)/ramdisk/default.prop:root/default.prop \
-# 	$(LOCAL_PATH)/ramdisk/fstab.hi3630:root/fstab.hi3630 \
-# 	$(LOCAL_PATH)/ramdisk/init.41031.rc:root/init.41031.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.4843.rc:root/init.4843.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.71422.rc:root/init.71422.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.chip.usb.rc:root/init.chip.usb.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.connectivity.bcm4334.rc:root/init.connectivity.bcm4334.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.connectivity.gps.rc:root/init.connectivity.gps.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.connectivity.rc:root/init.connectivity.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.device.rc:root/init.device.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.environ.rc:root/init.environ.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.extmodem.rc:root/init.extmodem.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.hi3630.rc:root/init.hi3630.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.hisi.rc:root/init.hisi.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.manufacture.rc:root/init.manufacture.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.platform.rc:root/init.platform.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.post-fs-data.rc:root/init.post-fs-data.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.rc:root/init.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.trace.rc:root/init.trace.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.usb.rc:root/init.usb.rc \
-# 	$(LOCAL_PATH)/ramdisk/init.zygote32.rc:root/init.zygote32.rc \
-# 	$(LOCAL_PATH)/ramdisk/ueventd.hi3630.rc:root/ueventd.hi3630.rc \
-# 	$(LOCAL_PATH)/ramdisk/ueventd.rc:root/ueventd.rc \
-# 	$(LOCAL_PATH)/ramdisk/resetFactory.cfg:root/resetFactory.cfg \
+ PRODUCT_COPY_FILES += \
+ 	$(LOCAL_PATH)/root/fstab.hi3630:root/fstab.hi3630 \
+ 	$(LOCAL_PATH)/root/init.41031.rc:root/init.41031.rc \
+ 	$(LOCAL_PATH)/root/init.4843.rc:root/init.4843.rc \
+ 	$(LOCAL_PATH)/root/init.71422.rc:root/init.71422.rc \
+ 	$(LOCAL_PATH)/root/init.chip.usb.rc:root/init.chip.usb.rc \
+ 	$(LOCAL_PATH)/root/init.connectivity.bcm4334.rc:root/init.connectivity.bcm4334.rc \
+ 	$(LOCAL_PATH)/root/init.connectivity.gps.rc:root/init.connectivity.gps.rc \
+ 	$(LOCAL_PATH)/root/init.connectivity.rc:root/init.connectivity.rc \
+ 	$(LOCAL_PATH)/root/init.device.rc:root/init.device.rc \
+ 	$(LOCAL_PATH)/root/init.environ.rc:root/init.environ.rc \
+ 	$(LOCAL_PATH)/root/init.extmodem.rc:root/init.extmodem.rc \
+ 	$(LOCAL_PATH)/root/init.hi3630.rc:root/init.hi3630.rc \
+ 	$(LOCAL_PATH)/root/init.hisi.rc:root/init.hisi.rc \
+ 	$(LOCAL_PATH)/root/init.manufacture.rc:root/init.manufacture.rc \
+ 	$(LOCAL_PATH)/root/init.platform.rc:root/init.platform.rc \
+ 	$(LOCAL_PATH)/root/init.post-fs-data.rc:root/init.post-fs-data.rc \
+ 	$(LOCAL_PATH)/root/init.rc:root/init.rc \
+ 	$(LOCAL_PATH)/root/init.trace.rc:root/init.trace.rc \
+ 	$(LOCAL_PATH)/root/init.usb.rc:root/init.usb.rc \
+ 	$(LOCAL_PATH)/root/ueventd.hi3630.rc:root/ueventd.hi3630.rc \
+ 	$(LOCAL_PATH)/root/resetFactory.cfg:root/resetFactory.cfg \
+	$(LOCAL_PATH)/root/sbin/hdbd:root/sbin/hdbd \
+	$(LOCAL_PATH)/root/sbin/teecd:root/sbin/teecd \
+	$(LOCAL_PATH)/root/sbin/oeminfo_nvm_server:root/sbin/oeminfo_nvm_server \
+	$(LOCAL_PATH)/root/sbin/check_root:root/sbin/check_root \
+	$(LOCAL_PATH)/root/sbin/kmsgcat:root/sbin/kmsgcat \
+	$(LOCAL_PATH)/root/sbin/ntfs-3gd:root/sbin/ntfs-3gd \
+	$(LOCAL_PATH)/root/sbin/hw_ueventd:root/sbin/hw_ueventd \
+	$(LOCAL_PATH)/root/sbin/logctl_service:root/sbin/logctl_service \
+	$(LOCAL_PATH)/root/sbin/e2fsck_s:root/sbin/e2fsck_s \
+	$(LOCAL_PATH)/root/sbin/emmc_partation:root/sbin/emmc_partation \
+	$(LOCAL_PATH)/root/sbin/volisnotd:root/sbin/volisnotd 
+# 	$(LOCAL_PATH)/root/default.prop:root/default.prop \
+
 
 	
 # ========================================== KEYLAYOUTS ==========================================

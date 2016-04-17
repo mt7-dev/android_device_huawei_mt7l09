@@ -71,8 +71,8 @@ TARGET_NO_RADIOIMAGE := true
 
 # Init
 #TARGET_PROVIDES_INIT := true
-#TARGET_PROVIDES_INIT_TARGET_RC := true
-#TARGET_PROVIDES_INIT_RC := true
+TARGET_PROVIDES_INIT_TARGET_RC := true
+TARGET_PROVIDES_INIT_RC := true
 
 # ========================================== KERNEL ==========================================
 
