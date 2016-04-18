@@ -137,8 +137,8 @@ TARGET_BOOTANIMATION_PRELOAD := true
 ENABLE_WEBGL := true
 
 # Selinux
-# BOARD_SEPOLICY_DIRS += \
-#     device/huawei/mt7_l09/selinux
+BOARD_SEPOLICY_DIRS += \
+	device/huawei/mt7_l09/selinux
 
 # BOARD_SEPOLICY_UNION += \
 # 	file_contexts \

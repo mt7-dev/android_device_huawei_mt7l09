@@ -14,10 +14,3 @@ PRODUCT_BRAND := huawei
 PRODUCT_MODEL := Huawei Ascend Mate 7
 PRODUCT_MANUFACTURER := huawei
 
-## Added testing options in default.prop
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	ro.adb.secure=0 \
-	ro.secure=0 \
-	ro.allow.mock.location=1 \
-	ro.debuggable=1 \
-	persist.sys.usb.config=mtp,adb

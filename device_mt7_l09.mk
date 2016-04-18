@@ -43,16 +43,25 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.isUsbOtgEnabled=true \
 	ro.sf.lcd_density=400 \
 	ro.hardware=hi3630 
-# 	ro.hardware.alter=Kirin925 \
+ 	ro.hardware.alter=Kirin925
 	
 ## From stock system.prop
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	ro.adb.secure=0 \
+	ro.secure=0 \
+	ro.allow.mock.location=1 \
+	ro.debuggable=1 \
+	persist.sys.usb.config=mtp,adb \
+	persist.sys.usb.config=mtp,adb \
+	persist.logd.logpersistd=logcatd \
+	debug.graphic_log=1 \
 	ro.zygote=zygote32 \
-	dalvik.vm.dex2oat-Xms=64m \
-	dalvik.vm.dex2oat-Xmx=512m \
 	dalvik.vm.image-dex2oat-Xms=64m \
 	dalvik.vm.image-dex2oat-Xmx=64m \
-	ro.dalvik.vm.native.bridge=0 
+	dalvik.vm.dex2oat-Xms=64m \
+	dalvik.vm.dex2oat-Xmx=512m \
+	ro.dalvik.vm.native.bridge=0 \
+	debug.atrace.tags.enableflags=0 
 
 # Debug options
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -60,13 +69,27 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.secure=0 \
 	ro.allow.mock.location=1 \
 	ro.debuggable=1 \
-	persist.sys.usb.config=mtp,adb
+	persist.sys.usb.config=mtp,adb \
+	persist.logd.logpersistd=logcatd \
+	debug.graphic_log=1
+	
+ADDITIONAL_DEFAULT_PROPERTIES += \
+	ro.adb.secure=0 \
+	ro.secure=0 \
+	ro.allow.mock.location=1 \
+	ro.debuggable=1 \
+	persist.sys.usb.config=mtp,adb \
+	persist.logd.logpersistd=logcatd \
+	debug.graphic_log=1
+	
+
 # ---------------------------------------------------------------------------
 
 PRODUCT_COPY_FILES_OVERRIDES += \
     root/fstab.goldfish \
     root/fstab.ranchu \
     root/init.goldfish.rc \
+    root/init.ranchu.rc \
     root/ueventd.goldfish.rc \
     root/ueventd.ranchu.rc \
     recovery/root/fstab.goldfish \
@@ -145,6 +168,8 @@ PRODUCT_PACKAGES += \
  	$(LOCAL_PATH)/root/init.rc:root/init.rc \
  	$(LOCAL_PATH)/root/init.trace.rc:root/init.trace.rc \
  	$(LOCAL_PATH)/root/init.usb.rc:root/init.usb.rc \
+ 	$(LOCAL_PATH)/root/init.hi3630.usb.rc:root/init.hi3630.usb.rc \
+ 	$(LOCAL_PATH)/root/init.recovery.huawei.rc:root/init.recovery.huawei.rc \
  	$(LOCAL_PATH)/root/ueventd.hi3630.rc:root/ueventd.hi3630.rc \
  	$(LOCAL_PATH)/root/resetFactory.cfg:root/resetFactory.cfg \
 	$(LOCAL_PATH)/root/sbin/hdbd:root/sbin/hdbd \
