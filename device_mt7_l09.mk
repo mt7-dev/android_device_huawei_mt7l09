@@ -42,11 +42,13 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.isUsbOtgEnabled=true \
 	ro.sf.lcd_density=400 \
-	ro.hardware=hi3630 
+	ro.hardware=hi3630 \
  	ro.hardware.alter=Kirin925
 	
 ## From stock system.prop
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	ro.product.cpu.abilist=armeabi-v7a,armeabi \
+	ro.product.cpu.abilist32=armeabi-v7a,armeabi \
 	ro.adb.secure=0 \
 	ro.secure=0 \
 	ro.allow.mock.location=1 \
