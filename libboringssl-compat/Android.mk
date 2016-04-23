@@ -1,4 +1,4 @@
-# Copyright (C) 2015 The CyanogenMod Project
+# Copyright (C) 2008 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,19 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := $(call my-dir)
+LOCAL_PATH:= $(call my-dir)
+
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES := \
-	hw_gui.cpp \
-	hw_log.c
+EVP_FILES := \
+    p_dec.c \
+    p_enc.c \
+    p_open.c \
+    p_seal.c
 
-LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)
-LOCAL_MODULE := libc_huawei_symbols
+RSA_FILES := rsa_pss.c
+
+B64_FILES := bio_b64.c
+
+LOCAL_SRC_FILES := $(EVP_FILES) $(RSA_FILES)
+
+ifeq ($(TARGET_REQUIRES_B64_COMPAT),true)
+LOCAL_SRC_FILES += $(B64_FILES)
+endif
+
+LOCAL_SHARED_LIBRARIES := liblog libcrypto
+LOCAL_MODULE := libboringssl-compat
 LOCAL_MODULE_TAGS := optional
+include $(BUILD_SHARED_LIBRARY)
 
-# Debugging (uncomment to enable)
-# LOCAL_CFLAGS += -DHW_LIBC_DEBUG
-# LOCAL_WHOLE_STATIC_LIBRARIES := liblog
-
-include $(BUILD_STATIC_LIBRARY)

@@ -109,9 +109,6 @@ TARGET_USERIMAGES_USE_EXT4 		:= true
 
 #BOARD_CUSTOM_BOOTIMG_MK := device/huawei/mt7_l09/custombootimg.mk
 
-# Libc extensions
-BOARD_PROVIDES_ADDITIONAL_BIONIC_STATIC_LIBS += libc_huawei_symbols
-
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-namespace android {
+void __android_logPower_print(void) {
+}
 
-int DISPLAY_SIZE_DENSITY_VALUE;
-int DISPLAY_SIZE_DENSITY;
-
-}; // namespace android
+int isLogEnabled(void) {
+    return 0;
+}

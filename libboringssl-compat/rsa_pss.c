@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The CyanogenMod Project
+ * Copyright (C) 2015 Sony Mobile Communications AB
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-void __android_janklog_print(int prio, const char *tag, const char *fmt, ...) {
-    return 0;
-}
+#include <openssl/rsa.h>
 
-void __android_logPower_print(int prio, const char *tag, const char *fmt, ...) {
-    return 0;
-}
-
-int __android_log_exception_write(int prio, const char *tag, const char *msg) {
-    return 0;
+int RSA_verify_PKCS1_PSS(RSA *rsa,
+			 const unsigned char *mHash,
+			 const EVP_MD *Hash,
+			 const unsigned char *EM,
+			 int sLen)
+{
+	return RSA_verify_PKCS1_PSS_mgf1(rsa, mHash, Hash, NULL, EM, sLen);
 }
