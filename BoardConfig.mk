@@ -20,10 +20,6 @@
 #
 #  Every contribute is welcome here!
 #
-# This file is inspired by the Honor 6 cyanogenmod project
-# a phone that is very similar to Ascend Mate 7.
-#
-#  Search for h60-dev on github - Thank you @codeworks
 
 USE_CAMERA_STUB := true
 TARGET_OTA_ASSERT_DEVICE := hwmt7_l09,mt7l09,mt7_l09,MT7-L09,MT7L09,h60
@@ -106,8 +102,6 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE 	:= 12759072768
 BOARD_FLASH_BLOCK_SIZE 			:= 4096
 TARGET_USERIMAGES_USE_EXT4 		:= true
 
-#BOARD_CUSTOM_BOOTIMG_MK := device/huawei/mt7_l09/custombootimg.mk
-
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
@@ -148,9 +142,6 @@ ENABLE_WEBGL := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_FSTAB := device/huawei/mt7_l09/recovery/etc/recovery.fstab
-#TARGET_RECOVERY_INITRC := device/huawei/mt7_l09/recovery/root/init.rc
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
-#BOARD_RECOVERY_NEEDS_FBIOPAN_DISPLAY := true
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd_backlight0\"
-#BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 TARGET_USERIMAGES_USE_EXT4 := true
