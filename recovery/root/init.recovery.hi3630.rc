@@ -1,3 +1,9 @@
+# ///////////////////////////////////////////
+# / This .rc  is provided and not generated /
+# ///////////////////////////////////////////
+# /                               gabry3795 /
+# ///////////////////////////////////////////
+
 on init
     write /sys/module/block2mtd/parameters/block2mtd /dev/block/mmcblk0p6
     wait /dev/nve0
