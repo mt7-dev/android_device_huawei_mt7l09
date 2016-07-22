@@ -176,29 +176,6 @@ PRODUCT_PACKAGES += \
 # ========================================== RAMDISK ==========================================
 # To clean
  PRODUCT_COPY_FILES += \
- 	$(LOCAL_PATH)/root/fstab.hi3630:root/fstab.hi3630 \
- 	$(LOCAL_PATH)/root/init.41031.rc:root/init.41031.rc \
- 	$(LOCAL_PATH)/root/init.4843.rc:root/init.4843.rc \
- 	$(LOCAL_PATH)/root/init.71422.rc:root/init.71422.rc \
- 	$(LOCAL_PATH)/root/init.chip.usb.rc:root/init.chip.usb.rc \
- 	$(LOCAL_PATH)/root/init.connectivity.bcm4334.rc:root/init.connectivity.bcm4334.rc \
- 	$(LOCAL_PATH)/root/init.connectivity.gps.rc:root/init.connectivity.gps.rc \
- 	$(LOCAL_PATH)/root/init.connectivity.rc:root/init.connectivity.rc \
- 	$(LOCAL_PATH)/root/init.device.rc:root/init.device.rc \
- 	$(LOCAL_PATH)/root/init.environ.rc:root/init.environ.rc \
- 	$(LOCAL_PATH)/root/init.extmodem.rc:root/init.extmodem.rc \
- 	$(LOCAL_PATH)/root/init.hi3630.rc:root/init.hi3630.rc \
- 	$(LOCAL_PATH)/root/init.hisi.rc:root/init.hisi.rc \
- 	$(LOCAL_PATH)/root/init.manufacture.rc:root/init.manufacture.rc \
- 	$(LOCAL_PATH)/root/init.platform.rc:root/init.platform.rc \
- 	$(LOCAL_PATH)/root/init.post-fs-data.rc:root/init.post-fs-data.rc \
- 	$(LOCAL_PATH)/root/init.rc:root/init.rc \
- 	$(LOCAL_PATH)/root/init.trace.rc:root/init.trace.rc \
- 	$(LOCAL_PATH)/root/init.usb.rc:root/init.usb.rc \
- 	$(LOCAL_PATH)/root/init.hi3630.usb.rc:root/init.hi3630.usb.rc \
- 	$(LOCAL_PATH)/root/init.recovery.huawei.rc:root/init.recovery.huawei.rc \
- 	$(LOCAL_PATH)/root/ueventd.hi3630.rc:root/ueventd.hi3630.rc \
- 	$(LOCAL_PATH)/root/resetFactory.cfg:root/resetFactory.cfg \
 	$(LOCAL_PATH)/root/sbin/hdbd:root/sbin/hdbd \
 	$(LOCAL_PATH)/root/sbin/teecd:root/sbin/teecd \
 	$(LOCAL_PATH)/root/sbin/oeminfo_nvm_server:root/sbin/oeminfo_nvm_server \
