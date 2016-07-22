@@ -12,3 +12,16 @@ on init
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor ondemand
     write /sys/kernel/hmp/up_threshold 1020
     write /sys/kernel/hmp/down_threshold 768
+
+# ///////////////////////////////////////////////////////////////////
+# / Add the flash_recovery service, so install_recovery.sh          /
+# / will be put in /system/bin/ instead of /system/etc as requested /
+# / for L+ android versions                                         /
+# /                                                                 /
+# / Look tool/releasetools/common.py at lines 1556 - 1575           /
+# / Look build/core/Makefile at line 1125                           /
+# ///////////////////////////////////////////////////////////////////
+service flash_recovery /system/bin/install-recovery.sh
+     class main
+     seclabel u:r:install_recovery:s0
+     oneshot
