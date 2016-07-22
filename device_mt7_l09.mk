@@ -51,7 +51,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.product.cpu.abilist32=armeabi-v7a,armeabi \
 	ro.build.version.codename=REL \
 	ro.build.version.all_codenames=REL \
-	ro.build.version.sdk=23 \
 	ro.adb.secure=0 \
 	ro.secure=0 \
 	ro.allow.mock.location=1 \
@@ -136,9 +135,7 @@ PRODUCT_PACKAGES += \
 	libGLES_mali
 
 # ======================================= CUSTOM PACKAGES ======================================
-# PRODUCT_PACKAGES += \
-# 	mkbootimg-mt7 \
-# 	unpackbootimg-mt7
+
 
 # ========================================== RECOVERY ==========================================
  PRODUCT_COPY_FILES += \
