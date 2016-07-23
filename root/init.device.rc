@@ -70,11 +70,11 @@ on boot
     chown system system /sys/touchscreen/fw_update_sd
     chown system system /sys/touchscreen/touch_project_id
     chown system system /sys/touchscreen/touch_chip_info
-	chown system system /sys/touchscreen/roi_enable
-	chown system system /sys/touchscreen/roi_data
-	chown system system /sys/touchscreen/roi_data_debug
-	chown system system /sys/touchscreen/support_tp_feature
-	chown system system /sys/touchscreen/touch_weight
+    chown system system /sys/touchscreen/roi_enable
+    chown system system /sys/touchscreen/roi_data
+    chown system system /sys/touchscreen/roi_data_debug
+    chown system system /sys/touchscreen/support_tp_feature
+    chown system system /sys/touchscreen/touch_weight
     chown system system /sys/touchscreen/hw_mmi_index
     chown system system /sys/touchscreen/cyttsp5_device_access.main_ttsp_core/rawdata_check
     chown system system /sys/touchscreen/cyttsp5_device_access.main_ttsp_core/command
@@ -102,12 +102,6 @@ on boot
     mkdir /dev/immersion 0771 system system
     export VIBE_PIPE_PATH /dev/immersion
 
-
-
-service device-monitor /system/bin/device_monitor
-     class main
-     user root
-     group system
 
 service immvibed /system/bin/immvibed -p 99 -u 1000
     class main

@@ -21,10 +21,6 @@
 /dev/ttySPI14           0440   root     root
 /dev/memory_throughput_up_threshold    0660    system  system
 
-/dev/hi6421_spk           0660   media      media
-/dev/tfa9887              0660   media      media
-/dev/boardconfig_fs       0660   media      audio
-
 /dev/video0					0660  system 	camera
 /dev/video1					0660  system 	camera
 /dev/video2					0660  system 	camera

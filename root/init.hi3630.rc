@@ -128,13 +128,6 @@ service thermal-daemon /system/bin/thermal-daemon
      user root
      group root
 
-service teecd /sbin/teecd
-    socket tee-multi-user stream 660 root system
-    class core
-    user root
-    group root
-    seclabel u:r:tee:s0
-
 service storedefaultkey /system/bin/storedefaultkey
     class main
     user root
@@ -201,6 +194,9 @@ on property:persist.sys.smart_power=4 && property:sys.boot_completed=1
     write /sys/kernel/set_hmp_thresholds/enable 1
 
 on init
+    # Link the shim libs 
+    export LD_SHIM_LIBS /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so:/system/lib/liblog.so|libhw_log.so:/system/lib/libcutils.so|libhw_cutils.so:/system/lib/libcameraservice.so|libhw_gui.so
+
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod 664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq

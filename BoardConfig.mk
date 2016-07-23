@@ -74,17 +74,17 @@ TARGET_PROVIDES_INIT_RC := true
 TARGET_KERNEL_SOURCE := kernel/huawei/mt7_l09
 TARGET_KERNEL_CONFIG := merge_hi3630_defconfig
 TARGET_KERNEL_ARCH := arm
-# BOARD_USES_UBOOT := false
+
 ## Let's keep this as a fallback
 TARGET_PREBUILT_KERNEL 	:= device/huawei/mt7_l09/kernel
+
 BOARD_KERNEL_CMDLINE 	:= ro.boot.hardware=hi3630 vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE	:= 2048
-
-BOARD_KERNEL_BASE	:= 0x00600000
-BOARD_KERNEL_OFFSET	:= 0x00008000
+BOARD_KERNEL_BASE		:= 0x00600000
+BOARD_KERNEL_OFFSET		:= 0x00008000
 BOARD_RAMDISK_OFFSET	:= 0x03a00000
-BOARD_SECOND_OFFSET	:= 0x00900000
-BOARD_TAGS_OFFSET	:= 0xffc00000
+BOARD_SECOND_OFFSET		:= 0x00900000
+BOARD_TAGS_OFFSET		:= 0xffc00000
 
 BOARD_MKBOOTIMG_ARGS 	+= --base $(BOARD_KERNEL_BASE)
 BOARD_MKBOOTIMG_ARGS 	+= --kernel_offset $(BOARD_KERNEL_OFFSET)
@@ -93,14 +93,14 @@ BOARD_MKBOOTIMG_ARGS 	+= --second_offset $(BOARD_SECOND_OFFSET)
 BOARD_MKBOOTIMG_ARGS 	+= --tags_offset $(BOARD_TAGS_OFFSET)
 
 # fix this up by examining /proc/mtd on a running device
-BOARD_NAND_PAGE_SIZE 			:= 4096
-BOARD_NAND_SPARE_SIZE 			:= 128
+BOARD_NAND_PAGE_SIZE 				:= 4096
+BOARD_NAND_SPARE_SIZE 				:= 128
 BOARD_BOOTIMAGE_PARTITION_SIZE 		:= 14680064
 BOARD_RECOVERYIMAGE_PARTITION_SIZE 	:= 15728640
 BOARD_SYSTEMIMAGE_PARTITION_SIZE 	:= 1610612736
 BOARD_USERDATAIMAGE_PARTITION_SIZE 	:= 12759072768
-BOARD_FLASH_BLOCK_SIZE 			:= 4096
-TARGET_USERIMAGES_USE_EXT4 		:= true
+BOARD_FLASH_BLOCK_SIZE 				:= 4096
+TARGET_USERIMAGES_USE_EXT4 			:= true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true

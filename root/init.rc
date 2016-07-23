@@ -1,27 +1,20 @@
-# ///////////////////////////////////////////
-# /   This init.rc for boot is from stock   /
-# ///////////////////////////////////////////
-# /                               gabry3795 /
-# ///////////////////////////////////////////
 
 import /init.environ.rc
 import /init.usb.rc
 import /init.${ro.hardware}.rc
 import /init.${ro.zygote}.rc
 
-import /init.hisi.rc
+# import /init.hisi.rc
 
-import /init.audio.rc
 import /init.connectivity.rc
 import /init.device.rc
 import /init.extmodem.rc
-import /init.manufacture.rc
-import /init.performance.rc
-import /init.platform.rc
-import /init.protocol.rc
+# import /init.manufacture.rc
+# import /init.platform.rc
 import /init.trace.rc
 import /init.${ro.boardid.product}.rc
 import /init.post-fs-data.rc
+import /init.cm.rc
 
 on early-init
     write /proc/1/oom_score_adj -1000
@@ -31,6 +24,7 @@ on early-init
     start ueventd
 
     setprop persist.service.hdb.enable true
+    setprop debug.graphic_log 1
 
 on init
     sysclktz 0
@@ -523,8 +517,6 @@ service servicemanager /system/bin/servicemanager
     group system
     critical
     onrestart restart healthd
-    onrestart restart zygote
-    onrestart restart media
     onrestart restart surfaceflinger
     onrestart restart drm
     onrestart restart perfhub
@@ -668,6 +660,7 @@ service logcatd /system/bin/logcat -b all -v threadtime -v usec -v printable -D 
     user logd
     group log
 
+
 service immvibed /system/bin/immvibed -p 99 -u 1000
     class main
 	user root
@@ -678,3 +671,17 @@ service fingerprintd /system/bin/fingerprintd
     class late_start
     user system
     group input
+
+# mount /data/su.img to /su
+on property:sukernel.mount=1
+    mount ext4 loop@/data/su.img /su noatime
+
+# launch SuperSU daemon
+service daemonsu /sbin/launch_daemonsu.sh
+    class late_start
+    user root
+    seclabel u:r:init:s0
+    oneshot
+
+# SuperSU:PATCH:264
+# SuperSU:STOCK:92cca5c02653b5211899a2f968dbe1f5afd7045c
