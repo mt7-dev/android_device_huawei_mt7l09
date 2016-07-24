@@ -14,7 +14,22 @@
  * limitations under the License.
  */
 
+/*
 void __android_logPower_print(void) {
+}
+*/
+
+void __android_logPower_print(int a1, const char *a2, int *a3, int a4) {
+
+}
+
+void __android_log_exception_write(void){
+}
+
+void __android_log_exception_msg_write(void){
+}
+
+void __android_janklog_print(void) {
 }
 
 int isLogEnabled(void) {
