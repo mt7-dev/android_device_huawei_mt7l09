@@ -28,6 +28,9 @@ on early-init
 
 on init
     sysclktz 0
+    
+    #TODO move to init.hi3630.rc
+    export LD_SHIM_LIBS /system/lib/liblog.so|libhw_log.so:/system/lib/libcutils.so|libhw_cutils.so:/system/lib/libgui.so|libhw_graphics.so:/system/lib/libgui.so|libhw_gui.so
 
     symlink /system/etc /etc
     symlink /sys/kernel/debug /d

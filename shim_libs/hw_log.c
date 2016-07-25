@@ -32,6 +32,12 @@ void __android_log_exception_msg_write(void){
 void __android_janklog_print(void) {
 }
 
+void __android_janklog_buf_write(void){
+}
+
+void __android_logPower_buf_write(void){
+}
+
 int isLogEnabled(void) {
     return 0;
 }

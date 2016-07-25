@@ -16,8 +16,8 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 # Debugging (uncomment to enable)
-# LOCAL_CFLAGS += -DHW_LIBC_DEBUG
-# LOCAL_WHOLE_STATIC_LIBRARIES := liblog
+LOCAL_CFLAGS += -DHW_LIBC_DEBUG
+LOCAL_WHOLE_STATIC_LIBRARIES := liblog
 
 LOCAL_SRC_FILES := \
     hw_cutils.c
@@ -26,6 +26,8 @@ LOCAL_MODULE := libhw_cutils
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
+
+# ================================
 
 include $(CLEAR_VARS)
 
@@ -37,6 +39,8 @@ LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
 
+# ================================
+
 include $(CLEAR_VARS)
 
 LOCAL_SHARED_LIBRARIES := liblog libcutils libgui libbinder libutils
@@ -47,5 +51,18 @@ LOCAL_SRC_FILES := \
 
 LOCAL_MODULE := libhw_gui
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+
+include $(BUILD_SHARED_LIBRARY)
+
+# ================================
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := \
+	hw_graphics.cpp
+
+LOCAL_SHARED_LIBRARIES := libgui libsurfaceflinger liblog libcutils libbinder libutils
+LOCAL_MODULE := libhw_graphics
+LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
