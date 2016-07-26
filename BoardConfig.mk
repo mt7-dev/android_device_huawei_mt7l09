@@ -25,7 +25,7 @@ USE_CAMERA_STUB := true
 TARGET_OTA_ASSERT_DEVICE := hwmt7_l09,mt7l09,mt7_l09,MT7-L09,MT7L09,h60
 
 # inherit from the proprietary version
--include vendor/huawei/mt7_l09/BoardConfigVendor.mk
+-include vendor/huawei/mt7l09/BoardConfigVendor.mk
 
 # Architecture
 TARGET_ARCH := arm
@@ -71,12 +71,12 @@ TARGET_PROVIDES_INIT_RC := true
 
 # ========================================== KERNEL ==========================================
 
-TARGET_KERNEL_SOURCE := kernel/huawei/mt7_l09
+TARGET_KERNEL_SOURCE := kernel/huawei/mt7l09
 TARGET_KERNEL_CONFIG := merge_hi3630_defconfig
 TARGET_KERNEL_ARCH := arm
 
 ## Let's keep this as a fallback
-TARGET_PREBUILT_KERNEL 	:= device/huawei/mt7_l09/kernel
+TARGET_PREBUILT_KERNEL 	:= device/huawei/mt7l09/kernel
 
 BOARD_KERNEL_CMDLINE 	:= ro.boot.hardware=hi3630 vmalloc=384M coherent_pool=512K mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) user_debug=7 androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE	:= 2048
@@ -118,7 +118,7 @@ BOARD_CAMERA_HAVE_ISO := true
 COMMON_GLOBAL_CFLAGS += -DHAVE_ISO
 
 # RIL
-#BOARD_RIL_CLASS := ../../../device/huawei/mt7_l09/ril/
+#BOARD_RIL_CLASS := ../../../device/huawei/mt7l09/ril/
 
 # Preload bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
@@ -128,7 +128,7 @@ ENABLE_WEBGL := true
 
 # Selinux
 # BOARD_SEPOLICY_DIRS += \
-# 	device/huawei/mt7_l09/selinux
+# 	device/huawei/mt7l09/selinux
 
 # BOARD_SEPOLICY_UNION += \
 # 	file_contexts \
@@ -141,7 +141,7 @@ ENABLE_WEBGL := true
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
 RECOVERY_FSTAB_VERSION := 2
-TARGET_RECOVERY_FSTAB := device/huawei/mt7_l09/recovery/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/huawei/mt7l09/recovery/etc/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd_backlight0\"
 TARGET_USERIMAGES_USE_EXT4 := true
