@@ -1,9 +1,0 @@
-Android magic found at: 0
-BOARD_KERNEL_CMDLINE 'ro.boot.hardware=hi3630 vmalloc=384M mem=2044m@0x200000 psci=enable mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p7(modemnvm_factory),p18(splash),p22(dfx),p23(modemnvm_backup),p24(modemnvm_img),p25(modemnvm_system),p26(modem),p27(modem_dsp),p28(modem_om),p29(modemnvm_update),p31(3rdmodem),p32(3rdmodemnvm),p33(3rdmodemnvmbkp) androidboot.selinux=permissive
-BOARD_KERNEL_BASE 00600000
-BOARD_RAMDISK_OFFSET 03a00000
-BOARD_SECOND_OFFSET 00900000
-BOARD_TAGS_OFFSET ffc00000
-BOARD_PAGE_SIZE 2048
-BOARD_SECOND_SIZE 0
-BOARD_DT_SIZE 0
