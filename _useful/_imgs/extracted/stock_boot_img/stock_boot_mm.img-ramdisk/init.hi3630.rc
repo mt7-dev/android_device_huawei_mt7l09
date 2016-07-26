@@ -1,0 +1,466 @@
+
+on early-boot
+    symlink /sdcard /mnt/sdcard
+    symlink /storage/self/primary /storage/sdcard0
+
+    mkdir /mnt/media_rw 0750 media_rw media_rw
+
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/run 1
+
+on init
+    mkdir /e2fslog 0755 root root
+    mount tmpfs tmpfs /e2fslog mode=0755
+
+on fs
+    setprop ro.crypto.fuse_sdcard true
+
+    export ANDROID_STORAGE ""
+
+    wait /dev/block/platform/hi_mci.0/by-name/system
+    mount ext4 /dev/block/platform/hi_mci.0/by-name/system /system ro
+    mount ext4 /dev/block/platform/hi_mci.0/by-name/cache /cache
+    wait /dev/block/platform/hi_mci.0/by-name/userdata
+    mount_all /fstab.hi3630
+
+
+    wait /dev/block/mmcblk0p11
+    chown system system /dev/block/mmcblk0p11
+    chmod 0660 /dev/block/mmcblk0p11
+
+on post-fs
+    modem_fs_chk
+
+on post-fs-data
+    mkdir /data/share 0770 media_rw media_rw
+    chown media_rw media_rw /data/share
+    symlink /data/share /data/media
+    mount sdcardfs /data/share /mnt/shell/emulated nosuid nodev derive=legacy,reserved_mb=20
+    
+    restorecon_recursive /splash2
+    restorecon_recursive /modem_log 
+    restorecon_recursive /mnvm2:0
+
+on init
+    mkdir /sec_storage
+    mount ext4 /dev/block/platform/hi_mci.0/by-name/secure_storage /sec_storage nosuid nodev noatime wait crypt discard,auto_da_alloc,mblk_io_submit,data=journal,context=u:object_r:teecd_data_file:s0
+    chown root root /sec_storage
+    chmod 600 /sec_storage
+
+
+on init
+    write /sys/module/block2mtd/parameters/block2mtd /dev/block/mmcblk0p6
+    wait /dev/nve0
+    chmod 0770 /dev/nve0
+    chown root system /dev/nve0
+
+on early-boot
+	service HwCamCfgSvr /system/bin/HwCamCfgSvr   hi3630 PINE
+	class main
+	user media
+	group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm system dsm
+
+on boot
+
+
+
+    mount debugfs /sys/kernel/debug /sys/kernel/debug mode=0755
+
+    chown system camera /dev/imgsysbrg_vdec0
+    chmod 660 /dev/imgsysbrg_vdec0
+    chown media media /dev/k3vpp0
+    chmod 660 /dev/k3vpp0
+    chown media camera /dev/jpu
+    chmod 660 /dev/jpu
+
+    chown system system /sys/class/leds/lcd_backlight0/brightness
+    chmod 664 /sys/class/leds/lcd_backlight0/brightness
+    chown system system /sys/class/k3_lcd/lcd_info/hkadc_debug
+    chmod 660 /sys/class/k3_lcd/lcd_info/hkadc_debug
+
+    chown system irda /dev/ttyAMA0
+    chmod 660 /dev/ttyAMA0
+    chown system irda /sys/class/irda/irda_maxim/power_cfg
+    write /sys/class/irda/irda_maxim/power_cfg 1
+
+    chown media media /sys/kernel/debug/anc_hs/charge_ctl
+
+service sdcard /system/bin/sdcard /data/share /mnt/shell/emulated/ 1015 1015
+    class main
+    disabled
+
+
+
+on boot
+    mkdir /system/isp
+    chmod 777 /system/isp
+    chown system camera /dev/media0
+    chmod 660 /dev/media0
+    chown system camera /dev/media1
+    chmod 660 /dev/media1
+    chown system camera /dev/video0
+    chmod 660 /dev/video0
+    chown system camera /dev/v4l-subdev0
+    chmod 660 /dev/v4l-subdev0
+    chown system camera /dev/v4l-subdev1
+    chmod 660 /dev/v4l-subdev1
+    chown system camera /dev/v4l-subdev2
+    chmod 660 /dev/v4l-subdev2
+    chown system camera /dev/v4l-subdev3
+    chmod 660 /dev/v4l-subdev3
+    chown system camera /dev/v4l-subdev4
+    chmod 660 /dev/v4l-subdev4
+    mkdir /data/camera
+    chown system camera /data/camera
+    chmod 770 /data/camera
+    chmod 664 /data/camera/hisi_sensor0
+    chmod 664 /data/camera/hisi_sensor1
+    chown system system /sys/class/leds/torch/brightness
+    chmod 664 /sys/class/leds/torch/brightness
+    chown system system /sys/class/leds/torch/flash_thermal_protect
+    chmod 664 /sys/class/leds/torch/flash_thermal_protect
+    chown system system /sys/class/leds/torch/flash_led_fault
+    chmod 664 /sys/class/leds/torch/flash_led_fault
+
+service thermal-daemon /system/bin/thermal-daemon
+     class main
+     user root
+     group root
+
+service teecd /sbin/teecd
+    socket tee-multi-user stream 660 root system
+    class core
+    user root
+    group root
+    seclabel u:r:tee:s0
+
+service storedefaultkey /system/bin/storedefaultkey
+    class main
+    user root
+    group root
+    oneshot
+
+on boot
+    mkdir /data/corefile
+    write /proc/sys/kernel/core_uses_pid 1
+    write  /proc/sys/kernel/core_pattern  /data/corefile/core-%e-%p-%t
+    write /sys/block/zram0/disksize 268435456
+    swapon_all fstab.hi3630
+
+on property:persist.sys.fingersense=1
+    write /sys/devices/platform/huawei_sensor/set_fingersense_enable 1
+    write /sys/devices/platform/huawei_touch/roi_enable 1
+on property:persist.sys.fingersense=0
+    write /sys/devices/platform/huawei_sensor/set_fingersense_enable 0
+    write /sys/devices/platform/huawei_touch/roi_enable 0
+
+on property:sys.boot_completed=1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor ondemand
+    setprop persist.sys.smart_power ${persist.sys.smart_power}
+
+on property:persist.sys.smart_power=2 && property:sys.boot_completed=1
+    write /sys/kernel/set_hmp_thresholds/enable 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 1209600
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 160000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_min_interval 100
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_upthreshold 871
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_downthreshold 448
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp 1
+    write /sys/kernel/hmp/up_threshold 871
+    write /sys/kernel/hmp/down_threshold 448
+    write /sys/kernel/hmp/up_prio 140
+    write /sys/kernel/hmp/task_fork_on_bigcluster 1
+    write /sys/kernel/set_hmp_thresholds/enable 1
+
+on property:persist.sys.smart_power=3 && property:sys.boot_completed=1
+    write /sys/kernel/set_hmp_thresholds/enable 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 1305600
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 160000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_min_interval 100
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_upthreshold 400
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp_downthreshold 150
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp 1
+    write /sys/kernel/hmp/up_threshold 500
+    write /sys/kernel/hmp/down_threshold 200
+    write /sys/kernel/hmp/up_prio 140
+    write /sys/kernel/hmp/task_fork_on_bigcluster 1
+    write /sys/kernel/set_hmp_thresholds/enable 1
+
+on property:persist.sys.smart_power=4 && property:sys.boot_completed=1
+    write /sys/kernel/set_hmp_thresholds/enable 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 1209600
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost_hmp 0
+    write /sys/kernel/hmp/up_threshold 1008
+    write /sys/kernel/hmp/down_threshold 768
+    write /sys/kernel/hmp/up_prio 140
+    write /sys/kernel/hmp/task_fork_on_bigcluster 0
+    write /sys/kernel/set_hmp_thresholds/enable 1
+
+on init
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chmod 664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chmod 664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
+    chmod 664 /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+    chmod 664 /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+
+    chown system system /sys/class/devfreq/gpufreq/max_freq
+    chmod 664 /sys/class/devfreq/gpufreq/max_freq
+    chown system system /sys/class/devfreq/gpufreq/min_freq
+    chmod 664 /sys/class/devfreq/gpufreq/min_freq
+    chown system system /sys/class/devfreq/gpufreq/cur_freq
+    chmod 664 /sys/class/devfreq/gpufreq/cur_freq
+    chown system system /sys/class/devfreq/gpufreq/available_frequencies
+    chmod 664 /sys/class/devfreq/gpufreq/available_frequencies
+    chown system system /sys/class/devfreq/gpufreq/mali_ondemand/animation_boost
+    chmod 664 /sys/class/devfreq/gpufreq/mali_ondemand/animation_boost
+    chown system system /sys/class/devfreq/gpufreq/mali_ondemand/animation_boost_freq
+    chmod 664 /sys/class/devfreq/gpufreq/mali_ondemand/animation_boost_freq
+
+    chown system system /sys/class/devfreq/fff20000.ddr_devfreq/max_freq
+    chmod 664 /sys/class/devfreq/fff20000.ddr_devfreq/max_freq
+    chown system system /sys/class/devfreq/fff20000.ddr_devfreq/min_freq
+    chmod 664 /sys/class/devfreq/fff20000.ddr_devfreq/min_freq
+
+    chown system system /sys/kernel/set_hmp_thresholds/policy
+    chmod 0664 /sys/kernel/set_hmp_thresholds/policy
+    write /sys/kernel/hmp/task_fork_on_bigcluster 1
+
+    chown system system /sys/class/devfreq/ddrfreq/min_freq
+    chmod 0664 /sys/class/devfreq/ddrfreq/min_freq
+
+    chown system system /sys/kernel/hmp/task_fork_on_bigcluster
+    chmod 0664 /sys/kernel/hmp/task_fork_on_bigcluster
+
+    chown system system /sys/kernel/perfhub/cpuaffinity
+    chmod 0660 /sys/kernel/perfhub/cpuaffinity
+
+on charger
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 1209600
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
+
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor ondemand
+    write /sys/kernel/set_hmp_thresholds/enable 0
+    write /sys/kernel/hmp/up_threshold 1020
+    write /sys/kernel/hmp/down_threshold 768
+    write /sys/kernel/set_hmp_thresholds/enable 1
+    write /sys/class/devfreq/ddrfreq/max_freq 800000000
+    write /sys/class/devfreq/ddrfreq/min_freq 800000000
+    write /sys/class/devfreq/ddrfreq/min_freq 0
+    write /sys/class/devfreq/ddrfreq/max_freq 0
+
+
+
+on init
+    chmod 660 /dev/appvcom
+    chmod 660 /dev/appvcom1
+    chmod 660 /dev/appvcom2
+    chmod 660 /dev/appvcom3
+    chmod 660 /dev/appvcom4
+    chmod 660 /dev/appvcom5
+    chmod 660 /dev/appvcom6
+    chmod 660 /dev/appvcom7
+    chmod 660 /dev/appvcom8
+    chmod 660 /dev/appvcom9
+    chmod 660 /dev/appvcom10
+    chmod 660 /dev/appvcom11
+    chmod 660 /dev/appvcom12
+    chmod 660 /dev/appvcom13
+    chmod 660 /dev/appvcom14
+    chmod 660 /dev/appvcom15
+    chmod 660 /dev/appvcom16
+    chmod 660 /dev/appvcom17
+    chmod 660 /dev/appvcom18
+    chmod 660 /dev/appvcom19
+    chmod 660 /dev/appvcom20
+    chmod 660 /dev/appvcom21
+    chmod 660 /dev/appvcom22
+    chmod 660 /dev/appvcom23
+    chmod 660 /dev/appvcom24
+    chmod 660 /dev/appvcom25
+    chmod 660 /dev/appvcom26
+    chmod 660 /dev/appvcomCBT
+    chmod 660 /dev/appvcomTLLOG
+    chmod 660 /dev/appvcomERRLOG
+    chmod 660 /dev/appvcomLOG
+    chmod 660 /dev/appvcomLOG1
+
+    chown radio radio /dev/appvcom
+    chown radio radio /dev/appvcom1
+    chown radio radio /dev/appvcom5
+    chown radio radio /dev/appvcom6
+    chown radio radio /dev/appvcom10
+    chown radio radio /dev/appvcom13
+    chown radio radio /dev/appvcom14
+    chown radio radio /dev/appvcom15
+
+    chown media media /dev/appvcom4
+    chown media media /dev/appvcom12
+
+    chown system system /dev/appvcom2
+    chown system system /dev/appvcom8
+
+    chown system system /dev/appvcom17
+
+    chown system system /dev/appvcomERRLOG
+
+on property:persist.sys.primarysd=*
+    exec /system/bin/preparesd.sh
+
+on init
+    chmod 0664 /dev/ion
+
+on init
+    chmod 0660 /modem_log/yaffs0
+
+on boot
+    chown system system /sys/devices/e852c000.panel_hdmi/edid
+    chown system system /sys/devices/e852c000.panel_hdmi/code
+    chown system system /sys/devices/e852c000.panel_hdmi/s3d
+    chown system system /sys/devices/e852c000.panel_hdmi/dst
+    chown system system /sys/devices/e852c000.panel_hdmi/hpd
+    chown system system /sys/devices/e852c000.panel_hdmi/hdcp
+    chown system system /sys/devices/e852c000.panel_hdmi/deepcolor
+    chown system system /sys/devices/e852c000.panel_hdmi/reset
+    chown system system /sys/devices/e852c000.panel_hdmi/reg
+    chown system system /sys/devices/e852c000.panel_hdmi/connected
+    chown system system /sys/devices/e852c000.panel_hdmi/s3dsupport
+    chown system system /sys/devices/e852c000.panel_hdmi/alledid
+    chown system system /sys/devices/e852c000.panel_hdmi/audiosupport
+    chown system system /sys/devices/e852c000.panel_hdmi/bufisfree
+    chown system system /sys/devices/e852c000.panel_hdmi/framerate
+    chmod 660 /sys/devices/e852c000.panel_hdmi/bufisfree
+    chmod 660 /sys/devices/e852c000.panel_hdmi/framerate
+
+on boot
+	write /proc/sys/net/core/rps_sock_flow_entries 0
+	write /sys/class/net/rmnet0/queues/rx-0/rps_flow_cnt 0
+	write /sys/class/net/rmnet0/queues/rx-0/rps_cpus f
+	write /sys/class/net/rmnet1/queues/rx-0/rps_flow_cnt 0
+	write /sys/class/net/rmnet1/queues/rx-0/rps_cpus f
+	write /sys/class/net/rmnet2/queues/rx-0/rps_flow_cnt 0
+	write /sys/class/net/rmnet2/queues/rx-0/rps_cpus f
+	write /sys/class/net/rmnet3/queues/rx-0/rps_flow_cnt 0
+	write /sys/class/net/rmnet3/queues/rx-0/rps_cpus f
+	write /sys/class/net/rmnet4/queues/rx-0/rps_flow_cnt 0
+	write /sys/class/net/rmnet4/queues/rx-0/rps_cpus f
+	chown system system /dev/sensorhub
+	chmod 0660 /dev/sensorhub
+	chown system system /dev/motionhub
+	chmod 0660 /dev/motionhub
+	chown system system /sys/devices/platform/huawei_sensor/acc_info
+	chown system system /sys/devices/platform/huawei_sensor/mag_info
+	chown system system /sys/devices/platform/huawei_sensor/gyro_info
+	chown system system /sys/devices/platform/huawei_sensor/als_info
+	chown system system /sys/devices/platform/huawei_sensor/ps_info
+	chown system system /sys/devices/platform/huawei_sensor/gyro_selfTest
+	chown system system /sys/devices/platform/huawei_sensor/mag_selfTest
+	chown system system /sys/devices/platform/huawei_sensor/acc_calibrate
+	chown system system /sys/devices/platform/huawei_sensor/acc_enable
+	chown system system /sys/devices/platform/huawei_sensor/acc_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/acc_selfTest
+	chown system system /sys/devices/platform/huawei_sensor/mag_enable
+	chown system system /sys/devices/platform/huawei_sensor/mag_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/gyro_enable
+	chown system system /sys/devices/platform/huawei_sensor/gyro_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/als_enable
+	chown system system /sys/devices/platform/huawei_sensor/als_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/ps_enable
+	chown system system /sys/devices/platform/huawei_sensor/ps_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/os_enable
+	chown system system /sys/devices/platform/huawei_sensor/os_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/lines_enable
+	chown system system /sys/devices/platform/huawei_sensor/lines_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/gras_enable
+	chown system system /sys/devices/platform/huawei_sensor/gras_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/rvs_enable
+	chown system system /sys/devices/platform/huawei_sensor/rvs_setdelay
+	chown system system /sys/devices/platform/huawei_sensor/i2c_rw
+
+	chown system system /sys/class/sensors/sensorhub_dbg
+	chown system system /sys/class/sensors/acc_sensor/enable
+	chown system system /sys/class/sensors/acc_sensor/set_delay
+	chown system system /sys/class/sensors/acc_sensor/info
+	chown system system /sys/class/sensors/acc_sensor/get_data
+	chown system system /sys/class/sensors/acc_sensor/self_test
+	chown system system /sys/class/sensors/acc_sensor/self_test_timeout
+	chown system system /sys/class/sensors/acc_sensor/calibrate
+	chown system system /sys/class/sensors/acc_sensor/calibrate_timeout
+	chown system system /sys/class/sensors/gyro_sensor/enable
+	chown system system /sys/class/sensors/gyro_sensor/set_delay
+	chown system system /sys/class/sensors/gyro_sensor/info
+	chown system system /sys/class/sensors/gyro_sensor/get_data
+	chown system system /sys/class/sensors/gyro_sensor/self_test
+	chown system system /sys/class/sensors/gyro_sensor/self_test_timeout
+	chown system system /sys/class/sensors/mag_sensor/enable
+	chown system system /sys/class/sensors/mag_sensor/set_delay
+	chown system system /sys/class/sensors/mag_sensor/info
+	chown system system /sys/class/sensors/mag_sensor/get_data
+	chown system system /sys/class/sensors/mag_sensor/self_test
+	chown system system /sys/class/sensors/mag_sensor/self_test_timeout
+	chown system system /sys/class/sensors/als_sensor/enable
+	chown system system /sys/class/sensors/als_sensor/set_delay
+	chown system system /sys/class/sensors/als_sensor/info
+	chown system system /sys/class/sensors/als_sensor/get_data
+	chown system system /sys/class/sensors/ps_sensor/enable
+	chown system system /sys/class/sensors/ps_sensor/set_delay
+	chown system system /sys/class/sensors/ps_sensor/info
+	chown system system /sys/class/sensors/ps_sensor/get_data
+	chown system system /sys/class/sensors/ps_sensor/calibrate
+	chown system system /sys/class/sensors/ps_sensor/calibrate_timeout
+	chown system system /sys/class/sensors/hall_sensor/enable
+	chown system system /sys/class/sensors/hall_sensor/set_delay
+	chown system system /sys/class/sensors/hall_sensor/info
+	chown system system /sys/class/sensors/hall_sensor/get_data
+	
+    chown system system /sys/devices/platform/huawei_sensor/set_fingersense_enable
+    chmod 0660 /sys/devices/platform/huawei_sensor/set_fingersense_enable
+    chown system system /sys/devices/platform/huawei_sensor/fingersense_req_data
+    chmod 0660 /sys/devices/platform/huawei_sensor/fingersense_req_data
+    chown system system /sys/devices/platform/huawei_sensor/fingersense_data_ready
+    chmod 0440 /sys/devices/platform/huawei_sensor/fingersense_data_ready
+    chown system system /sys/devices/platform/huawei_sensor/fingersense_latch_data
+    chmod 0440 /sys/devices/platform/huawei_sensor/fingersense_latch_data
+
+	chown system system /sys/class/hall/hall/state
+	chown system system /sys/class/hall/hall/report
+	chown system system /sys/class/hall/hall/info
+	chown system system /sys/class/hall/hall/count
+	chown system system /sys/class/hall/hall/enable
+	chown system system /sys/class/hall/hall/flag
+	chown system system /sys/class/hall/hall/period
+	chown system system /sys/class/hall/hall/report_count
+	chown system system /sys/class/hall/hall/value
+
+service bugreport /system/bin/dumpstate -d -p -z -B \
+        -o /data/data/com.android.shell/files/bugreports/bugreport
+    class main
+    disabled
+    oneshot
+
+service kmsgcat_cp /sbin/kmsgcat -r 4096 -n 25 -i /dev/cshell_log -f /data/hwzd_logs/cp_log/modemlog/modemkmsg-log
+    class late_start
+    user root
+    group system
+    disabled
+    seclabel u:r:hisilogcat:s0
+
+service defragd /system/bin/defragd
+    class late_start
+
+on property:sys.boot_completed=1 && property:ro.config.hw_perfhub=true
+    start perfhub
+
+service perfhub /system/bin/perfhub
+    class late_start
+    user system
+    group system
+    disabled

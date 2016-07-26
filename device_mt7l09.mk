@@ -22,7 +22,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 $(call inherit-product-if-exists, vendor/huawei/mt7l09/mt7l09-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/huawei/mt7l09/overlay
+# Disabled overlay for now
+#DEVICE_PACKAGE_OVERLAYS += device/huawei/mt7l09/overlay
 
 TARGET_PREBUILT_KERNEL 	:= device/huawei/mt7l09/kernel
 
