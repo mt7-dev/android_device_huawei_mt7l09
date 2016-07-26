@@ -39,27 +39,6 @@
 #include <gui/SurfaceControl.h> 
  
 namespace android {
-// ----------------------------------------------------------------------------
-
- status_t SurfaceControl::setBlur(float blur) {
-    status_t err = validate();
-    if (err < 0) return err;
-    return mClient->setBlur(mHandle, blur);
-}
-status_t SurfaceControl::setBlurMaskSurface(const sp<SurfaceControl>& maskSurface) {
-    status_t err = validate();
-    if (err < 0) return err;
-    return mClient->setBlurMaskSurface(mHandle, maskSurface != 0 ? maskSurface->mHandle : 0);
-}
-status_t SurfaceControl::setBlurMaskSampling(uint32_t blurMaskSampling) {
-    status_t err = validate();
-    if (err < 0) return err;
-    return mClient->setBlurMaskSampling(mHandle, blurMaskSampling);
-}
-status_t SurfaceControl::setBlurMaskAlphaThreshold(float alpha) {
-    status_t err = validate();
-    if (err < 0) return err;
-    return mClient->setBlurMaskAlphaThreshold(mHandle, alpha);
-}
-// ----------------------------------------------------------------------------
+	int DISPLAY_SIZE_DENSITY_VALUE;
+	int DISPLAY_SIZE_DENSITY;
 }; // namespace android

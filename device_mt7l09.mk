@@ -120,7 +120,8 @@ PRODUCT_PACKAGES += \
 	libboringssl-compat \
 	libhw_cutils \
 	libhw_gui \
-	libhw_log
+	libhw_log 
+#	libhw_graphics
     
 # Graphics 
 PRODUCT_PACKAGES += \
