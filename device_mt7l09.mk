@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2015 The CyanogenMod Project
+# Copyright (C) 2015 The Aosp Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,6 +23,8 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 $(call inherit-product-if-exists, vendor/huawei/mt7l09/mt7l09-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/huawei/mt7l09/overlay
+
+TARGET_PREBUILT_KERNEL 	:= device/huawei/mt7l09/kernel
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
