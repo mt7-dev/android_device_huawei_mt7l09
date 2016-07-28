@@ -28,9 +28,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := mt7l09
 PRODUCT_NAME := aosp_mt7l09
-PRODUCT_BRAND := huawei
-PRODUCT_MODEL := Huawei Ascend Mate 7
-PRODUCT_MANUFACTURER := huawei
+PRODUCT_BRAND := Android
+PRODUCT_MODEL := Ascend Mate7
+PRODUCT_MANUFACTURER := Huawei
 
 PRODUCT_PACKAGES += \
     Launcher3
