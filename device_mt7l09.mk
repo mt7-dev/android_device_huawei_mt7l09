@@ -173,7 +173,7 @@ PRODUCT_PACKAGES += \
  	$(LOCAL_PATH)/root/init.connectivity.gps.rc:root/init.connectivity.gps.rc \
  	$(LOCAL_PATH)/root/init.connectivity.rc:root/init.connectivity.rc \
  	$(LOCAL_PATH)/root/init.device.rc:root/init.device.rc \
- 	$(LOCAL_PATH)/root/init.environ.rc:root/init.environ.rc \
+ 	#$(LOCAL_PATH)/root/init.environ.rc:root/init.environ.rc \
  	$(LOCAL_PATH)/root/init.extmodem.rc:root/init.extmodem.rc \
  	$(LOCAL_PATH)/root/init.hi3630.rc:root/init.hi3630.rc \
  	$(LOCAL_PATH)/root/init.hisi.rc:root/init.hisi.rc \
