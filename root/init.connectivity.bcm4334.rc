@@ -9,7 +9,6 @@ on fs
 on post-fs
 
 on post-fs-data
-
     mkdir /data/misc/wifi 0770 wifi wifi
     chown wifi wifi /data/misc/wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
@@ -20,11 +19,11 @@ on post-fs-data
 
 on early-boot
 on property:bluetooth.log.file.create=true
-   mkdir /data/hwzd_logs/bt
-   chown bluetooth net_bt_stack /data/hwzd_logs/bt
-   chmod 775 /data/hwzd_logs/bt
+    mkdir /data/hwzd_logs/bt
+    chown bluetooth net_bt_stack /data/hwzd_logs/bt
+    chmod 775 /data/hwzd_logs/bt
 
-   setprop bluetooth.log.file.create false
+    setprop bluetooth.log.file.create false
 
 on boot
     chmod 660 /dev/ttyAMA4
@@ -34,13 +33,12 @@ on boot
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chmod 0774 /sys/class/rfkill/rfkill0/state
 
-
-     chown bluetooth net_bt_stack /proc/bluetooth/sleep/proto
-     chmod 664 /proc/bluetooth/sleep/proto
-     chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
-     chmod 664 /proc/bluetooth/sleep/btwrite
-     chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwake
-     chmod 664 /proc/bluetooth/sleep/btwake
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/proto
+    chmod 664 /proc/bluetooth/sleep/proto
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+    chmod 664 /proc/bluetooth/sleep/btwrite
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwake
+    chmod 664 /proc/bluetooth/sleep/btwake
 
     setprop wifi.interface wlan0
 
@@ -54,7 +52,6 @@ service macaddr /system/bin/mac_addr_normalization
     user root
     group root bluetooth net_bt_stack wifi
     oneshot
-
 
 service wifi_wakeup_src /system/bin/wifiwakeupsrc
     class core

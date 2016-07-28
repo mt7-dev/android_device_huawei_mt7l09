@@ -128,6 +128,13 @@ service thermal-daemon /system/bin/thermal-daemon
      user root
      group root
 
+service teecd /sbin/teecd
+    socket tee-multi-user stream 660 root system
+    class core
+    user root
+    group root
+    seclabel u:r:tee:s0
+
 service storedefaultkey /system/bin/storedefaultkey
     class main
     user root
@@ -139,7 +146,8 @@ on boot
     write /proc/sys/kernel/core_uses_pid 1
     write  /proc/sys/kernel/core_pattern  /data/corefile/core-%e-%p-%t
     write /sys/block/zram0/disksize 268435456
-    swapon_all fstab.hi3630
+    swapon_all /fstab.hi3630
+    write /proc/sys/vm/page-cluster 0
 
 on property:persist.sys.fingersense=1
     write /sys/devices/platform/huawei_sensor/set_fingersense_enable 1
@@ -194,9 +202,6 @@ on property:persist.sys.smart_power=4 && property:sys.boot_completed=1
     write /sys/kernel/set_hmp_thresholds/enable 1
 
 on init
-    # Link the shim libs 
-    export LD_SHIM_LIBS /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so:/system/lib/liblog.so|libhw_log.so:/system/lib/libcutils.so|libhw_cutils.so:/system/lib/libcameraservice.so|libhw_gui.so
-
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod 664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
@@ -460,3 +465,6 @@ service perfhub /system/bin/perfhub
     user system
     group system
     disabled
+
+on property:sys.boot_completed=1 && property:sys.huawei.bind_big_core=0
+    setprop dalvik.vm.dex2oat-threads 4

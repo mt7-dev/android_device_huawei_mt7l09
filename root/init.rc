@@ -4,17 +4,18 @@ import /init.usb.rc
 import /init.${ro.hardware}.rc
 import /init.${ro.zygote}.rc
 
-# import /init.hisi.rc
+import /init.hisi.rc
 
 import /init.connectivity.rc
 import /init.device.rc
 import /init.extmodem.rc
-# import /init.manufacture.rc
-# import /init.platform.rc
+import /init.manufacture.rc
+import /init.platform.rc
 import /init.trace.rc
 import /init.${ro.boardid.product}.rc
 import /init.post-fs-data.rc
-import /init.cm.rc
+
+import /init.connectivity.bcm4334.rc
 
 on early-init
     write /proc/1/oom_score_adj -1000
@@ -28,9 +29,6 @@ on early-init
 
 on init
     sysclktz 0
-    
-    #TODO move to init.hi3630.rc
-    export LD_SHIM_LIBS /system/lib/liblog.so|libhw_log.so:/system/lib/libcutils.so|libhw_cutils.so:/system/lib/libgui.so|libhw_graphics.so:/system/lib/libgui.so|libhw_gui.so
 
     symlink /system/etc /etc
     symlink /sys/kernel/debug /d
@@ -162,7 +160,6 @@ on init
     chmod 0664 /dev/cpuset/background/tasks
     chmod 0664 /dev/cpuset/tasks
 
-
     chown root net_bw_acct /proc/net/xt_qtaguid/ctrl
     chown root net_bw_stats /proc/net/xt_qtaguid/stats
 
@@ -203,7 +200,6 @@ on late-init
 
     trigger early-boot
     trigger boot
-
 
 on post-fs
     start logd
@@ -339,7 +335,6 @@ on post-fs-data
 
     exec - system system -- /system/bin/tzdatacheck /system/usr/share/zoneinfo /data/misc/zoneinfo
 
-
 on boot
     ifup lo
     hostname localhost
@@ -417,13 +412,13 @@ on property:sys.init_log_level=*
     loglevel ${sys.init_log_level}
 
 on charger
-    mount ext4 /dev/block/platform/hi_mci.0/by-name/splash2 /splash2 wait rw nosuid nodev
-    mount ext4 /dev/block/platform/hi_mci.0/by-name/system /system ro
+    #mount ext4 /dev/block/platform/hi_mci.0/by-name/splash2 /splash2 wait rw nosuid nodev
+    #mount ext4 /dev/block/platform/hi_mci.0/by-name/system /system ro
     mount_all /fstab.${ro.hardware}
     class_start charger
     chown system system /sys/class/android_usb/android0/switch_request
     chmod 0664 /sys/class/android_usb/android0/switch_request
-    start hw_ueventd
+    #start hw_ueventd
 
 on property:vold.decrypt=trigger_reset_main
     class_reset main
@@ -674,17 +669,3 @@ service fingerprintd /system/bin/fingerprintd
     class late_start
     user system
     group input
-
-# mount /data/su.img to /su
-on property:sukernel.mount=1
-    mount ext4 loop@/data/su.img /su noatime
-
-# launch SuperSU daemon
-service daemonsu /sbin/launch_daemonsu.sh
-    class late_start
-    user root
-    seclabel u:r:init:s0
-    oneshot
-
-# SuperSU:PATCH:264
-# SuperSU:STOCK:92cca5c02653b5211899a2f968dbe1f5afd7045c
