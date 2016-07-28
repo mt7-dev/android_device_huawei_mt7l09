@@ -7,14 +7,20 @@ persist.sys.thermal=false
 persist.sys.strictmode.disable=true
 ro.config.hw_navigationbar=true
 persist.sys.jankenable=true
-ro.sf.lcd_density=400
-hw.lcd.density=400
+ro.sf.lcd_density=380
+hw.lcd.density=380
 persist.fw.force_adoptable=true
 dalvik.vm.checkjni=false
 ro.bt.bdaddr_path=/data/misc/bluedroid/macbt
 ro.config.keypasstouser=true
 ro.audio.flinger_standbytime_ms=10000
 persist.sys.wfd.sound=false
+debug.hwui.render_dirty_regions=false
+ro.hwui.text_large_cache_height=1024
+ro.hwui.text_large_cache_width=2048
+ro.hwui.text_small_cache_height=1024
+ro.hwui.text_small_cache_width=1024
+ro.hwui.r_buffer_cache_size=8
 ro.hwui.texture_cache_size=72
 ro.hwui.texture_cache_flushrate=0.4
 ro.hwui.layer_cache_size=48
@@ -22,12 +28,6 @@ ro.hwui.path_cache_size=32
 ro.hwui.shape_cache_size=2
 ro.hwui.drop_shadow_cache_size=6
 ro.hwui.gradient_cache_size=1
-debug.hwui.render_dirty_regions=false
-ro.hwui.text_large_cache_height=1024
-ro.hwui.text_large_cache_width=2048
-ro.hwui.text_small_cache_height=1024
-ro.hwui.text_small_cache_width=1024
-ro.hwui.r_buffer_cache_size=8
 ro.product.platform.pseudonym=1ARB9CV
 persist.sys.hdcp_checking=always
 ro.config.multi_task_enable=true
@@ -36,10 +36,15 @@ ro.sys.umsdirtyratio=2
 build.hisi_perf_opt=true
 ro.sys.fw.bservice_enable=true
 
-#
+# 
 # ADDITIONAL_BUILD_PROPERTIES
-#
+# 
+
+# Enable virtual keys
 qemu.hw.mainkeys=0
+# Define bluetooth/wifi chip
+ro.connectivity.sub_chiptype=bcm4334
+
 audioril.lib=libhuawei-audio-ril.so
 ro.carrier=unknown
 ro.setupwizard.mode=OPTIONAL
@@ -76,10 +81,6 @@ ro.ril.ecclist=112,911,#911,*911
 ro.check.modem_network=true
 ro.config.ipv4.mtu=1400
 gsm.fastdormancy.mode=3
-ro.config.hw_hotswap_on=false
-ro.config.hw_media_flags=3
-ro.config.hw_sdInstall_enable=true
-ro.config.hw_showTestInfo=true
 
 ro.config.app_big_icon_size=153
 ro.config.launcher_matchcard=0
@@ -102,13 +103,18 @@ ro.config.hw_gps_power_track=true
 ro.config.hw_smartcardservice=true
 ro.config.hw_subtitle_support=true
 ro.config.hw_support_geofence=true
+ro.config.hw_hotswap_on=false
+ro.config.hw_media_flags=3
+ro.config.hw_sdInstall_enable=true
+ro.config.hw_showTestInfo=true
+ro.config.hw_wifipro_enable=true
+
 ro.dual.sim.phone=true
 ro.hwcamera.previeweffects=true
 ro.config.lvm_mode=true
 ro.config.wind_noise_supp=true
 ro.config.virtual_hd_voice=true
 
-ro.config.hw_wifipro_enable=true
 ro.config.linkplus.roaming=true
 
 ro.config.fp_navigation=false
