@@ -20,7 +20,6 @@ void __android_logPower_print(void) {
 */
 
 void __android_logPower_print(int a1, const char *a2, int *a3, int a4) {
-
 }
 
 void __android_log_exception_write(void){
@@ -36,6 +35,9 @@ void __android_janklog_buf_write(void){
 }
 
 void __android_logPower_buf_write(void){
+}
+
+void __android_log_buf_print(void){
 }
 
 int isLogEnabled(void) {
