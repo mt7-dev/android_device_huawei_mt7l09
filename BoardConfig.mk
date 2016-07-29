@@ -118,7 +118,7 @@ BOARD_CAMERA_HAVE_ISO := true
 COMMON_GLOBAL_CFLAGS += -DHAVE_ISO
 
 # RIL
-#BOARD_RIL_CLASS := ../../../device/huawei/mt7l09/ril/
+BOARD_RIL_CLASS := device/huawei/mt7l09/ril/
 
 # Preload bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
