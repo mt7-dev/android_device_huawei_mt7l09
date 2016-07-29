@@ -44,6 +44,10 @@ ro.sys.fw.bservice_enable=true
 qemu.hw.mainkeys=0
 # Define bluetooth/wifi chip
 ro.connectivity.sub_chiptype=bcm4334
+# Define libreference-ril.so path for huawei rild
+rild.libpath=libreference-ril.so
+# Define our RIL class
+ro.telephony.ril_class=HuaweiRIL
 
 audioril.lib=libhuawei-audio-ril.so
 ro.carrier=unknown
