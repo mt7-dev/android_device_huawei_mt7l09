@@ -41,33 +41,16 @@ $(call inherit-product, build/target/product/full.mk)
 # ========================================== .PROP OVVERRIDES ==========================================
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	BUILD_UTC_DATE=0 \
-
-PRODUCT_PROPERTY_OVERRIDES += \
-	persist.sys.isUsbOtgEnabled=true \
-	ro.sf.lcd_density=400 \
-	ro.hardware=hi3630 \
- 	ro.hardware.alter=Kirin925
 	
 ## From stock system.prop
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	ro.product.cpu.abilist=armeabi-v7a,armeabi \
-	ro.product.cpu.abilist32=armeabi-v7a,armeabi \
-	ro.build.version.codename=REL \
-	ro.build.version.all_codenames=REL \
 	ro.adb.secure=0 \
 	ro.secure=0 \
 	ro.allow.mock.location=1 \
 	ro.debuggable=1 \
 	persist.sys.usb.config=mtp,adb \
 	persist.logd.logpersistd=logcatd \
-	debug.graphic_log=1 \
-	ro.zygote=zygote32 \
-	dalvik.vm.image-dex2oat-Xms=64m \
-	dalvik.vm.image-dex2oat-Xmx=64m \
-	dalvik.vm.dex2oat-Xms=64m \
-	dalvik.vm.dex2oat-Xmx=512m \
-	ro.dalvik.vm.native.bridge=0 \
-	debug.atrace.tags.enableflags=0 
+	debug.graphic_log=1
 
 # Debug options
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -121,13 +104,10 @@ PRODUCT_PACKAGES += \
 	libhw_cutils \
 	libhw_gui \
 	libhw_log
-    
-# Graphics 
-PRODUCT_PACKAGES += \
-	libion 
-	
+
 # Graphics
 PRODUCT_PACKAGES += \
+	libion \
 	libgenlock \
 	liboverlay \
 	libGLES_mali
