@@ -1,0 +1,307 @@
+PID   USER     TIME   COMMAND
+    1 0          0:01 /init --second-stage
+    2 0          0:00 [kthreadd]
+    3 0          0:01 [ksoftirqd/0]
+    5 0          0:00 [kworker/0:0H]
+    7 0          0:00 [migration/0]
+    8 0          0:04 [rcu_preempt]
+    9 0          0:00 [rcu_bh]
+   10 0          0:00 [rcu_sched]
+   11 0          0:00 [migration/1]
+   12 0          0:01 [ksoftirqd/1]
+   14 0          0:00 [kworker/1:0H]
+   15 0          0:00 [migration/2]
+   16 0          0:00 [ksoftirqd/2]
+   18 0          0:00 [kworker/2:0H]
+   19 0          0:00 [migration/3]
+   20 0          0:00 [ksoftirqd/3]
+   22 0          0:00 [kworker/3:0H]
+   23 0          0:00 [migration/4]
+   24 0          0:00 [ksoftirqd/4]
+   25 0          0:00 [kworker/4:0]
+   26 0          0:00 [kworker/4:0H]
+   27 0          0:00 [migration/5]
+   28 0          0:00 [ksoftirqd/5]
+   29 0          0:00 [kworker/5:0]
+   30 0          0:00 [kworker/5:0H]
+   31 0          0:00 [migration/6]
+   32 0          0:00 [ksoftirqd/6]
+   33 0          0:00 [kworker/6:0]
+   34 0          0:00 [kworker/6:0H]
+   35 0          0:00 [migration/7]
+   36 0          0:00 [ksoftirqd/7]
+   37 0          0:00 [kworker/7:0]
+   38 0          0:00 [kworker/7:0H]
+   39 0          0:00 [khelper]
+   47 0          0:00 [kworker/1:1]
+   48 0          0:00 [kworker/2:1]
+   50 0          0:00 [kworker/3:1]
+   51 0          0:00 [kworker/4:1]
+   52 0          0:01 [kworker/6:1]
+   53 0          0:01 [kworker/5:1]
+   54 0          0:01 [kworker/7:1]
+  272 0          0:04 [mailbox-13]
+  273 0          0:00 [mailbox-14]
+  274 0          0:00 [mailbox-17]
+  275 0          0:00 [mailbox-10]
+  276 0          0:00 [mailbox-18]
+  279 0          0:00 [icc_shared]
+  282 0          0:00 [softtimer_nowak]
+  623 0          0:00 [writeback]
+  626 0          0:00 [bioset]
+  627 0          0:00 [crypto]
+  629 0          0:00 [kblockd]
+  664 0          0:00 [spi0]
+  670 0          0:00 [spi1]
+  675 0          0:00 [khubd]
+  691 0          0:00 [carveout-heap]
+  694 0          0:00 [devfreq_wq]
+  696 0          0:00 [dsm_wq]
+  707 0          0:00 [cfg80211]
+  831 0          0:00 [rpciod]
+  832 0          0:00 [iom3_rec_wq]
+  833 0          0:00 [mcu_event_notif]
+  843 0          0:01 [smc_work]
+  853 0          0:00 [khungtaskd]
+  854 0          0:09 [kswapd0]
+  855 0          0:15 [ksmd]
+  906 0          0:00 [fsnotify_mark]
+  919 0          0:00 [nfsiod]
+  974 0          0:00 [dss_debug]
+  977 0          0:00 [k3_dss_sbl_work]
+  978 0          0:00 [hisi-dss-layerb]
+  985 0          0:00 [hdmi_irq_wq]
+  992 0          0:00 [hisi-dss-layerb]
+ 1510 0          0:00 [kworker/u17:0]
+ 1511 0          0:00 [kbase_job_fault]
+ 1512 0          0:00 [kworker/u17:1]
+ 1545 0          0:00 [hi6401_irq_dela]
+ 1546 0          0:00 [pll_delay_wq]
+ 1576 0          0:00 [dwc_otg]
+ 1582 0          0:00 [DWC Notificatio]
+ 1583 0          0:00 [acm_cdev]
+ 1584 0          0:00 [usb_notify]
+ 1606 0          0:00 [f_mtp]
+ 1611 0          0:00 [file-storage]
+ 1629 0          0:00 [uether]
+ 1637 0          0:00 [kpsmoused]
+ 1778 0          0:00 [wdt_wq]
+ 1787 0          0:01 [cfinteractive]
+ 1792 0          0:00 [dw-mci-card/0]
+ 1796 0          0:00 [dw-mci-card/1]
+ 1799 0          0:00 [dw-mci-card/2]
+ 1902 0          0:00 [binder]
+ 1917 0          0:00 [mailboxNormal]
+ 1918 0          0:00 [mailboxHigh]
+ 1919 0          0:00 [dspdumplog]
+ 1922 0          0:00 [rdr_init_thread]
+ 1928 0          0:00 [EncSrc]
+ 1929 0          0:00 [EncDst]
+ 1930 0          0:00 [DecSrc]
+ 1931 0          0:00 [DecDst]
+ 1935 0          0:25 [mmcqd/0]
+ 1936 0          0:00 [mmcqd/0boot0]
+ 1937 0          0:00 [mmcqd/0boot1]
+ 1938 0          0:00 [mmcqd/0rpmb]
+ 1987 0          0:00 [kworker/0:1H]
+ 2004 0          0:00 [jbd2/mmcblk0p24]
+ 2005 0          0:00 [ext4-dio-unwrit]
+ 2019 0          0:00 [jbd2/mmcblk0p28]
+ 2020 0          0:00 [ext4-dio-unwrit]
+ 2025 0          0:00 [kworker/2:1H]
+ 2026 0          0:00 [drv_nv]
+ 2032 0          0:00 [pastar_dsm_wq]
+ 2033 0          0:00 [tAcpuOmTask]
+ 2035 0          0:00 [rfile]
+ 2037 0          0:00 [cshell_send_thr]
+ 2038 0          0:00 [cshell_recv_thr]
+ 2039 0          0:00 [cshell_usb_send]
+ 2041 0          0:00 [modem_reset]
+ 2042 0          0:00 [reset_wq]
+ 2046 0          0:02 [mmcqd/1]
+ 2048 0          0:00 [sc_acore_task]
+ 2062 0          0:00 [asc_work]
+ 2064 0          0:00 [chr_netlink_thr]
+ 2070 0          0:00 [irq/381-spi0.2]
+ 2072 0          0:00 [hall_wq]
+ 2087 0          0:00 [janklog_workque]
+ 2102 0          0:00 [hw_kstate]
+ 2112 0          0:00 [kworker/2:2]
+ 2134 0          0:00 [pcm_mailbox_del]
+ 2139 0          0:00 [anc_hs_btn_dela]
+ 2140 0          0:00 [anc_hs_charge_d]
+ 2141 0          0:00 [headset_plug_in]
+ 2142 0          0:00 [headset_plug_ou]
+ 2143 0          0:00 [headset_btn_up_]
+ 2144 0          0:00 [headset_btn_dow]
+ 2175 0          0:00 [krfcommd]
+ 2189 0          0:00 [deferwq]
+ 2193 0          0:00 [hi6421_ocp_dela]
+ 2194 0          0:00 [hi6421_regulato]
+ 2264 0          0:00 [VOS_TIMER]
+ 2265 0          0:00 [RTC_TIMER]
+ 2266 0          0:00 [IMM_RB_FREE]
+ 2267 0          0:00 [mspAppDS]
+ 2268 0          0:00 [AppNdisPppDipc]
+ 2269 0          0:00 [ACPUOMCB]
+ 2270 0          0:00 [ACPU_OM ]
+ 2271 0          0:00 [F5_I0]
+ 2272 0          0:00 [F5_I1]
+ 2273 0          0:00 [F5_I2]
+ 2274 0          0:00 [RNIC]
+ 2275 0          0:00 [ACPU_NFEXT]
+ 2276 0          0:00 [ADS_UL]
+ 2277 0          0:00 [ADS_DL]
+ 2278 0          0:00 [CSD]
+ 2279 0          0:00 [TAF_AGENT]
+ 2280 0          0:00 [CpuLoadMonitor]
+ 2281 0          0:00 [ACpuFlowCtrl]
+ 2282 0          0:00 [mspAppDiag]
+ 2303 0          0:00 [kworker/1:1H]
+ 2308 0          0:00 [dhd_hang_wq]
+ 2311 0          0:00 [wl_event_handle]
+ 2313 0          0:02 [dhd_watchdog_th]
+ 2314 0          0:04 [dhd_dpc]
+ 2315 0          0:01 [dhd_rxf]
+ 2323 0          0:00 [ts_thread:0]
+ 2338 0          0:01 /sbin/ueventd
+ 3616 0          0:00 [jbd2/mmcblk0p21]
+ 3617 0          0:00 [ext4-dio-unwrit]
+ 3629 0          0:00 /sbin/oeminfo_nvm_server
+ 3630 0          0:00 [jbd2/mmcblk0p38]
+ 3631 0          0:00 [ext4-dio-unwrit]
+ 3632 0          0:00 [jbd2/mmcblk0p39]
+ 3633 0          0:00 [ext4-dio-unwrit]
+ 3635 0          0:01 [jbd2/mmcblk0p40]
+ 3636 0          0:00 [ext4-dio-unwrit]
+ 3637 0          0:00 [jbd2/mmcblk0p37]
+ 3638 0          0:00 [ext4-dio-unwrit]
+ 3639 0          0:00 [jbd2/mmcblk0p34]
+ 3640 0          0:00 [ext4-dio-unwrit]
+ 3641 0          0:00 [jbd2/mmcblk0p31]
+ 3642 0          0:00 [ext4-dio-unwrit]
+ 3643 0          0:00 [jbd2/mmcblk0p32]
+ 3644 0          0:00 [ext4-dio-unwrit]
+ 3645 1036       0:05 /system/bin/logd
+ 3646 0          0:00 /system/bin/vold --blkid_context=u:r:blkid:s0 --blkid_untrusted_context=u:r:blkid_untrusted:s0 --fsck_context=u:r:fsck:s0 --fsck_untrusted_context=u:r:fsck_untrusted:s0
+ 3652 0          0:00 [kauditd]
+ 3675 0          0:00 /sbin/healthd
+ 3678 0          0:02 /system/bin/lmkd
+ 3681 1000       0:03 /system/bin/servicemanager
+ 3687 1000       0:47 /system/bin/surfaceflinger
+ 3689 0          0:01 /sbin/teecd
+ 3692 1001       0:00 /system/bin/rild
+ 3697 1000       0:04 /system/bin/powerlogd
+ 3698 0          0:01 /system/bin/netd
+ 3699 0          0:00 /system/bin/debuggerd
+ 3700 1019       0:00 /system/bin/drmserver
+ 3702 1013       0:00 {mediaserver} media.log n/mediaserver
+ 3703 0          0:00 /system/bin/installd
+ 3704 1017       0:00 /system/bin/keystore /data/misc/keystore
+ 3705 1000       0:00 /sbin/hw_ueventd
+ 3707 0          0:00 /system/bin/thermal-daemon
+ 3709 0          0:09 {main} zygote
+ 3712 0          0:00 /system/bin/device_monitor
+ 3713 0          0:00 /system/bin/diagserver
+ 3715 0          0:00 /system/bin/hwnffserver
+ 3716 0          0:01 /system/bin/hwpged
+ 3739 0          0:00 [kworker/7:1H]
+ 3770 0          0:00 [kworker/6:1H]
+ 3791 0          0:00 [kbase_event]
+ 3816 1013       0:03 /system/bin/mediaserver
+ 3833 0          0:00 [kworker/3:1H]
+ 3880 0          0:00 /system/bin/hdmi_daemon
+ 3886 2000       0:05 /sbin/adbd --root_seclabel=u:r:su:s0
+ 4012 1000       0:00 /system/bin/gatekeeperd /data/misc/gatekeeper
+ 4014 1000       0:00 /system/bin/fingerprintd
+ 4016 0          0:00 /system/bin/defragd
+ 4017 1000       0:00 /system/bin/logserver
+ 4046 0          0:00 [loop0]
+ 4052 0          0:00 [jbd2/loop0-8]
+ 4053 0          0:00 [ext4-dio-unwrit]
+ 4075 0          0:00 [kworker/4:1H]
+ 4121 0          0:00 [kworker/5:1H]
+ 4146 0          0:00 daemonsu:mount:master
+ 4182 0          0:00 daemonsu:master
+ 4248 1000       2:31 system_server
+ 4606 0          0:00 [kbase_event]
+ 4643 0          0:00 [pkgld]
+ 4644 0          0:00 [pkgld]
+ 4645 0          0:00 [pkgld]
+ 4670 1000       0:00 {wei.securitymgr} com.huawei.securitymgr
+ 4682 10105      0:27 {ndroid.systemui} com.android.systemui
+ 4703 10105      0:05 {ndroid.keyguard} com.android.keyguard
+ 4785 10004      0:12 {d.process.media} android.process.media
+ 4807 10003      0:02 {d.process.acore} android.process.acore
+ 4993 10106      0:10 {mpz.audioplayer} com.maxmpz.audioplayer
+ 5026 1000       0:09 {manager:service} com.huawei.systemmanager:service
+ 5076 0          0:00 [kbase_event]
+ 5095 0          0:00 [kbase_event]
+ 5121 10030      0:00 {hbox:interactor} com.google.android.googlequicksearchbox:interactor
+ 5141 10080      0:03 {putmethod.latin} com.google.android.inputmethod.latin
+ 5159 0          0:00 [kworker/1:2]
+ 5166 1010       0:03 /system/bin/wpa_supplicant -d -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -I/system/etc/wifi/wpa_supplicant_overlay.conf -m/data/misc/wifi/p2p_supplicant.conf -O/data/misc/wifi/sockets -puse_p2p_group_interface=1p2p_device=1 -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
+ 5247 1027       0:01 com.android.nfc
+ 5266 1000       0:06 {awei.powergenie} com.huawei.powergenie
+ 5278 1001       0:03 {m.android.phone} com.android.phone
+ 5306 10129      0:08 {coilsw.launcher} com.teslacoilsw.launcher
+ 5392 1001       0:00 {ndroid.incallui} com.android.incallui
+ 5451 10082      0:00 {android.smspush} com.android.smspush
+ 5519 10102      0:02 {egram.messenger} org.telegram.messenger
+ 5604 1000       0:00 {.huawei.lcagent} com.huawei.lcagent
+ 5644 10008      0:12 {gle.android.gms} com.google.android.gms
+ 5673 10119      0:07 {rosoft.skydrive} com.microsoft.skydrive
+ 5698 0          0:00 [kbase_event]
+ 5805 10008      0:03 {e.process.gapps} com.google.process.gapps
+ 6078 10008      0:19 {.gms.persistent} com.google.android.gms.persistent
+ 6097 1000       0:01 /system/bin/perfhub
+ 6169 0          0:00 [kbase_event]
+ 6334 1014       0:00 /system/bin/dhcpcd -BKL -f /system/etc/dhcpcd/dhcpcd.conf -h HUAWEI_MT7-L09-ea50272f6c wlan0
+ 6418 0          0:01 /system/bin/glgps4752 -c /data/gps/gpsconfig.xml
+ 6463 1023       0:20 /system/bin/sdcard -u 1023 -g 1023 -U 0 /mnt/media_rw/0000-0000 0000-0000
+ 7916 1050       0:00 {.service:remote} org.simalliance.openmobileapi.service:remote
+ 9258 10028      0:16 {android.vending} com.android.vending
+ 9583 1000       0:01 {i.systemmanager} com.huawei.systemmanager
+10520 0          0:00 [kworker/3:2]
+10790 1000       0:00 {ndroid.settings} com.android.settings
+11129 10013      0:00 {awei.trustagent} com.huawei.trustagent
+11249 10003      0:01 {ndroid.contacts} com.android.contacts
+11280 10052      0:00 {ei.hwmwlauncher} com.huawei.hwmwlauncher
+11301 10051      0:00 {i.motionservice} com.huawei.motionservice
+11315 10030      0:01 {earchbox:search} com.google.android.googlequicksearchbox:search
+11354 10034      0:00 {viders.calendar} com.android.providers.calendar
+11371 10047      0:00 {ndroid.calendar} com.android.calendar
+11453 10008      0:03 {id.gms.unstable} com.google.android.gms.unstable
+11616 0          0:00 [kbase_event]
+11660 2000       0:00 /system/bin/sh -
+11687 2000       0:04 su
+11690 0          0:00 daemonsu:0     
+11692 0          0:03 daemonsu:0:11687
+11696 0          0:00 sush -
+11705 10017      0:01 {ainfire.supersu} eu.chainfire.supersu
+11725 0          0:00 [kbase_event]
+11824 0          0:00 [kbase_event]
+11865 0          0:00 [kbase_event]
+11932 0          0:01 [kworker/0:0]
+11947 10002      0:00 {id.defcontainer} com.android.defcontainer
+11970 10011      0:00 {id.partnersetup} com.google.android.partnersetup
+12000 1000       0:00 {d.karaokeeffect} com.huawei.android.karaokeeffect
+12018 10069      0:02 {droid.apps.docs} com.google.android.apps.docs
+12051 0          0:00 [kworker/u16:2]
+12073 10135      0:04 {facebook.katana} com.facebook.katana
+12137 10060      0:00 {ndroid.launcher} com.huawei.android.launcher
+12230 10018      1:17 {ericson.busybox} stericson.busybox
+12249 10018      0:04 su
+12253 0          0:04 daemonsu:10018
+12254 0          0:00 [kbase_event]
+12269 0          0:04 sush -
+12301 0          0:00 daemonsu:10017
+12353 10018      0:12 /system/bin/sh
+29553 0          0:02 su
+29556 0          0:02 daemonsu:0:29553
+29557 0          0:00 sush -
+29591 0          0:00 [kworker/0:2]
+29639 0          0:00 [kworker/u16:0]
+29783 0          0:00 [kworker/0:1]
+29828 0          0:00 [kworker/u16:1]
+29986 0          0:00 ps
