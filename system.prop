@@ -7,8 +7,8 @@ persist.sys.thermal=false
 persist.sys.strictmode.disable=true
 ro.config.hw_navigationbar=true
 persist.sys.jankenable=true
-ro.sf.lcd_density=380
-hw.lcd.density=380
+ro.sf.lcd_density=360
+hw.lcd.density=360
 persist.fw.force_adoptable=true
 dalvik.vm.checkjni=false
 ro.bt.bdaddr_path=/data/misc/bluedroid/macbt
@@ -36,20 +36,42 @@ ro.sys.umsdirtyratio=2
 build.hisi_perf_opt=true
 ro.sys.fw.bservice_enable=true
 
-# 
-# ADDITIONAL_BUILD_PROPERTIES
-# 
-
+ 
+### ADDITIONAL_BUILD_PROPERTIES
+##
 # Enable virtual keys
 qemu.hw.mainkeys=0
 # Define bluetooth/wifi chip
 ro.connectivity.sub_chiptype=bcm4334
-# Define libreference-ril.so path for huawei rild
-rild.libpath=libreference-ril.so
-# Define our RIL class
-ro.telephony.ril_class=HuaweiRIL
 
+## RIL
+# I think some of these prop are set by a daemon or something
+# because thery're absent in stock build.prop, as happens for hw gpsdaemon 
 audioril.lib=libhuawei-audio-ril.so
+gsm.version.ril-impl=android hisilicon balong-ril 1.0
+init.svc.ril-daemon=running
+init.svc.rillogcat=stopped
+persist.radio.commril_mode=ULG_MODE
+ril.balong_cid=0
+ril.ecclist=112,911,000,08,110,118,119,999,112,911,118
+ril.force_to_set_ecc=invalid
+ril.hw_modem0.rssi=-1
+ril.hw_modem1.rssi=-1
+ril.modem.balong_nvm_server=true
+ril.operator.numeric=22288
+rild.libargs=-m modem0
+rild.libargs1=-m modem1
+rild.libpath=/system/lib/libbalong-ril.so
+rild.libpath1=/system/lib/libbalong-ril-1.so
+rild.rild1_ready_to_start=false
+ro.multi.rild=true
+ro.ril.ecclist=112,911,#911,*911
+
+# To get storedefaultkey working, I don't know who really set it
+trustedcore_sfs_property=1
+
+## To clean section
+#
 ro.carrier=unknown
 ro.setupwizard.mode=OPTIONAL
 ro.com.google.gmsversion=6.0_r4
@@ -68,7 +90,7 @@ ro.expect.recovery_id=
 ro.config.fm_type=libbcmfm_if
 persist.radio.apm_sim_not_pwdn=1
 persist.service.tm2.tofile=true
-persist.sys.dualcards=true
+persist.sys.dualcards=false
 ril.hw_modem0.rssi=-1
 ril.hw_modem1.rssi=-1
 ro.cellbroadcast.emergencyids=0-65534
@@ -113,7 +135,7 @@ ro.config.hw_sdInstall_enable=true
 ro.config.hw_showTestInfo=true
 ro.config.hw_wifipro_enable=true
 
-ro.dual.sim.phone=true
+ro.dual.sim.phone=false
 ro.hwcamera.previeweffects=true
 ro.config.lvm_mode=true
 ro.config.wind_noise_supp=true
