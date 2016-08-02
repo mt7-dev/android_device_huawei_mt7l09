@@ -15,7 +15,7 @@ Updates
 
 Instructions
 -------
-To download and build everything please clone the branch `aosp-6.0.0_r1` of the repo [manifest repository](https://github.com/mt7-dev/local_manifests) in your `.repo/local_manifests` then sync:
+To download and build everything please clone the branch `aosp-6.0.0_r1` of the [manifest repository](https://github.com/mt7-dev/local_manifests) in your `.repo/local_manifests` then sync:
 ```
 gabry3795@darkseat-works:~/aosp$ cd .repo/
 gabry3795@darkseat-works:~/aosp/.repo$ git clone git@github.com:mt7-dev/local_manifests.git -b aosp-6.0.0_r1
