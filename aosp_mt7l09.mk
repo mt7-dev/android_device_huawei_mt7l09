@@ -32,6 +32,10 @@ PRODUCT_BRAND := Android
 PRODUCT_MODEL := Ascend Mate7
 PRODUCT_MANUFACTURER := Huawei
 
+# Apps
 PRODUCT_PACKAGES += \
-    Launcher3
+    Launcher3 \
+    FMRadio \
+    CarrierConfig \
+    NfcNci
 
