@@ -19,6 +19,8 @@ TARGET_SCREEN_WIDTH := 1080
 # Release name
 PRODUCT_RELEASE_NAME := mt7l09
 
+STLPORT_FORCE_REBUILD := true
+
 # Inherit device configuration
 $(call inherit-product, device/huawei/mt7l09/device_mt7l09.mk)
 
@@ -36,6 +38,5 @@ PRODUCT_MANUFACTURER := Huawei
 PRODUCT_PACKAGES += \
     Launcher3 \
     FMRadio \
-    CarrierConfig \
-    NfcNci
+    CarrierConfig 
 
