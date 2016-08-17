@@ -1,20 +1,21 @@
 #line 1 "device/hisi/common/sepolicy/common/service_contexts"
 com.huawei.goldeneye                                    u:object_r:goldeneye_service:s0
-huawei.camera.cfgsvr     u:object_r:hwcamcfg_service:s0
-hwext_device_service     u:object_r:hwext_device_service:s0
-audio.om      u:object_r:mediaserver_service:s0
-jank       u:object_r:jankservice_service:s0
+huawei.camera.cfgsvr					u:object_r:hwcamcfg_service:s0
+hwext_device_service					u:object_r:hwext_device_service:s0
+audio.om						u:object_r:mediaserver_service:s0
+jank							u:object_r:jankservice_service:s0
 ioinfo                                                  u:object_r:ioinfo_service:s0
-ProtocolParaManagerService    u:object_r:ProtocolParaManager_service:s0
+ProtocolParaManagerService				u:object_r:ProtocolParaManager_service:s0
 netdetect.aidl                                          u:object_r:netdetect_aidl_service:s0
-Binder.Pged      u:object_r:hwpged_service:s0
-BastetService      u:object_r:bastetd_service:s0
+Binder.Pged						u:object_r:hwpged_service:s0
+BastetService						u:object_r:bastetd_service:s0
 perfhub                                   u:object_r:perfhub_service:s0
 HwChrService                                            u:object_r:system_app_service:s0
 vr_display                                             u:object_r:vr_service:s0
 tui                                                     u:object_r:tui_service:s0
 nonhardaccelpkgs                          u:object_r:nonhardaccelpkgs_service:s0
 jankshield                                u:object_r:jankshield_service:s0
+SysinfoService                            u:object_r:systeminfo_service:s0
 huawei.audioalgoservice                   u:object_r:mediaserver_service:s0
 #line 1 "device/hisi/common/sepolicy/hi3630/service_contexts"
 
@@ -23,5 +24,5 @@ fingerprints_service u:object_r:fingerprints_service:s0
 
 #######HwAuthenticationService#########
 authentication_service u:object_r:authentication_service:s0
-hdmi       u:object_r:hdmi_service:s0
-hdmi-daemon      u:object_r:hdmi-daemon_service:s0
+hdmi							u:object_r:hdmi_service:s0
+hdmi-daemon						u:object_r:hdmi-daemon_service:s0

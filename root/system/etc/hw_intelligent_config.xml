@@ -1,6 +1,0 @@
-<resources>
-<bool is_support_credit_card="false"/>
-<bool is_support_smart_alarm="false"/>
-<bool is_support_smart_read="false"/>
-<bool is_support_quantified_self="false"/>
-</resources>

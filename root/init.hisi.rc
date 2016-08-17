@@ -86,7 +86,6 @@ service atcserver /system/bin/atc
 
 service ril-daemon /system/bin/rild
     class core
-    disabled
     socket rild stream 660 root radio
     socket rild-ims stream 660 root radio
     socket rildm2 stream 660 root radio

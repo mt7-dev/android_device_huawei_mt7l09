@@ -15,3 +15,4 @@
 #
 
 add_lunch_combo aosp_mt7l09-eng
+add_lunch_combo aosp_mt7l09-userdebug

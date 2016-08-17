@@ -48,7 +48,6 @@ on init
     chown root root /sec_storage
     chmod 600 /sec_storage
 
-
 on init
     write /sys/module/block2mtd/parameters/block2mtd /dev/block/mmcblk0p6
     wait /dev/nve0
@@ -56,15 +55,12 @@ on init
     chown root system /dev/nve0
 
 on early-boot
-	service HwCamCfgSvr /system/bin/HwCamCfgSvr   hi3630 PINE
-	class main
-	user media
-	group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm system dsm
+    service HwCamCfgSvr /system/bin/HwCamCfgSvr   hi3630 PINE
+    class main
+    user media
+    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm system dsm
 
 on boot
-
-
-
     mount debugfs /sys/kernel/debug /sys/kernel/debug mode=0755
 
     chown system camera /dev/imgsysbrg_vdec0
@@ -89,8 +85,6 @@ on boot
 service sdcard /system/bin/sdcard /data/share /mnt/shell/emulated/ 1015 1015
     class main
     disabled
-
-
 
 on boot
     mkdir /system/isp
@@ -454,12 +448,15 @@ service kmsgcat_cp /sbin/kmsgcat -r 4096 -n 25 -i /dev/cshell_log -f /data/hwzd_
     disabled
     seclabel u:r:hisilogcat:s0
 
+# I think it's a defrag daemon - Useless
 service defragd /system/bin/defragd
     class late_start
+    disabled
 
 on property:sys.boot_completed=1 && property:ro.config.hw_perfhub=true
     start perfhub
 
+# I think it's a performance optimizer - useless
 service perfhub /system/bin/perfhub
     class late_start
     user system

@@ -15,7 +15,7 @@
 #
 
 # Variables
-LOCAL_PATH := device/huawei/mt7l09
+LOCAL_PATH := $(call my-dir)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
@@ -23,7 +23,7 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 $(call inherit-product-if-exists, vendor/huawei/mt7l09/mt7l09-vendor.mk)
 
 # Disabled overlay for now
-#DEVICE_PACKAGE_OVERLAYS += device/huawei/mt7l09/overlay
+DEVICE_PACKAGE_OVERLAYS += device/huawei/mt7l09/overlay
 
 TARGET_PREBUILT_KERNEL 	:= device/huawei/mt7l09/kernel
 
@@ -124,8 +124,8 @@ PRODUCT_PACKAGES += \
 
 # ========================================== RECOVERY ==========================================
  PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/recovery/etc/recovery.fstab:recovery/root/etc/recovery.fstab \
-	$(LOCAL_PATH)/recovery/etc/mke2fs.conf:recovery/root/etc/mke2fs.conf \
+#	$(LOCAL_PATH)/recovery/etc/recovery.fstab:recovery/root/etc/recovery.fstab \
+#	$(LOCAL_PATH)/recovery/etc/mke2fs.conf:recovery/root/etc/mke2fs.conf \
 	$(LOCAL_PATH)/recovery/sbin/hdbd:recovery/root/sbin/hdbd \
 	$(LOCAL_PATH)/recovery/sbin/teecd:recovery/root/sbin/teecd \
 	$(LOCAL_PATH)/recovery/sbin/oeminfo_nvm_server:recovery/root/sbin/oeminfo_nvm_server \
@@ -141,42 +141,9 @@ PRODUCT_PACKAGES += \
 
 	
 # ========================================== RAMDISK ==========================================
-# To clean
- PRODUCT_COPY_FILES += \
-  	$(LOCAL_PATH)/root/fstab.hi3630:root/fstab.hi3630 \
- 	$(LOCAL_PATH)/root/init.41031.rc:root/init.41031.rc \
- 	$(LOCAL_PATH)/root/init.4843.rc:root/init.4843.rc \
- 	$(LOCAL_PATH)/root/init.71422.rc:root/init.71422.rc \
- 	$(LOCAL_PATH)/root/init.chip.usb.rc:root/init.chip.usb.rc \
- 	$(LOCAL_PATH)/root/init.connectivity.bcm4334.rc:root/init.connectivity.bcm4334.rc \
- 	$(LOCAL_PATH)/root/init.connectivity.gps.rc:root/init.connectivity.gps.rc \
- 	$(LOCAL_PATH)/root/init.connectivity.rc:root/init.connectivity.rc \
- 	$(LOCAL_PATH)/root/init.device.rc:root/init.device.rc \
- 	#$(LOCAL_PATH)/root/init.environ.rc:root/init.environ.rc \
- 	$(LOCAL_PATH)/root/init.extmodem.rc:root/init.extmodem.rc \
- 	$(LOCAL_PATH)/root/init.hi3630.rc:root/init.hi3630.rc \
- 	$(LOCAL_PATH)/root/init.hisi.rc:root/init.hisi.rc \
- 	$(LOCAL_PATH)/root/init.manufacture.rc:root/init.manufacture.rc \
- 	$(LOCAL_PATH)/root/init.platform.rc:root/init.platform.rc \
- 	$(LOCAL_PATH)/root/init.post-fs-data.rc:root/init.post-fs-data.rc \
- 	$(LOCAL_PATH)/root/init.rc:root/init.rc \
- 	$(LOCAL_PATH)/root/init.trace.rc:root/init.trace.rc \
- 	$(LOCAL_PATH)/root/init.usb.rc:root/init.usb.rc \
- 	$(LOCAL_PATH)/root/init.hi3630.usb.rc:root/init.hi3630.usb.rc \
- 	$(LOCAL_PATH)/root/ueventd.hi3630.rc:root/ueventd.hi3630.rc \
- 	$(LOCAL_PATH)/root/resetFactory.cfg:root/resetFactory.cfg \
-	$(LOCAL_PATH)/root/sbin/hdbd:root/sbin/hdbd \
-	$(LOCAL_PATH)/root/sbin/teecd:root/sbin/teecd \
-	$(LOCAL_PATH)/root/sbin/oeminfo_nvm_server:root/sbin/oeminfo_nvm_server \
-	$(LOCAL_PATH)/root/sbin/check_root:root/sbin/check_root \
-	$(LOCAL_PATH)/root/sbin/kmsgcat:root/sbin/kmsgcat \
-	$(LOCAL_PATH)/root/sbin/ntfs-3gd:root/sbin/ntfs-3gd \
-	$(LOCAL_PATH)/root/sbin/hw_ueventd:root/sbin/hw_ueventd \
-	$(LOCAL_PATH)/root/sbin/logctl_service:root/sbin/logctl_service \
-	$(LOCAL_PATH)/root/sbin/e2fsck_s:root/sbin/e2fsck_s \
-	$(LOCAL_PATH)/root/sbin/emmc_partation:root/sbin/emmc_partation \
-	$(LOCAL_PATH)/root/sbin/volisnotd:root/sbin/volisnotd 
+include device/huawei/mt7l09/init.mk
 
+# =========================================== OTHER ===========================================
 # Permissions
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
