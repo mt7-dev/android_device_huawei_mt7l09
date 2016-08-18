@@ -55,29 +55,9 @@ include $(BUILD_PREBUILT)
 
 
 #######################################
-# init.trace.rc
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.trace.rc
-LOCAL_SRC_FILES    := $(LOCAL_MODULE)
-LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-
-#######################################
 # init.rc
 include $(CLEAR_VARS)
 LOCAL_MODULE       := init.rc
-LOCAL_SRC_FILES    := $(LOCAL_MODULE)
-LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-
-#######################################
-# init.usb.rc
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.usb.rc
 LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
@@ -138,6 +118,16 @@ include $(BUILD_PREBUILT)
 # ueventd.hi3630.rc
 include $(CLEAR_VARS)
 LOCAL_MODULE       := ueventd.hi3630.rc
+LOCAL_SRC_FILES    := $(LOCAL_MODULE)
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+
+
+#######################################
+# init.usb.huawei.rc
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.usb.huawei.rc
 LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
@@ -336,4 +326,4 @@ include $(BUILD_PREBUILT)
 
 
 
-# Total 35 files added on 2016-08-16T11:13:14.787798 UTC
+# Total 34 files added on 2016-08-17T14:53:19.099645 UTC

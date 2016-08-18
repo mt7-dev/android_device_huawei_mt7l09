@@ -7,15 +7,14 @@ PRODUCT_PACKAGES += \
 	init.41031.rc \
 	init.usb.configfs.rc \
 	init.extmodem.rc \
-	init.trace.rc \
 	init.rc \
-	init.usb.rc \
 	init.manufacture.rc \
 	init.71422.rc \
 	init.chip.usb.rc \
 	init.connectivity.bcm4334.rc \
 	fstab.hi3630 \
 	ueventd.hi3630.rc \
+	init.usb.huawei.rc \
 	init.device.rc \
 	init.hi3630.rc \
 	init.post-fs-data.rc \
@@ -37,4 +36,4 @@ PRODUCT_PACKAGES += \
 	sbin/volisnotd
 
 
-# Total 35 files added on 2016-08-16T11:13:14.787818 UTC
+# Total 34 files added on 2016-08-17T14:53:19.099666 UTC

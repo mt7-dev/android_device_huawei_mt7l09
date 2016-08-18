@@ -1,6 +1,7 @@
 
 import /init.environ.rc
-import /init.usb.rc
+#import /init.usb.rc
+import /init.usb.huawei.rc
 import /init.${ro.hardware}.rc
 import /init.${ro.zygote}.rc
 
@@ -24,7 +25,7 @@ on early-init
 
     start ueventd
 
-    setprop persist.service.hdb.enable true
+    #setprop persist.service.hdb.enable true
     setprop debug.graphic_log 1
 
 on init
@@ -52,7 +53,6 @@ on init
     chmod 0660 /sys/fs/cgroup/memory/sw/tasks
 
     mkdir /system
-    mkdir /su 0755 root root # create mount point for SuperSU
     mkdir /data 0771 system system
     mkdir /cache 0770 system cache
     mkdir /config 0500 root root
@@ -180,7 +180,7 @@ on property:sys.boot_from_charger_mode=1
     trigger late-init
 
 on load_all_props_action
-    load_system_props # gabry3795
+    load_all_props
     start logd
     start logd-reinit
 on cust_parse_action
