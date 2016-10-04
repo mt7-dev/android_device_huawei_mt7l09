@@ -180,3 +180,12 @@ PRODUCT_COPY_FILES += \
 	#frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
 	#frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
 	#frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
+
+# GPS
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf \
+	$(LOCAL_PATH)/gps/gps4752.conf:system/etc/gps4752.conf \
+	$(LOCAL_PATH)/gps/gps4752config.xml:system/etc/gps4752config.xml \
+	$(LOCAL_PATH)/gps/gps4752config_cl.xml:system/etc/gps4752config_cl.xml \
+	$(LOCAL_PATH)/gps/gps47531config.xml:system/etc/gps47531config.xml \
+	$(LOCAL_PATH)/gps/gps47531config_cl.xml:system/etc/gps47531config_cl.xml
