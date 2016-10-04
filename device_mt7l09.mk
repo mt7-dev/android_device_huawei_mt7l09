@@ -189,3 +189,10 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/gps/gps4752config_cl.xml:system/etc/gps4752config_cl.xml \
 	$(LOCAL_PATH)/gps/gps47531config.xml:system/etc/gps47531config.xml \
 	$(LOCAL_PATH)/gps/gps47531config_cl.xml:system/etc/gps47531config_cl.xml
+	
+#Audio
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/audio/audio_effects.conf:system/etc/audio_effects.conf \
+	$(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
+	$(LOCAL_PATH)/audio/media_codecs.xml:system/etc/media_codecs.xml \
+	$(LOCAL_PATH)/audio/media_profiles.xml:system/etc/media_profiles.xml
